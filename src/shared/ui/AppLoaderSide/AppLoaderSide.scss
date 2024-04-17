@@ -1,0 +1,171 @@
+.vertical-line {
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+
+    background: #b6e9f9;
+    width: 2px;
+    animation: vertical-line 0.8s cubic-bezier(0.45, 0, 0.55, 1) forwards;
+    animation-delay: 1200ms;
+}
+
+@keyframes vertical-line {
+    0% {
+        height: 0;
+    }
+
+    100% {
+        height: 100%;
+    }
+}
+
+.fade-on-end {
+    animation: fade-on-end 0.5s linear forwards;
+    animation-delay: 2000ms;
+}
+
+@keyframes fade-on-end {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.shine-horizontal-right {
+    @apply overflow-hidden;
+
+    &::after {
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        opacity: 0.5;
+        background: linear-gradient(to left, rgb(255 255 255 / 0%) 0%, rgb(255 255 255 / 0%) 80%, #196ba8 90%, #196ba8 80%, rgb(255 255 255 / 0%) 100%);
+        animation: shine-right 1.2s ease-out forwards;
+    }
+}
+
+.shine-horizontal-left {
+    @apply overflow-hidden;
+
+    &::after {
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        opacity: 0.5;
+        background: linear-gradient(to right, rgb(255 255 255 / 0%) 0%, rgb(255 255 255 / 0%) 80%, #196ba8 90%, #196ba8 80%, rgb(255 255 255 / 0%) 100%);
+        animation: shine-left 1.2s ease-out forwards;
+    }
+}
+
+@keyframes shine-right {
+    0% {
+        right: -100%;
+    }
+
+    100% {
+        right: 12%;
+    }
+}
+
+@keyframes shine-left {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 12%;
+    }
+}
+
+.right-arc-outer {
+    transform-origin: 50% 50%;
+    stroke-dashoffset: 327.5;
+    stroke-dasharray: 327.5;
+    transform: rotate(0deg);
+    animation: fill-side-right 0.5s ease-out forwards;
+    animation-delay: 1000ms;
+}
+
+@keyframes fill-side-right {
+    0% {
+        transform: rotate(0deg);
+        stroke-dashoffset: 327.5;
+        stroke-dasharray: 327.5;
+    }
+
+    100% {
+        transform: rotate(-90deg);
+        stroke-dashoffset: 327.5;
+        stroke-dasharray: 490.75;
+    }
+}
+
+.left-arc-outer {
+    transform: rotate(180deg);
+    transform-origin: 50% 50%;
+    stroke-dashoffset: 327.5;
+    stroke-dasharray: 327.5;
+    animation: fill-side-left 0.5s ease-out forwards;
+    animation-delay: 1000ms;
+}
+
+@keyframes fill-side-left {
+    0% {
+        transform: rotate(180deg);
+        stroke-dashoffset: 327.5;
+        stroke-dasharray: 327.5;
+    }
+
+    100% {
+        transform: rotate(90deg);
+        stroke-dashoffset: 327.5;
+        stroke-dasharray: 490.75;
+    }
+}
+
+.right-arc {
+    transition: all 1.5s;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+    stroke-dashoffset: calc(327 - 50 / 327);
+    stroke-dasharray: 327 327;
+    animation: fill-right 1.5s cubic-bezier(0.45, 0, 0.55, 1) forwards;
+}
+
+.left-arc {
+    transition: all 1.5s;
+    transform: rotate(90deg);
+    transform-origin: 50% 50%;
+    stroke-dashoffset: calc(327 - 100 / 327);
+    stroke-dasharray: 327 327;
+    animation: fill-left 1.5s cubic-bezier(0.45, 0, 0.55, 1) forwards;
+}
+
+@keyframes fill-left {
+    0% {
+        stroke-dashoffset: calc(326 - 100 / 326);
+        stroke-dasharray: 327 327;
+    }
+
+    100% {
+        transform: rotate(270deg);
+        stroke-dashoffset: calc(326 / 2);
+        stroke-dasharray: 327 327;
+    }
+}
+
+@keyframes fill-right {
+    0% {
+        stroke-dashoffset: calc(327 - 100 / 327);
+        stroke-dasharray: 327 327;
+    }
+
+    100% {
+        transform: rotate(90deg);
+        stroke-dashoffset: calc(327 / 2);
+        stroke-dasharray: 327 327;
+    }
+}

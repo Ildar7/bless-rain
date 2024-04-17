@@ -1,0 +1,370 @@
+.primaryline-shadow {
+    box-shadow: 0 0 4px 0 var(--effects-blue), 0 0 2px 0 var(--effects-blue) inset, 0 4px 4px 0 #010b13 inset;
+}
+
+.secondaryline-shadow {
+    box-shadow: 0 0 4px 0 var(--secondary), 0 0 2px 0 var(--secondary) inset, 0 4px 4px 0 #010b13 inset;
+}
+
+.pinkline-shadow {
+    box-shadow: 0 0 4px 0 var(--effects-pink), 0 0 2px 0 var(--secondary) inset, 0 4px 4px 0 #010b13 inset;
+}
+
+.surface {
+    @apply bg-surface rounded-lg p-1 relative duration-100;
+
+    background-color: var(--surface) !important;
+
+    .gradient {
+        background: linear-gradient(270deg, #031827 0%, #0b2a42 100%);
+    }
+
+    & > .inner {
+        @apply transition-shadow duration-200;
+
+        background: linear-gradient(225deg, #010910 0%, #041828 100%);
+        box-shadow: 0 4px 4px 0 #010b13 inset;
+        border-radius: 6px;
+    }
+
+    .glowing-blue {
+        @apply transition-shadow duration-300 ring-blueline ring-1;
+    }
+
+    .glowing-green {
+        @apply transition-shadow duration-300 ring-secondaryline ring-1;
+    }
+
+    &::before {
+        @apply absolute -z-10 w-full h-full;
+
+        background: linear-gradient(47deg, #051d30 0%, #011626 100%);
+        border-radius: inherit;
+        right: -4px;
+        bottom: -4px;
+        content: "";
+    }
+}
+
+.glowing-blue {
+    @apply duration-150 ring-blueline ring-1;
+}
+
+.glowing-green {
+    @apply duration-150 ring-secondaryline ring-1;
+}
+
+.bg-gradient-surface {
+    @apply duration-100;
+
+    background: linear-gradient(225deg, #010910 0%, #041828 100%) !important;
+    box-shadow: 0 4px 4px 0 #010b13 inset;
+}
+
+.dashed-border {
+    position: relative;
+    overflow: hidden;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+
+    &::before,
+    &::after,
+    span::before,
+    span::after {
+        content: "";
+        display: block;
+        position: absolute;
+        height: 1px;
+        pointer-events: none;
+    }
+
+    &::before {
+        top: 0;
+        left: 27.5%;
+        width: 60%;
+        z-index: 1 !important;
+    }
+
+    &::after {
+        bottom: 0;
+        left: 30%;
+        width: 35%;
+    }
+
+    &.squared {
+        &::before,
+        &::after,
+        span::before,
+        span::after {
+            height: 2px;
+        }
+
+        &::before {
+            left: 0;
+            width: 35%;
+        }
+
+        &::after {
+            left: 0;
+            width: 60%;
+        }
+
+        .dashed-border-top {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+
+            &::before {
+                top: 0;
+                left: auto;
+                width: 55%;
+                right: 0;
+            }
+
+            &::after {
+                top: calc(100% - 2px);
+                width: 30%;
+            }
+        }
+    }
+
+    &.rounded {
+        overflow: visible;
+
+        &::after {
+            display: none;
+        }
+
+        &::before {
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            border: 1px solid var(--blueline);
+            background: none !important;
+            border-radius: 50%;
+        }
+
+        span::before,
+        span::after {
+            background: linear-gradient(267deg, #010910 0%, #041828 100%) !important;
+            width: 4px;
+            height: 3px;
+        }
+
+        span::before {
+            top: calc(50% + 12px);
+            left: 2px;
+            transform: rotate(-40deg);
+        }
+
+        span::after {
+            top: calc(50% - 14px);
+            right: 1px;
+            transform: rotate(-215deg);
+        }
+
+        span {
+            z-index: 2;
+        }
+
+        &.glowing-blue {
+            border-left: none;
+            border-right: none;
+        }
+    }
+
+    &.glowing-pink {
+        border-left: 1px solid var(--effects-pink);
+        border-right: 1px solid var(--effects-pink);
+        box-shadow: 0 0 2px var(--effects-pink);
+
+        &::before,
+        &::after,
+        span::before,
+        span::after {
+            background: var(--effects-pink);
+        }
+    }
+
+    &.glowing-orange {
+        border-left: 1px solid var(--orange);
+        border-right: 1px solid var(--orange);
+        box-shadow: 0 0 2px var(--orange);
+
+        &::before,
+        &::after,
+        span::before,
+        span::after {
+            background: var(--orange);
+        }
+    }
+
+    &.glowing-green {
+        border-left: 1px solid var(--secondaryline);
+        border-right: 1px solid var(--secondaryline);
+        box-shadow: 0 0 2px var(--secondaryline);
+
+        &::before,
+        &::after,
+        span::before,
+        span::after {
+            background: var(--secondaryline);
+        }
+    }
+
+    &.glowing-blue {
+        border-left: 1px solid var(--blueline);
+        border-right: 1px solid var(--blueline);
+        box-shadow: 0 0 2px var(--blueline);
+
+        &.squared {
+            border-left: 2px solid var(--blueline);
+            border-right: 2px solid var(--blueline);
+            box-shadow: 0 0 3px var(--blueline);
+        }
+
+        &::before,
+        &::after,
+        span::before,
+        span::after {
+            background: var(--blueline);
+        }
+    }
+}
+
+.dashed-border-top {
+    &::before {
+        top: 0;
+        left: 0%;
+        width: 25%;
+    }
+
+    &::after {
+        top: 0;
+        right: 0%;
+        width: 10%;
+    }
+}
+
+.dashed-border-bottom {
+    &::before {
+        bottom: 0;
+        left: 0%;
+        width: 28%;
+    }
+
+    &::after {
+        bottom: 0;
+        right: 0%;
+        width: 33%;
+    }
+}
+
+.carousel-content,
+.lobby-stats-wrapper {
+    .dashed-border {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.lobby-stats-wrapper {
+    .dashed-border {
+        border-radius: 6px;
+    }
+}
+
+.twitter-tweet {
+    min-height: 400px;
+    margin: 0 !important;
+}
+
+@media (min-width: 675px) {
+    .tweet-max-h-enabled .twitter-tweet {
+        max-height: 400px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+}
+
+.twitter-tweet::-webkit-scrollbar-thumb {
+    background: rgb(29, 155, 240);
+}
+
+.swiper-pagination-bullet {
+    @apply w-2 h-2 bg-icon-secondary rounded-full duration-300;
+}
+
+.swiper-pagination-bullet-active {
+    @apply bg-white;
+
+    box-shadow: 0 0 4px var(--primary), 0 0 4px 0.5px var(--effects-pink);
+}
+
+.swiper-button-disabled {
+    opacity: 0.5;
+}
+
+.user-dashboard-item {
+    font-family: "Clash Grotesk";
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 21px;
+    line-height: 28px;
+    gap: 10px;
+    flex: 1;
+}
+
+.user-dashboard-item-reflink {
+    flex-direction: column;
+    gap: 0;
+    justify-content: flex-start;
+}
+
+.reflink-text {
+    text-align: center;
+    word-break: break-all;
+}
+
+@media (min-width: 768px) {
+    .user-dashboard-items {
+        gap: 30px;
+    }
+
+    .user-dashboard-item {
+        flex-direction: column;
+        gap: 0;
+        justify-content: flex-start;
+    }
+
+    .user-dashboard-item-text {
+        min-height: 36px;
+        margin-top: 8px;
+    }
+
+    .reflink-text {
+        max-width: 250px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: normal;
+        white-space: nowrap;
+    }
+}
+
+@media (min-width: 1024px) {
+    .reflink-text {
+        max-width: 150px;
+    }
+}
+
+.user-dashboard-item i {
+    line-height: 28px !important;
+}

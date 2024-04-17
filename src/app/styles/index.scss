@@ -1,0 +1,15 @@
+@use "vars";
+
+@each $name, $icon in vars.$icons {
+    .#{'' + $name} {
+        &::before {
+            content: $icon;
+        }
+    }
+}
+
+:root {
+    @each $name, $color in vars.$colors {
+        --#{'' + $name}: #{"" + $color};
+    }
+}

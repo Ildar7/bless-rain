@@ -1,0 +1,594 @@
+.lobbyBlessImg {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 35px;
+        z-index: 3;
+    }
+
+    &::before {
+        left: 0;
+        background: linear-gradient(-90deg, rgb(8 7 23 / 0%) 0, var(--bg-color));
+    }
+
+    &::after {
+        right: 0;
+        background: linear-gradient(90deg, rgb(8 7 23 / 0%) 0, var(--bg-color));
+    }
+
+    span {
+        height: 60px;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        background: linear-gradient(180deg, rgb(8 7 23 / 0%) 0, var(--bg-color));
+        z-index: 3;
+    }
+}
+
+.diceScoreBoard {
+    position: absolute;
+    width: calc(100% - 1rem);
+    height: calc(100% - 1rem);
+    left: 0.5rem;
+    top: 0.5rem;
+    overflow: hidden;
+}
+
+.jackpotImage {
+    position: relative;
+    width: 100%;
+    height: 150%;
+    transform: translateY(-40px);
+    z-index: 2;
+    overflow: hidden;
+
+    @media (max-width: 1024px) {
+        transform: translateY(-30px);
+    }
+
+    @media (max-width: 460px) {
+        transform: translateY(-20px);
+    }
+
+    img {
+        position: absolute;
+        top: 112%;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        scale: 3;
+        rotate: 107.5deg;
+        transition: rotate 0.6s ease-in-out;
+    }
+}
+
+.lobbyBlessLink {
+    &:hover {
+        .jackpotImage {
+            img {
+                rotate: -0.5deg;
+                transition: rotate 0.6s ease-in-out;
+            }
+        }
+    }
+}
+
+.lobbyBlessArrow {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 4;
+}
+
+.lobbyBlessArrowTop {
+    top: 5px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 15px 15px 0;
+    border-color: var(--primary) transparent transparent transparent;
+}
+
+.lobbyBlessArrowBottom {
+    bottom: 20px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 20px 25px;
+    border-color: transparent transparent var(--primary) transparent;
+}
+
+.lobbyBlessArrowTopSmalled {
+    border-width: 10px 10px 0;
+
+    @media (max-width: 1024px) {
+        border-width: 8px 8px 0;
+        top: 7px;
+    }
+
+    @media (max-width: 460px) {
+        border-width: 6px 6px 0;
+    }
+}
+
+.lobbyBlessArrowBottomSmalled {
+    border-width: 0 15px 20px;
+
+    @media (max-width: 1024px) {
+        border-width: 0 10px 15px;
+    }
+
+    @media (max-width: 460px) {
+        border-width: 0 7px 10px;
+    }
+}
+
+.board {
+    position: absolute;
+    left: 50%;
+    top: 22% !important;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    z-index: 2;
+    height: 35px;
+    width: 80px;
+    gap: 3px;
+
+    @media (max-width: 1470px) {
+        height: 27px;
+        top: 23%;
+        width: 60px;
+    }
+
+    @media (max-width: 1279px) {
+        height: 20px;
+        width: 47px;
+        transform: translateX(-50%);
+    }
+
+    @media (max-width: 1023px) {
+        height: 25px;
+        width: 55px;
+    }
+
+    @media (max-width: 992px) {
+        top: 22% !important;
+        width: 58px !important;
+    }
+
+    @media (max-width: 560px) {
+
+    }
+
+    @media (max-width: 560px) {
+        top: 23% !important;
+        height: 18px !important;
+        width: 37px !important;
+        gap: 2px;
+    }
+}
+
+.boardCell {
+    font-family: var(--font-family-secondary);
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    text-align: center;
+    border-radius: 3px;
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 150px;
+
+    @media (max-width: 1279px) {
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    @media (max-width: 560px) {
+        font-size: 15px;
+        line-height: 19px;
+    }
+
+    @media (max-width: 560px) {
+        font-size: 12px;
+        line-height: 16px;
+    }
+}
+
+.dividerBlock {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 2;
+}
+
+.dividerBlockAside {
+    background: linear-gradient(180deg, #000d17 0%, #345771 46.88%, #000d17 100%);
+    width: 1px;
+    height: 6px;
+
+    &:last-child {
+        border-right: none;
+    }
+}
+
+.dividerBlockLine {
+    height: 1px;
+    flex: 1;
+    background: linear-gradient(180deg, #000 0%, #2282aa 100%);
+    transition: all 0.4s ease-in-out;
+
+    @media (max-width: 560px) {
+        height: 0.5px !important;
+    }
+}
+
+.valueBlockRotor {
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    height: 35px;
+    transform-style: preserve-3d;
+    transition: transform 0s;
+
+    @media (max-width: 1470px) {
+        height: 27px;
+    }
+
+    @media (max-width: 1023px) {
+        height: 25px;
+    }
+
+    @media (max-width: 560px) {
+        height: 22px;
+    }
+
+    @media (max-width: 560px) {
+        height: 18px !important;
+    }
+}
+
+.valueBlockNumTop,
+.valueBlockNumBottom {
+    overflow: hidden;
+    position: absolute;
+    height: 17.5px;
+    width: 100%;
+
+    @media (max-width: 1470px) {
+        height: 13.5px;
+    }
+
+    @media (max-width: 1023px) {
+        height: 12.5px;
+    }
+
+    @media (max-width: 560px) {
+        height: 11px;
+    }
+
+    @media (max-width: 560px) {
+        height: 9px !important;
+    }
+}
+
+.valueBlockRotorRear,
+.valueBlockRotorFront {
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    height: 17.5px;
+    margin: 0;
+    transform: rotateX(0deg);
+    backface-visibility: hidden;
+
+    @media (max-width: 1470px) {
+        height: 13.5px;
+    }
+
+    @media (max-width: 1023px) {
+        height: 12.5px;
+    }
+
+    @media (max-width: 560px) {
+        height: 11px;
+    }
+
+    @media (max-width: 560px) {
+        height: 9px !important;
+    }
+}
+
+.valueBlockNumTop {
+    top: 0;
+    line-height: 35px;
+
+    @media (max-width: 1470px) {
+        line-height: 27px;
+    }
+
+    @media (max-width: 1023px) {
+        line-height: 25px;
+    }
+
+    @media (max-width: 560px) {
+        line-height: 22px;
+    }
+
+    @media (max-width: 560px) {
+        line-height: 17px !important;
+    }
+}
+
+.valueBlockNumBottom {
+    bottom: 0;
+    line-height: 0;
+}
+
+.valueBlockRotorRear {
+    line-height: 0;
+    transform: rotateX(-180deg);
+}
+
+.valueBlockRotorFront {
+    line-height: 35px;
+
+    @media (max-width: 1470px) {
+        line-height: 27px;
+    }
+
+    @media (max-width: 1023px) {
+        line-height: 25px;
+    }
+
+    @media (max-width: 560px) {
+        line-height: 22px;
+    }
+
+    @media (max-width: 560px) {
+        line-height: 17px !important;
+    }
+}
+
+.valueBlockNumBottom,
+.valueBlockRotorRear {
+    border-radius: 0 0 2px 2px;
+    background: #1c7ea6;
+    box-shadow: -1px -1px 4px 0 #15506c inset;
+    border: 1px solid #176d8f;
+    transition: all 0.4s ease-in-out;
+}
+
+.valueBlockNumTop,
+.valueBlockRotorFront {
+    border-radius: 2px 2px 0 0;
+    background: #38c1f9;
+    border: 1px solid #2282aa;
+    box-shadow: 0 0 4px 0 #0c2c43 inset;
+    transition: all 0.4s ease-in-out;
+}
+
+.flippyScoreBoard {
+    transform: rotateX(-180deg);
+    transition: all 0.4s ease-in-out;
+}
+
+.scoreBoardImg {
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+
+    @media (max-width: 992px) {
+        max-width: 215px;
+    }
+
+    @media (max-width: 560px) {
+        max-width: 135px;
+        min-width: 135px;
+    }
+}
+
+.scoreBoardBlue {
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.4s ease-in-out;
+}
+
+.scoreBoardGreen {
+    transform: translateX(-50%) translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease-in-out;
+}
+
+.diceBlessPreview {
+    transition: all 0.3s ease-in-out;
+}
+
+.diceBlessPreviewImgHovered {
+    .scoreBoardBlue {
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s ease-in-out;
+    }
+
+    .scoreBoardGreen {
+        opacity: 1;
+        visibility: visible;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .valueBlockNumBottom,
+    .valueBlockRotorRear {
+        border-radius: 0 0 2px 2px;
+        background: #2ac841;
+        border: 1px solid #24b249;
+        box-shadow: -1px -1px 4px 0 #123441 inset;
+        transition: all 0.4s ease-in-out;
+    }
+
+    .valueBlockNumTop,
+    .valueBlockRotorFront {
+        border-radius: 2px 2px 0 0;
+        background: #26bb49;
+        border: 1px solid #27e65d;
+        box-shadow: 0 0 4px 0 #0e3042 inset;
+        transition: all 0.4s ease-in-out;
+    }
+
+    .dividerBlockLine {
+        height: 1px;
+        flex: 1;
+        background: linear-gradient(180deg, #000 0%, #1fb348 100%);
+        transition: all 0.4s ease-in-out;
+    }
+}
+
+.doorsWrapper,
+.towerBlueImg,
+.towerGreenImg {
+    position: absolute !important;
+    top: 0.5rem;
+    left: 0.5rem;
+    width: calc(100% - 1rem) !important;
+    height: calc(100% - 1rem) !important;
+}
+
+.doors {
+    position: absolute;
+    z-index: 2;
+    bottom: 3.5px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    width: 22%;
+    overflow: hidden;
+    height: 71%;
+    border-radius: 9px 9px 0 0;
+
+    @media (max-width: 1470px) {
+        width: 21%;
+        height: 71%;
+        transform: translateX(-50%);
+        border-radius: 9px 9px 0 0;
+    }
+
+    @media (max-width: 992px) {
+        width: 22%;
+        height: 73%;
+        transform: translateX(-50%);
+        bottom: 1px;
+        border-radius: 6px 6px 0 0;
+    }
+
+    @media (max-width: 992px) {
+        bottom: 0;
+        height: 74%;
+    }
+}
+
+.door {
+    width: 100%;
+
+    img {
+        height: auto !important;
+        border-radius: 0 !important;
+    }
+}
+
+.rightDoor {
+    transition: all 0.6s ease-in-out;
+}
+
+.leftDoor {
+    transform: translateY(-1px);
+    transition: all 0.6s ease-in-out;
+
+    @media (max-width: 560px) {
+        transform: translateY(-0.3px);
+    }
+}
+
+.towerBlueImg {
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.4s ease-in-out;
+}
+
+.towerGreenImg {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.6s ease-in-out;
+}
+
+.towerBlessPreview {
+    &:hover {
+        .towerBlueImg {
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.6s ease-in-out;
+        }
+
+        .towerGreenImg {
+            opacity: 1;
+            visibility: visible;
+            transition: all 0.4s ease-in-out;
+        }
+
+        .leftDoor {
+            transform: translate(-105%, -1px);
+            transition: all 0.6s ease-in-out;
+        }
+
+        .rightDoor {
+            transform: translateX(105%);
+            transition: all 0.6s ease-in-out;
+        }
+    }
+}
+
+.diceBlessPreviewColumned {
+    .board {
+        height: 27px;
+        top: 23%;
+        width: 60px;
+    }
+
+    .valueBlockRotor {
+        height: 27px;
+    }
+
+    .valueBlockNumTop,
+    .valueBlockNumBottom,
+    .valueBlockRotorRear,
+    .valueBlockRotorFront {
+        height: 13.5px;
+    }
+
+    .valueBlockNumTop,
+    .valueBlockRotorFront {
+        line-height: 27px;
+    }
+}

@@ -1,0 +1,31 @@
+.glow-pink {
+    @apply text-icon;
+
+    filter: blur(0.4);
+    text-shadow: 0 0 4px var(--effects-pink), 0 0 6px var(--effects-pink);
+    -webkit-text-stroke: 0.3px var(--effects-pink);
+}
+
+.glow-orange {
+    @apply text-icon;
+
+    filter: blur(0.4);
+    text-shadow: 0 0 4px var(--orange), 0 0 6px var(--orange);
+    -webkit-text-stroke: 0.3px var(--orange);
+}
+
+.glow-primary {
+    @apply text-icon;
+
+    filter: blur(0.4);
+    text-shadow: 0 0 4px var(--primary), 0 0 6px var(--effects-pink);
+    -webkit-text-stroke: 0.3px var(--primary);
+}
+
+.glow-green {
+    @apply text-icon;
+
+    filter: blur(0.4);
+    text-shadow: 0 0 4px var(--secondary), 0 0 6px var(--secondary);
+    -webkit-text-stroke: 0.3px var(--secondary);
+}

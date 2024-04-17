@@ -1,0 +1,26 @@
+.carousel * {
+    box-sizing: border-box;
+}
+
+.carousel-content {
+    background: linear-gradient(225deg, #010910 0%, #041828 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 12px;
+    padding-bottom: 16px;
+}
+
+.carousel {
+    @apply bg-surface rounded-xl p-2.5 relative duration-100;
+
+    &::before {
+        @apply absolute -z-10 w-full h-full;
+
+        background: linear-gradient(47deg, #051d30 0%, #011626 100%);
+        border-radius: inherit;
+        right: -6px;
+        bottom: -6px;
+        content: "";
+    }
+}

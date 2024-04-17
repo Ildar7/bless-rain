@@ -1,0 +1,24 @@
+.headerMenuItem {
+    gap: 44px;
+
+    @media (max-width: 1279px) {
+        gap: 16px;
+    }
+}
+
+.mobSidebarButton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mobSidebarBar {
+    display: flex;
+    justify-content: center;
+}
+
+.headerLogo {
+    height: 160px;
+    position: relative;
+    top: -7px;
+}

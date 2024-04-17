@@ -1,0 +1,5 @@
+.purple-fade {
+    @apply absolute -right-1/3 top-1/2 -translate-y-1/2 flex items-center h-7;
+
+    background: linear-gradient(90deg, rgb(175 95 255 / 40%) 0%, rgb(175 95 255 / 0%) 100%) !important;
+}

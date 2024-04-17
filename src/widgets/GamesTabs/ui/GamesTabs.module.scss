@@ -1,0 +1,18 @@
+.GamesTabs {
+    &::before {
+        display: none;
+    }
+}
+
+.tab {
+    flex: 1;
+
+    @media (max-width: 1024px) {
+        padding: 0.375rem 0 !important;
+    }
+
+    & > div {
+        align-items: center;
+        gap: 8px;
+    }
+}

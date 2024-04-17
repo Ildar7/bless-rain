@@ -1,0 +1,811 @@
+import React, {
+    useCallback, useEffect, useMemo, useState,
+} from 'react';
+import { classNames } from 'shared/lib/classNames/classNames';
+import './AccountPage.scss';
+import { appActions } from 'entities/App';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { ToastCustom } from 'shared/ui/ToastCustom/ToastCustom';
+import { Button } from 'shared/ui/Button/Button';
+import { Icon } from 'shared/ui/Icon/Icon';
+import { Carousel } from 'shared/ui/Carousel/Carousel';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper';
+import { Input } from 'shared/ui/Input/Input';
+import { Helmet } from 'react-helmet';
+import { Toast } from 'react-toastify/dist/components';
+import cls from './AccountPage.module.scss';
+
+const AccountPage = () => {
+    const dispatch = useAppDispatch();
+    const [copyValue, setCopyValue] = useState<string>('XXX');
+    const [connectedWallet, setConnectedWallet] = useState<boolean>(false);
+    const [connectedTelegram, setConnectedTelegram] = useState<boolean>(false);
+    const [connectedTwitter, setConnectedTwitter] = useState<boolean>(false);
+    const [connectedDiscord, setConnectedDiscord] = useState<boolean>(false);
+
+    const [subscribedTelegram, setSubscribedTelegram] = useState<boolean>(false);
+    const [subscribedDiscord, setSubscribedDiscord] = useState<boolean>(false);
+    const tasks = useMemo(() => [
+        {
+            id: 1,
+            name: 'Task 1',
+            reward: '150 points',
+            description: 'Please make sure to complete the task and claim your rewards. Thank you!',
+            canGetReward: true,
+        },
+        {
+            id: 2,
+            name: 'Task 2',
+            reward: '200 points',
+            description: 'Please make sure to complete the task and claim your rewards. Thank you!',
+            canGetReward: false,
+        },
+        {
+            id: 3,
+            name: 'Task 3',
+            reward: '300 points',
+            description: 'Please make sure to complete the task and claim your rewards. Thank you!',
+            canGetReward: false,
+        },
+        {
+            id: 4,
+            name: 'Task 4',
+            reward: '400 points',
+            description: 'Please make sure to complete the task and claim your rewards. Thank you!',
+            canGetReward: true,
+        },
+        {
+            id: 5,
+            name: 'Task 5',
+            reward: '500 points',
+            description: 'Please make sure to complete the task and claim your rewards. Thank you!',
+            canGetReward: true,
+        },
+    ], []);
+
+    const onCopyHandler = useCallback(async () => {
+        await navigator.clipboard.writeText(copyValue!);
+        ToastCustom.success('Your referral link has been copied to the clipboard');
+    }, [copyValue]);
+
+    const getRewardHandler = (canGet: boolean) => {
+        if (canGet) {
+            ToastCustom.success('You have been awarded 150 points');
+            return;
+        }
+
+        ToastCustom.error('The check showed that the task has not been completed yet, '
+            + 'we cannot give you points yet! Please complete the task and try again.');
+    };
+
+    const onConnectWallet = useCallback(() => {
+        setConnectedWallet(true);
+    }, []);
+
+    const onConnectTelegram = useCallback(() => {
+        setConnectedTelegram(true);
+    }, []);
+
+    const onSubscribeTelegram = useCallback(() => {
+        ToastCustom.success('You have been awarded 150 points');
+        setSubscribedTelegram(true);
+    }, []);
+
+    const onConnectTwitter = useCallback(() => {
+        setConnectedTwitter(true);
+    }, []);
+
+    const onCheckSubscribedTwitter = useCallback(() => {
+        ToastCustom.error('The check showed that the task has not been completed yet, we cannot give you '
+            + 'points yet! Please complete the task and try again.');
+    }, []);
+
+    const onConnectDiscord = useCallback(() => {
+        setConnectedDiscord(true);
+    }, []);
+
+    const onSubscribeDiscord = useCallback(() => {
+        ToastCustom.success('You have been awarded 150 points');
+        setSubscribedDiscord(true);
+    }, []);
+
+    useEffect(() => {
+        dispatch(appActions.setPlayingMode('null'));
+    }, [dispatch]);
+
+    return (
+        <>
+            <Helmet>
+                <title>Bless Rain - Account</title>
+                <script async src="https://platform.twitter.com/widgets.js" />
+            </Helmet>
+            <div className={classNames(
+                'flex flex-col relative h-full -mt-[50px] md:mt-0 gap-3',
+                {},
+                [],
+            )}
+            >
+                <div className="title-lg">
+                    Hello,
+                    {' '}
+                    {'<Username>'}
+                    !
+                </div>
+
+                <div className="flex flex-col md:flex-row items-stretch gap-3">
+                    <div
+                        className="surface p-2 w-full md:w-[218px] !rounded-xl"
+                    >
+                        <div className={
+                            classNames(
+                                'inner p-2 flex gap-2 items-center dashed-border !rounded-xl',
+                                {},
+                                [],
+                            )
+                        }
+                        >
+                            <span className="text-label-md dashed-border-top flex-1">
+                                <span className="dashed-border-bottom flex flex-col items-center pt-2 pb-3 flex-1">
+                                    <div className={classNames(cls.userText, {}, ['caption-lg uppercase'])}>
+                                        Total
+                                    </div>
+                                    <div
+                                        className="gap-[15px] sm:gap-[30px] flex items-stretch
+                                    flex-col sm:flex-row mt-4 md:mt-2"
+                                    >
+                                        <div className="user-dashboard-item">
+                                            <div>Points</div>
+                                            <div
+                                                className="user-dashboard-item-text flex items-center gap-3"
+                                            >
+                                                50,000
+                                            </div>
+                                        </div>
+                                    </div>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <div
+                        className="surface p-2 w-full !rounded-xl flex-1"
+                    >
+                        <div className={
+                            classNames(
+                                'inner py-2 px-5 flex gap-2 items-center dashed-border !rounded-xl',
+                                {},
+                                [],
+                            )
+                        }
+                        >
+                            <span className="text-label-md dashed-border-top flex-1">
+                                <span className="dashed-border-bottom flex flex-col items-center pt-2 pb-3 flex-1">
+                                    <div className={classNames(cls.userText, {}, ['caption-lg uppercase'])}>
+                                        User dashboard
+                                    </div>
+                                    <div
+                                        className="gap-[15px] sm:gap-[30px] flex items-stretch
+                                    flex-col sm:flex-row mt-4 md:mt-2 w-full"
+                                    >
+                                        <div className="user-dashboard-item">
+                                            <div>Points</div>
+                                            <div
+                                                className="user-dashboard-item-text flex items-center gap-3"
+                                            >
+                                                20,000
+                                            </div>
+                                        </div>
+                                        <div className="user-dashboard-item">
+                                            <Icon className="duration-100 text-2xl" name="edit" glow="pink" />
+                                            <div
+                                                className="user-dashboard-item-text flex items-center gap-3"
+                                            >
+                                                12
+                                            </div>
+                                        </div>
+                                        <div className="user-dashboard-item">
+                                            <Icon className="duration-100 text-2xl" name="retweet" glow="pink" />
+                                            <div
+                                                className="user-dashboard-item-text flex items-center gap-3"
+                                            >
+                                                15
+                                            </div>
+                                        </div>
+                                        <div className="user-dashboard-item">
+                                            <Icon className="duration-100 text-2xl" name="comment" glow="pink" />
+                                            <div
+                                                className="user-dashboard-item-text flex items-center gap-3"
+                                            >
+                                                45
+                                            </div>
+                                        </div>
+                                    </div>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <div
+                        className="surface p-2 flex-1 !rounded-xl flex-1"
+                    >
+                        <div className={
+                            classNames(
+                                'inner py-2 px-5 flex gap-2 items-center dashed-border !rounded-xl',
+                                {},
+                                [],
+                            )
+                        }
+                        >
+                            <span className="text-label-md dashed-border-top flex-1">
+                                <span className="dashed-border-bottom flex flex-col items-center pt-2 pb-3 flex-1">
+                                    <div
+                                        className={classNames(cls.userText, {}, ['caption-lg uppercase'])}
+                                    >
+                                        Referral dashboard
+                                    </div>
+                                    <div
+                                        className="user-dashboard-items flex items-stretch
+                                    flex-col sm:flex-row mt-4 md:mt-2 w-full"
+                                    >
+                                        <div className="user-dashboard-item">
+                                            <div>Points</div>
+                                            <div className="user-dashboard-item-text flex items-center gap-3">
+                                                30,000
+                                            </div>
+                                        </div>
+                                        <div className="user-dashboard-item">
+                                            <div>Referrals</div>
+                                            <div className="user-dashboard-item-text flex items-center gap-3">
+                                                56
+                                            </div>
+                                        </div>
+                                        <div className="user-dashboard-item user-dashboard-item-reflink">
+                                            <div>
+                                                Reflink
+                                            </div>
+                                            <div className="user-dashboard-item-text flex items-center gap-3">
+                                                <div className="reflink-text">{copyValue}</div>
+                                                <Button
+                                                    className="copy-btn caption-sm rounded-lg
+                                                w-9 h-9 p-0 relative flex justify-center
+                                                items-center btn square tertiary text-label-md"
+                                                    onClick={onCopyHandler}
+                                                >
+                                                    <div
+                                                        className="flex"
+                                                    >
+                                                        <Icon name="copy" className="duration-100 text-2xl" />
+                                                    </div>
+                                                </Button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="flex flex-col md:flex-row items-stretch gap-3">
+                    <div
+                        className="surface p-2 flex-1 !rounded-xl"
+                    >
+                        <div className={
+                            classNames(
+                                'inner py-2 px-6 flex gap-2 items-center dashed-border !rounded-xl h-full',
+                                {},
+                                [],
+                            )
+                        }
+                        >
+                            <span className="text-label-md dashed-border-top flex-1 h-full">
+                                <span className="dashed-border-bottom flex flex-col
+                                items-center pt-2 pb-3 flex-1 h-full"
+                                >
+                                    <div className={classNames(cls.userText, {}, ['caption-lg uppercase'])}>
+                                        Your wallet
+                                    </div>
+                                    <div
+                                        className="gap-[12px] flex flex-1 items-stretch
+                                    flex-col justify-between mt-4 md:mt-2 w-full"
+                                    >
+                                        <div className="user-dashboard-item">
+                                            {connectedWallet && (
+                                                <div>Your wallet to receive a reward</div>
+                                            )}
+                                            {!connectedWallet && (
+                                                <div>Connect your wallet to receive a reward</div>
+                                            )}
+                                        </div>
+                                        <div className="flex flex-col gap-[6px]">
+                                            {connectedWallet && (
+                                                <Input
+                                                    placeholder="Enter username"
+                                                    className={classNames(cls.inputAddress, {}, ['!mb-0'])}
+                                                    flat
+                                                    value="XXX XXX"
+                                                    readOnly
+                                                />
+                                            )}
+                                            {!connectedWallet && (
+                                                <Button
+                                                    size="xl"
+                                                    className="rounded-lg text-label-md flex-1"
+                                                    onClick={onConnectWallet}
+                                                >
+                                                    Connect your wallet
+                                                </Button>
+                                            )}
+                                        </div>
+                                    </div>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <div
+                        className="surface p-2 flex-1 !rounded-xl"
+                    >
+                        <div className={
+                            classNames(
+                                'inner py-2 px-6 flex gap-2 items-center dashed-border !rounded-xl h-full',
+                                {},
+                                [],
+                            )
+                        }
+                        >
+                            <span className="text-label-md dashed-border-top flex-1 h-full">
+                                <span className="dashed-border-bottom flex flex-col
+                                items-center pt-2 pb-3 flex-1 h-full"
+                                >
+                                    <div className={classNames(
+                                        cls.userText,
+                                        {},
+                                        ['caption-lg uppercase flex items-center gap-1'],
+                                    )}
+                                    >
+                                        <Icon name="telegram" className="duration-100 text-2xl" />
+                                        <span>TElegram</span>
+                                    </div>
+                                    <div
+                                        className="gap-[12px] flex flex-1 items-stretch
+                                    flex-col justify-between mt-4 md:mt-2 w-full"
+                                    >
+                                        <div className="user-dashboard-item">
+                                            {!subscribedTelegram && (
+                                                <div>Subscribe to our telegram channel to receive 150 points</div>
+                                            )}
+                                            {subscribedTelegram && (
+                                                <div>
+                                                    You have successfully subscribed to our
+                                                    channel and received 150 points.
+                                                </div>
+                                            )}
+                                        </div>
+                                        <div className="flex flex-col gap-[6px]">
+                                            {!connectedTelegram && !subscribedTelegram && (
+                                                <Button
+                                                    size="xl"
+                                                    className="rounded-lg text-label-md flex-1"
+                                                    onClick={onConnectTelegram}
+                                                >
+                                                    Connect Telegram
+                                                </Button>
+                                            )}
+                                            {connectedTelegram && !subscribedTelegram && (
+                                                <>
+                                                    <Button
+                                                        size="xl"
+                                                        className="rounded-lg text-label-md flex-1"
+                                                        onClick={onSubscribeTelegram}
+                                                    >
+                                                        Subscribe
+                                                    </Button>
+                                                    <Button
+                                                        size="xl"
+                                                        className="rounded-lg text-label-md flex-1"
+                                                        theme="outlined"
+                                                    >
+                                                        Get reward
+                                                    </Button>
+                                                </>
+                                            )}
+                                            {connectedTelegram && subscribedTelegram && (
+                                                <Button
+                                                    size="xl"
+                                                    className="rounded-lg text-label-md flex-1"
+                                                    contentClassName="items-center gap-[5px]"
+                                                    theme="secondary"
+                                                >
+                                                    <Icon name="check-circle" className="duration-100 text-2xl" />
+                                                    <span>Done</span>
+                                                </Button>
+                                            )}
+                                        </div>
+                                    </div>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <div
+                        className="surface p-2 flex-1 !rounded-xl"
+                    >
+                        <div className={
+                            classNames(
+                                'inner py-2 px-6 flex gap-2 items-center dashed-border !rounded-xl h-full',
+                                {},
+                                [],
+                            )
+                        }
+                        >
+                            <span className="text-label-md dashed-border-top flex-1 h-full">
+                                <span className="dashed-border-bottom flex flex-col
+                                items-center pt-2 pb-3 flex-1 h-full"
+                                >
+                                    <div className={classNames(
+                                        cls.userText,
+                                        {},
+                                        ['caption-lg uppercase flex items-center gap-1'],
+                                    )}
+                                    >
+                                        <Icon name="social-x" className="duration-100 text-2xl" />
+                                        <span>Follow us</span>
+                                    </div>
+                                    <div
+                                        className="gap-[12px] flex flex-1 items-stretch
+                                    flex-col justify-between mt-4 md:mt-2 w-full"
+                                    >
+                                        <div className="user-dashboard-item">
+                                            <div>Follow us to receive 150 points</div>
+                                        </div>
+                                        <div className="flex flex-col gap-[6px]">
+                                            {!connectedTwitter && (
+                                                <Button
+                                                    size="xl"
+                                                    className="rounded-lg text-label-md flex-1"
+                                                    onClick={onConnectTwitter}
+                                                >
+                                                    Follow
+                                                </Button>
+                                            )}
+                                            {connectedTwitter && (
+                                                <>
+                                                    <Button
+                                                        size="xl"
+                                                        className="rounded-lg text-label-md flex-1"
+                                                    >
+                                                        Follow
+                                                    </Button>
+                                                    <Button
+                                                        size="xl"
+                                                        className="rounded-lg text-label-md flex-1"
+                                                        theme="outlined"
+                                                        onClick={onCheckSubscribedTwitter}
+                                                    >
+                                                        Get reward
+                                                    </Button>
+                                                </>
+                                            )}
+                                        </div>
+                                    </div>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <div
+                        className="surface p-2 flex-1 !rounded-xl"
+                    >
+                        <div className={
+                            classNames(
+                                'inner py-2 px-6 flex gap-2 items-center dashed-border !rounded-xl h-full',
+                                {},
+                                [],
+                            )
+                        }
+                        >
+                            <span className="text-label-md dashed-border-top flex-1 h-full">
+                                <span className="dashed-border-bottom flex flex-col
+                                items-center pt-2 pb-3 flex-1 h-full"
+                                >
+                                    <div className={classNames(
+                                        cls.userText,
+                                        {},
+                                        ['caption-lg uppercase flex items-center gap-1'],
+                                    )}
+                                    >
+                                        <Icon name="discord" className="duration-100 text-2xl" />
+                                        <span>DIscord</span>
+                                    </div>
+                                    <div
+                                        className="gap-[12px] flex flex-1 items-stretch
+                                    flex-col justify-between mt-4 md:mt-2 w-full"
+                                    >
+                                        <div className="user-dashboard-item">
+                                            {!connectedDiscord && !subscribedDiscord && (
+                                                <div>Subscribe to our Discord channel to receive 150 points</div>
+                                            )}
+                                            {connectedDiscord && !subscribedDiscord && (
+                                                <div>Subscribe to our Discord to receive 150 points</div>
+                                            )}
+                                            {connectedDiscord && subscribedDiscord && (
+                                                <div>
+                                                    You have successfully subscribed
+                                                    to our Discord and received 150 points.
+                                                </div>
+                                            )}
+                                        </div>
+                                        <div className="flex flex-col gap-[6px]">
+                                            {!connectedDiscord && !subscribedDiscord && (
+                                                <Button
+                                                    size="xl"
+                                                    className="rounded-lg text-label-md flex-1"
+                                                    onClick={onConnectDiscord}
+                                                >
+                                                    Connect Discord
+                                                </Button>
+                                            )}
+                                            {connectedDiscord && !subscribedDiscord && (
+                                                <>
+                                                    <Button
+                                                        size="xl"
+                                                        className="rounded-lg text-label-md flex-1"
+                                                        onClick={onSubscribeDiscord}
+                                                    >
+                                                        Subscribe
+                                                    </Button>
+                                                    <Button
+                                                        size="xl"
+                                                        className="rounded-lg text-label-md flex-1"
+                                                        theme="outlined"
+                                                    >
+                                                        Get reward
+                                                    </Button>
+                                                </>
+                                            )}
+                                            {connectedDiscord && subscribedDiscord && (
+                                                <Button
+                                                    size="xl"
+                                                    className="rounded-lg text-label-md flex-1"
+                                                    contentClassName="items-center gap-[5px]"
+                                                    theme="secondary"
+                                                >
+                                                    <Icon name="check-circle" className="duration-100 text-2xl" />
+                                                    <span>Done</span>
+                                                </Button>
+                                            )}
+                                        </div>
+                                    </div>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <Carousel
+                    className="relative"
+                >
+                    <div className={classNames(cls.userText, {}, ['caption-lg uppercase text-center mb-2.5'])}>
+                        Power tweets
+                    </div>
+                    <>
+                        <Swiper
+                            modules={[Navigation, Pagination]}
+                            className="w-full px-6 sm:px-9"
+                            slidesPerView={1}
+                            spaceBetween={16}
+                            autoHeight
+                            observer
+                            observeParents
+                            breakpoints={{
+                                675: {
+                                    slidesPerView: 2,
+                                },
+                                1024: {
+                                    slidesPerView: 3,
+                                },
+                                1440: {
+                                    slidesPerView: 4,
+                                },
+                                2560: {
+                                    slidesPerView: 5,
+                                },
+                                3080: {
+                                    slidesPerView: 6,
+                                },
+                            }}
+                            navigation={{
+                                nextEl: '.swiper-button-next',
+                                prevEl: '.swiper-button-prev',
+                            }}
+                            pagination={{
+                                el: '.indicators',
+                                type: 'bullets',
+                                clickable: true,
+                            }}
+                        >
+                            <SwiperSlide className="rounded-2xl tweet-max-h-enabled
+                        swiper-slide dashed-border glowing-blue"
+                            >
+                                <span className="dashed-border-top">
+                                    <span className="dashed-border-bottom">
+                                        <blockquote
+                                            className="twitter-tweet"
+                                            data-dnt="true"
+                                            data-theme="dark"
+                                            data-conversation="none"
+                                        >
+                                            <a
+                                                href="https://twitter.com/BlessCasino/status/1701249242319233121"
+                                                target="_blank"
+                                                rel="noreferrer"
+                                            />
+                                        </blockquote>
+                                    </span>
+                                </span>
+                            </SwiperSlide>
+                            <SwiperSlide className="rounded-2xl tweet-max-h-enabled
+                        swiper-slide dashed-border glowing-blue"
+                            >
+                                <span className="dashed-border-top">
+                                    <span className="dashed-border-bottom">
+                                        <blockquote
+                                            className="twitter-tweet"
+                                            data-dnt="true"
+                                            data-theme="dark"
+                                            data-conversation="none"
+                                        >
+                                            <a
+                                                href="https://twitter.com/BlessCasino/status/1765785121074909644"
+                                                target="_blank"
+                                                rel="noreferrer"
+                                            />
+                                        </blockquote>
+                                    </span>
+                                </span>
+                            </SwiperSlide>
+                            <SwiperSlide className="rounded-2xl tweet-max-h-enabled
+                        swiper-slide dashed-border glowing-blue"
+                            >
+                                <span className="dashed-border-top">
+                                    <span className="dashed-border-bottom">
+                                        <blockquote
+                                            className="twitter-tweet"
+                                            data-dnt="true"
+                                            data-theme="dark"
+                                            data-conversation="none"
+                                        >
+                                            <a
+                                                href="https://twitter.com/BlessCasino/status/1765785125038501942"
+                                                target="_blank"
+                                                rel="noreferrer"
+                                            />
+                                        </blockquote>
+                                    </span>
+                                </span>
+                            </SwiperSlide>
+                            <SwiperSlide className="rounded-2xl tweet-max-h-enabled
+                        swiper-slide dashed-border glowing-blue"
+                            >
+                                <span className="dashed-border-top">
+                                    <span className="dashed-border-bottom">
+                                        <blockquote
+                                            className="twitter-tweet"
+                                            data-dnt="true"
+                                            data-theme="dark"
+                                            data-conversation="none"
+                                        >
+                                            <a
+                                                href="https://twitter.com/BlessCasino/status/1745861124333949328"
+                                                target="_blank"
+                                                rel="noreferrer"
+                                            />
+                                        </blockquote>
+                                    </span>
+                                </span>
+                            </SwiperSlide>
+                            <SwiperSlide className="rounded-2xl tweet-max-h-enabled
+                        swiper-slide dashed-border glowing-blue"
+                            >
+                                <span className="dashed-border-top">
+                                    <span className="dashed-border-bottom">
+                                        <blockquote
+                                            className="twitter-tweet"
+                                            data-dnt="true"
+                                            data-theme="dark"
+                                            data-conversation="none"
+                                        >
+                                            <a
+                                                href="https://twitter.com/BlessCasino/status/1701249242319233121"
+                                                target="_blank"
+                                                rel="noreferrer"
+                                            />
+                                        </blockquote>
+                                    </span>
+                                </span>
+                            </SwiperSlide>
+                        </Swiper>
+                        <div
+                            className="flex gap-5 items-center justify-center mt-4"
+                        >
+                            <button
+                                type="button"
+                                className="swiper-button-prev bg-surface rounded-full w-10 h-10"
+                            >
+                                <div className="w-full h-full rounded-full flex
+                            items-center justify-center buttonArrow"
+                                >
+                                    <Icon
+                                        name="chevron-up"
+                                        className="text-2xl font-semibold
+                                text-icon-secondary -rotate-90"
+                                    />
+                                </div>
+                            </button>
+
+                            <div className="bg-dark flex justify-center my-2 gap-2 indicators" />
+
+                            <button
+                                type="button"
+                                className="swiper-button-next bg-surface rounded-full w-10 h-10"
+                            >
+                                <div
+                                    className="w-full h-full rounded-full flex
+                                                items-center justify-center buttonArrow"
+                                >
+                                    <Icon
+                                        name="chevron-up"
+                                        className="text-2xl font-semibold
+                                text-icon-secondary rotate-90"
+                                    />
+                                </div>
+                            </button>
+                        </div>
+                    </>
+                </Carousel>
+
+                <Carousel className="relative !hidden">
+                    <div className={classNames(cls.userText, {}, ['caption-lg uppercase text-center mb-2.5'])}>
+                        Tasks
+                    </div>
+                    <div className="flex flex-col sm:flex-row flex-wrap gap-x-9
+                    md:gap-x-16 gap-y-8 px-6 sm:px-9 w-full"
+                    >
+                        {tasks.map((task) => (
+                            <div
+                                className="flex flex-col gap-3.5 taskItem flex-1 sm:flex-none"
+                                key={task.id}
+                            >
+                                <div className={classNames(cls.greenBg, {}, ['rounded-xl'])}>
+                                    <div className="flex justify-between">
+                                        <div className="text-label-sm">{task.name}</div>
+                                        <div className="text-label-sm uppercase">{task.reward}</div>
+                                    </div>
+                                    <div className="descrText caption-sm max-w-[186px] sm:max-w-none">
+                                        {task.description}
+                                    </div>
+                                </div>
+                                <div className="flex flex-col gap-1.5">
+                                    <Button
+                                        theme="primary"
+                                        className="rounded-lg"
+                                    >
+                                        Execute
+                                    </Button>
+                                    <Button
+                                        theme="reward"
+                                        className="rounded-lg"
+                                        onClick={() => {
+                                            getRewardHandler(task.canGetReward);
+                                        }}
+                                    >
+                                        Get reward
+                                    </Button>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </Carousel>
+            </div>
+        </>
+    );
+};
+
+export default AccountPage;

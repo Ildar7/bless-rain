@@ -1,0 +1,13 @@
+.CloseButton {
+    &::before {
+        font-size: 20px;
+        cursor: pointer;
+        content: "×";
+        color: var(--icon-secondary);
+        transition: color 0.3s;
+        font-weight: 300;
+        margin-left: 10px;
+        position: relative;
+        top: -12px;
+    }
+}

@@ -1,0 +1,83 @@
+.FilterSwitcher {
+    position: relative;
+    font-family: var(--font-family-secondary);
+    font-weight: 500;
+    min-width: 164px;
+    color: var(--content-secondary);
+}
+
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    width: 100%;
+
+    &.small {
+        padding-top: 8px;
+        padding-bottom: 8px;
+        border-radius: 8px;
+    }
+
+    &.large {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        border-radius: 12px;
+    }
+
+    &.primary {
+        color: var(--content-secondary);
+    }
+
+    &.white {
+        color: var(--white);
+    }
+}
+
+.arrowIcon {
+    font-size: 20px;
+    color: var(--content-secondary) !important;
+    transition: transform 0.2s ease-in-out;
+}
+
+.filters {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 100%;
+    z-index: 5;
+}
+
+.filter {
+    text-align: center;
+    padding: 8px 16px;
+    border-bottom: 1px solid var(--outline);
+    cursor: pointer;
+    width: 100%;
+
+    &:last-child {
+        border-bottom: none;
+    }
+}
+
+.iconRotated {
+    transform: rotate(180deg);
+    transition: transform 0.2s ease-in-out;
+}
+
+.filterTitle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.arrowWrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.arrowValue {
+    font-weight: 500 !important;
+    letter-spacing: 0.255px;
+}

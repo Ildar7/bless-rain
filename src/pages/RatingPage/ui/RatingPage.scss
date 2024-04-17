@@ -1,0 +1,32 @@
+.lobby-bless-item-linear-bg {
+    &::after {
+        content: "";
+        position: absolute;
+        width: calc(100% - 1rem);
+        height: calc(100% - 1rem);
+        left: 0.5rem;
+        top: 0.5rem;
+        background: linear-gradient(221deg, #0c3353 19.56%, #020c1e 75.71%);
+        box-shadow: 0px 4px 4px 0px #010B13 inset;
+        border-radius: 0.5rem;
+        z-index: 1;
+    }
+
+    &.dark {
+        &::after {
+            background: var(--bg-color);
+        }
+    }
+
+    img {
+        position: relative;
+        scale: 0.9;
+        top: -20px;
+
+        @media (max-width: 769px) {
+            scale: 0.7;
+            top: -25px;
+        }
+    }
+}
+

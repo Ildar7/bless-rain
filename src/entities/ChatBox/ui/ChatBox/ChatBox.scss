@@ -1,0 +1,17 @@
+.textfield {
+    @apply rounded-lg pl-2 pt-1 pb-1 pr-1 flex items-center w-full duration-100;
+
+    &:focus-within {
+        @apply outline outline-primary;
+    }
+
+    & > input {
+        &:focus {
+            @apply outline-none;
+        }
+    }
+}
+
+.chat-shadow {
+    background: linear-gradient(180deg, #010910 13.02%, rgb(4 24 40 / 0%) 100%);
+}

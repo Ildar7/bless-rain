@@ -1,0 +1,77 @@
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.rowItem {
+    flex: 1;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.rowsContent {
+    margin-top: 13px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+
+.rowContentRow {
+    padding: 12px 6px;
+}
+
+.rowImg {
+    min-width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        max-width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: relative;
+        top: auto;
+        scale: 1;
+    }
+}
+
+.userName {
+    min-width: 150px;
+    text-align: left;
+    justify-content: flex-start;
+    padding-left: 12px;
+
+    @media (min-width: 768px) {
+        min-width: auto;
+        text-align: center;
+        justify-content: center;
+        padding-left: 0;
+    }
+    & > div {
+        &:not(.rowImg) {
+            min-width: 135px;
+            text-align: left;
+        }
+    }
+}
+
+.rowContentSurface {
+    &:before {
+        display: none;
+    }
+
+    .userName {
+        padding-left: 0;
+    }
+
+    .points {
+        color: var(--success);
+    }
+}

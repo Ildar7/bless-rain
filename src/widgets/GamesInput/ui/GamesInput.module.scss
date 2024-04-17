@@ -1,0 +1,52 @@
+.GamesInput {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &::before {
+        display: none;
+    }
+}
+
+.creditIcon {
+    flex: 1 1 auto;
+}
+
+.betAmountSettings {
+    display: flex;
+    gap: 4px;
+}
+
+.maxButton {
+    max-width: 48px;
+    min-height: 40px;
+}
+
+.copyInput {
+    color: var(--content-secondary);
+}
+
+.copyButton {
+    padding: 8px;
+    max-width: 40px;
+    min-height: 40px;
+
+    i {
+        font-size: 24px;
+    }
+}
+
+.changeAmountBtns {
+    display: flex;
+    flex-direction: column;
+}
+
+.changeAmountBtn {
+    width: 20px;
+    height: 20px;
+    padding: 0 !important;
+}
+
+.dark {
+    background: linear-gradient(267deg, #010910 0%, #041828 100%) !important;
+}

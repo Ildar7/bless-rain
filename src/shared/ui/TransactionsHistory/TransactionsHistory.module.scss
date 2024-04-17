@@ -1,0 +1,70 @@
+.TransactionsHistory {
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    padding: 14px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.outline {
+    .row {
+        border-top: 1px solid var(--outline);
+
+        &:first-child {
+            border-top: none;
+            padding-top: 0;
+            padding-bottom: 12px;
+        }
+    }
+}
+
+.fill {
+    gap: 4px;
+
+    .row {
+        padding: 14px 12px;
+        background: linear-gradient(270deg, #031827 0%, #0b2a42 100%);
+        border-radius: 8px;
+    }
+}
+
+.cell {
+    flex: 1;
+    white-space: nowrap;
+
+    @media (max-width: 992px) {
+        white-space: normal;
+    }
+
+    @media (max-width: 560px) {
+        min-width: 145px;
+    }
+
+    &:last-child {
+        text-align: right;
+    }
+}
+
+.deposit {
+    color: var(--secondary);
+}
+
+.withdraw {
+    color: #2f62d9;
+}
+
+.success {
+    color: var(--success);
+}
+
+.error {
+    color: var(--danger);
+}
+
+.inProcess {
+    color: #ff9e00;
+}

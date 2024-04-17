@@ -1,0 +1,138 @@
+@use "libs/swiper";
+@use "reset";
+@use "fonts";
+@use "index";
+@use "variables/global";
+@use "transitions";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* SCROLL BAR START */
+
+/* width */
+::-webkit-scrollbar {
+    @apply hidden sm:block;
+
+    width: 3px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: transparent;
+
+    @apply rounded-sm;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    @apply rounded-sm;
+
+    background: linear-gradient(270deg, #031827 0%, #0b2a42 100%);
+}
+
+/* SCROLL BAR END */
+
+/* PLACEHOLDER ON INPUT START */
+
+input {
+    &::input-placeholder { /* WebKit, Blink, Edge */
+        color: var(--content-secondary);
+    }
+
+    &:placeholder { /* Mozilla Firefox 4 to 18 */
+        color: var(--content-secondary);
+        opacity: 1;
+    }
+
+    &::placeholder { /* Mozilla Firefox 19+ */
+        color: var(--content-secondary);
+        opacity: 1;
+    }
+
+    &:input-placeholder { /* Internet Explorer 10-11 */
+        color: var(--content-secondary);
+    }
+
+    &::input-placeholder { /* Microsoft Edge */
+        color: var(--content-secondary);
+    }
+
+    &::placeholder { /* Most modern browsers support this now. */
+        color: var(--content-secondary);
+    }
+}
+
+/* PLACEHOLDER ON INPUT END */
+
+html,
+body {
+    min-height: 100vh;
+}
+
+body {
+    font-family: var(--font-family-main);
+    background: var(--bg-color);
+    color: var(--white);
+}
+
+#root,
+.app {
+    height: 100vh;
+}
+
+input {
+    font-family: var(--font-family-main);
+}
+
+.game-page-wrapper {
+    gap: 12px;
+}
+
+.game-page-content,
+.game-page-bars {
+    display: flex;
+    gap: 24px;
+}
+
+.game-page-content {
+    flex-direction: column;
+    gap: 12px;
+
+    @media (max-width: 400px) {
+        max-width: 320px;
+        margin: 0 auto;
+    }
+}
+
+.game-page-content-full {
+    @media (max-width: 400px) {
+        max-width: none;
+        width: 100%;
+        margin: 0;
+    }
+}
+
+.game-page-content-item {
+    flex: 1;
+}
+
+.game-page-bars {
+    justify-content: space-between;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: -12px;
+}
+
+.game-page-history {
+    margin-top: 140px;
+}
+
+.game-page-history-column {
+    margin-top: 52px;
+}
+
+.btn.primary.disabled {
+    color: rgb(255 255 255 / 60%);
+}

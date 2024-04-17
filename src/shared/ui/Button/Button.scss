@@ -1,0 +1,183 @@
+.btn {
+    @apply duration-100 select-none flex items-center justify-center gap-2;
+
+    &.xs {
+        @apply px-0 py-0;
+    }
+
+    &.xl {
+        @apply px-5 py-3;
+    }
+
+    &.lg {
+        @apply px-5 py-2.5;
+    }
+
+    &.md {
+        @apply px-5 py-1.5;
+    }
+
+    &.sm {
+        @apply px-2 py-1;
+    }
+
+    &.square {
+        @apply px-0 py-1;
+    }
+
+    &.primary {
+        @apply bg-primary text-white;
+
+        &.disabled {
+            @apply bg-state-primary-disabled;
+
+            &:hover,
+            &:active {
+                @apply bg-state-primary-disabled;
+            }
+        }
+
+        &.loading {
+            @apply bg-state-primary-pressed;
+
+            &:hover,
+            &:active {
+                @apply bg-state-primary-pressed;
+            }
+        }
+
+        &:hover {
+            @apply bg-state-primary-hover;
+        }
+
+        &:active {
+            @apply bg-state-primary-pressed;
+        }
+    }
+
+    &.secondary {
+        @apply bg-secondary text-content-colorful;
+
+        &.disabled {
+            @apply bg-state-secondary-disabled;
+
+            &:hover,
+            &:active {
+                @apply bg-state-secondary-disabled;
+            }
+        }
+
+        &.loading {
+            @apply bg-state-secondary-pressed;
+
+            &:hover,
+            &:active {
+                @apply bg-state-secondary-pressed;
+            }
+        }
+
+        &:hover {
+            @apply bg-state-secondary-hover;
+        }
+
+        &:active {
+            @apply bg-state-secondary-pressed;
+        }
+    }
+
+    &.tertiary {
+        @apply text-content-secondary bg-surface;
+
+        &.disabled {
+            @apply bg-surface;
+
+            opacity: 0.7;
+
+            &:hover,
+            &:active {
+                @apply bg-surface;
+
+                opacity: 0.7;
+            }
+        }
+
+        &.selected {
+            @apply bg-state-hover text-primary border border-primary;
+        }
+
+        &.loading {
+            @apply bg-state-pressed;
+
+            &:hover,
+            &:active {
+                @apply bg-state-pressed;
+            }
+        }
+
+        &:hover {
+            @apply bg-state-hover;
+        }
+
+        &:active {
+            @apply bg-state-pressed;
+        }
+    }
+
+    &.reward {
+        background: linear-gradient(90deg, #253547 0%, #20243F 100%);
+        transition: opacity 0.2s ease-in-out;
+
+        &:hover {
+            transition: opacity 0.2s ease-in-out;
+            opacity: 0.7;
+        }
+    }
+
+    &.outlined {
+        @apply text-white border border-state-primary-hover;
+
+        background: linear-gradient(225deg, #010910 0%, #041828 100%);
+
+        &.disabled {
+            @apply bg-state-secondary-disabled;
+
+            &:hover,
+            &:active {
+                @apply bg-state-secondary-disabled;
+            }
+        }
+
+        &.loading {
+            @apply bg-state-pressed;
+
+            &:hover,
+            &:active {
+                @apply bg-state-pressed;
+            }
+        }
+
+        &:active {
+            @apply opacity-60;
+        }
+    }
+
+    &.none {
+        border: 1px solid transparent;
+    }
+
+    &.tab {
+        background: linear-gradient(89deg, #051d30 2.2%, #011626 99.81%);
+        color: var(--primary);
+        border: 1px solid var(--primary);
+    }
+
+    &.danger {
+        border-color: var(--danger);
+    }
+
+    &:disabled {
+        &:hover {
+            opacity: 1;
+        }
+    }
+}

@@ -1,0 +1,36 @@
+input {
+    @apply bg-transparent;
+
+    &:focus {
+        @apply outline-none;
+    }
+}
+
+input[type="number"] {
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        appearance: none;
+        margin: 0;
+    }
+}
+
+.input-flat {
+    @apply py-3 px-3 bg-surface rounded-xl;
+
+    & > input {
+        &::placeholder {
+            @apply text-content-secondary;
+        }
+    }
+}
+
+.inside-border {
+    box-shadow: inset 0 0 0 1.2px var(--icon-secondary);
+}
+
+.checkbox-input {
+    opacity: 0;
+    visibility: hidden;
+    z-index: -10;
+    position: absolute;
+}

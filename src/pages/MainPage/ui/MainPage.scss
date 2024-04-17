@@ -1,0 +1,105 @@
+.shadow-image {
+    background: linear-gradient(0deg, #010910 0%, #04182844 100%);
+}
+
+.lobby-bless-item {
+    width: calc(33.33333% - 13.33333px);
+    position: relative;
+
+    @media (max-width: 992px) {
+        width: calc(50% - 13.33333px);
+    }
+
+    img {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 0.5rem;
+    }
+
+    h3 {
+        z-index: 3;
+    }
+}
+
+.lobby-bless-items {
+    gap: 20px;
+    flex-wrap: wrap;
+
+    @media (max-width: 769px) {
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+}
+
+.preview-scoreboard {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    width: 100%;
+    z-index: 3;
+    scale: 0.8;
+    transition: all 0.4s ease-in-out;
+
+    @media (max-width: 560px) {
+        scale: 1;
+        top: 5px;
+    }
+}
+
+.dice-game-preview-img {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 0.5rem;
+
+    img {
+        bottom: 0;
+        transition: all 0.4s ease-in-out;
+    }
+}
+
+.dice-game-preview {
+    @media (min-width: 560px) {
+        &:hover {
+            .dice-game-preview-img {
+                img {
+                    scale: 1.6;
+                    bottom: -35px;
+                    transition: all 0.4s ease-in-out;
+
+                    @media (max-width: 576px) {
+                        bottom: -30px;
+                    }
+                }
+            }
+
+            .preview-scoreboard {
+                top: 40px;
+                scale: 1.33;
+                transition: all 0.4s ease-in-out;
+            }
+        }
+    }
+}
+
+.game-name {
+    @media (max-width: 460px) {
+        font-size: 12px !important;
+        line-height: 16px;
+    }
+}
+
+.girls__block {
+    margin-left: -90px;
+
+    @media (min-width: 1024px) {
+        position: absolute;
+        height: calc(100% + 100px);
+        bottom: -80px;
+        right: 35%;
+        transform: translateX(50%);
+    }
+}

@@ -1,0 +1,34 @@
+:root {
+    // цвета (global)
+    --white: #fff;
+    --black: #000;
+    --bg-color: #000717;
+    --border-pink-color: #af5fff;
+
+    // размеры
+    --container-width-pc: 1000px;
+
+    // skeleton
+    --skeleton-color: #b9b9b9;
+    --skeleton-shadow: rgba(255 123 0 / 30%);
+
+    // z-indexes
+    --modal-z-index: 99999;
+
+    // шрифты
+    --font-family-main: inter;
+    --font-family-secondary: clash grotesk;
+
+    // размеры шрифтов
+    --font-s: 14px;
+    --font-s-lh: 16px;
+    --font-m: 15px;
+    --font-m-lh: 24px;
+
+    // жирность шрифтов
+    --font-regular: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+    --font-extrabold: 800;
+}
