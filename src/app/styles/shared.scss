@@ -280,20 +280,19 @@
     }
 }
 
-.twitter-tweet {
-    min-height: 400px;
+.react-tweet-theme {
     margin: 0 !important;
 }
 
 @media (min-width: 675px) {
-    .tweet-max-h-enabled .twitter-tweet {
+    .tweet-max-h-enabled .react-tweet-theme {
         max-height: 400px;
         overflow-y: auto;
         overflow-x: hidden;
     }
 }
 
-.twitter-tweet::-webkit-scrollbar-thumb {
+.react-tweet-theme::-webkit-scrollbar-thumb {
     background: rgb(29, 155, 240);
 }
 
@@ -368,3 +367,11 @@
 .user-dashboard-item i {
     line-height: 28px !important;
 }
+
+@media (min-width: 675px) {
+    .swiper-wrapper {
+        height: auto !important;
+    }
+}
+
+

@@ -14,6 +14,7 @@ import { Navigation, Pagination } from 'swiper';
 import { Input } from 'shared/ui/Input/Input';
 import { Helmet } from 'react-helmet';
 import { Toast } from 'react-toastify/dist/components';
+import { Tweet } from 'react-tweet';
 import cls from './AccountPage.module.scss';
 
 const AccountPage = () => {
@@ -118,7 +119,6 @@ const AccountPage = () => {
         <>
             <Helmet>
                 <title>Bless Rain - Account</title>
-                <script async src="https://platform.twitter.com/widgets.js" />
             </Helmet>
             <div className={classNames(
                 'flex flex-col relative h-full -mt-[50px] md:mt-0 gap-3',
@@ -626,18 +626,13 @@ const AccountPage = () => {
                             >
                                 <span className="dashed-border-top">
                                     <span className="dashed-border-bottom">
-                                        <blockquote
-                                            className="twitter-tweet"
+                                        <div
                                             data-dnt="true"
                                             data-theme="dark"
                                             data-conversation="none"
                                         >
-                                            <a
-                                                href="https://twitter.com/BlessCasino/status/1701249242319233121"
-                                                target="_blank"
-                                                rel="noreferrer"
-                                            />
-                                        </blockquote>
+                                            <Tweet id="1701249242319233121" />
+                                        </div>
                                     </span>
                                 </span>
                             </SwiperSlide>
@@ -646,18 +641,13 @@ const AccountPage = () => {
                             >
                                 <span className="dashed-border-top">
                                     <span className="dashed-border-bottom">
-                                        <blockquote
-                                            className="twitter-tweet"
+                                        <div
                                             data-dnt="true"
                                             data-theme="dark"
                                             data-conversation="none"
                                         >
-                                            <a
-                                                href="https://twitter.com/BlessCasino/status/1765785121074909644"
-                                                target="_blank"
-                                                rel="noreferrer"
-                                            />
-                                        </blockquote>
+                                            <Tweet id="1765785121074909644" />
+                                        </div>
                                     </span>
                                 </span>
                             </SwiperSlide>
@@ -666,18 +656,13 @@ const AccountPage = () => {
                             >
                                 <span className="dashed-border-top">
                                     <span className="dashed-border-bottom">
-                                        <blockquote
-                                            className="twitter-tweet"
+                                        <div
                                             data-dnt="true"
                                             data-theme="dark"
                                             data-conversation="none"
                                         >
-                                            <a
-                                                href="https://twitter.com/BlessCasino/status/1765785125038501942"
-                                                target="_blank"
-                                                rel="noreferrer"
-                                            />
-                                        </blockquote>
+                                            <Tweet id="1765785125038501942" />
+                                        </div>
                                     </span>
                                 </span>
                             </SwiperSlide>
@@ -686,18 +671,13 @@ const AccountPage = () => {
                             >
                                 <span className="dashed-border-top">
                                     <span className="dashed-border-bottom">
-                                        <blockquote
-                                            className="twitter-tweet"
+                                        <div
                                             data-dnt="true"
                                             data-theme="dark"
                                             data-conversation="none"
                                         >
-                                            <a
-                                                href="https://twitter.com/BlessCasino/status/1745861124333949328"
-                                                target="_blank"
-                                                rel="noreferrer"
-                                            />
-                                        </blockquote>
+                                            <Tweet id="1745861124333949328" />
+                                        </div>
                                     </span>
                                 </span>
                             </SwiperSlide>
@@ -706,18 +686,13 @@ const AccountPage = () => {
                             >
                                 <span className="dashed-border-top">
                                     <span className="dashed-border-bottom">
-                                        <blockquote
-                                            className="twitter-tweet"
+                                        <div
                                             data-dnt="true"
                                             data-theme="dark"
                                             data-conversation="none"
                                         >
-                                            <a
-                                                href="https://twitter.com/BlessCasino/status/1701249242319233121"
-                                                target="_blank"
-                                                rel="noreferrer"
-                                            />
-                                        </blockquote>
+                                            <Tweet id="1701249242319233121" />
+                                        </div>
                                     </span>
                                 </span>
                             </SwiperSlide>

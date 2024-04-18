@@ -1,4 +1,5 @@
 import webpack from 'webpack';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { buildCssLoader } from './loaders/buildCssLoader';
 import { BuildOptions } from './types/config';
 import { buildBabelLoader } from './loaders/buildBabelLoader';
@@ -12,7 +13,16 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
 
     const babelLoader = buildBabelLoader(options);
 
-    const cssLoader = buildCssLoader(isDev);
+    const scssLoader = buildCssLoader(isDev);
+
+    const cssLoader = {
+        test: /\.css$/i,
+        use: [
+            isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
+            'css-loader',
+            'postcss-loader',
+        ],
+    };
 
     const typescriptLoader = {
         test: /\.tsx?$/,
@@ -43,6 +53,7 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
         babelLoader,
         typescriptLoader,
         fileLoader,
+        scssLoader,
         cssLoader,
     ];
 }
