@@ -4,14 +4,16 @@ import {
 import { AxiosInstance } from 'axios';
 import { To } from '@remix-run/router';
 import { NavigateOptions } from 'react-router/dist/lib/context';
-import { ChatSchema } from 'entities/ChatBox';
 import { UserSchema } from 'entities/User';
 import { AppSchema } from 'entities/App';
+import { PowerTweetsSchema } from 'entities/PowerTweets';
 
 export interface StateSchema {
-    chat: ChatSchema;
     user: UserSchema;
     app: AppSchema;
+
+    // async-reducers
+    powerTweets?: PowerTweetsSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

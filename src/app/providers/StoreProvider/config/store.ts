@@ -4,7 +4,6 @@ import {
 import { $api } from 'shared/api/api';
 import { To } from '@remix-run/router';
 import { NavigateOptions } from 'react-router/dist/lib/context';
-import { chatReducer } from 'entities/ChatBox';
 import { userReducer } from 'entities/User';
 import { appReducer } from 'entities/App';
 import { createReducerManager } from './reducerManager';
@@ -17,9 +16,8 @@ export function createReduxStore(
 ) {
     const rootReducers: ReducersMapObject<StateSchema> = {
         ...asyncReducers,
-        chat: chatReducer,
-        user: userReducer,
         app: appReducer,
+        user: userReducer,
     };
 
     const reducerManager = createReducerManager(rootReducers);

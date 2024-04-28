@@ -5,17 +5,28 @@ import { Button } from 'shared/ui/Button/Button';
 import MainImage from 'shared/assets/images/main-image.png';
 import { appActions } from 'entities/App';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { Helmet } from 'react-helmet';
+import { useSelector } from 'react-redux';
+import { getUserData } from 'entities/User';
 import { useNavigate } from 'react-router-dom';
 import { getRouteAccount } from 'shared/const/router';
-import { Helmet } from 'react-helmet';
 
 const MainPage = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
+    const userData = useSelector(getUserData)?.data;
 
     useEffect(() => {
         dispatch(appActions.setPlayingMode('null'));
     }, [dispatch]);
+
+    const loginHandler = useCallback(() => {
+        window.open('https://rain.bless.bet/auth/twitter', '_self');
+    }, []);
+
+    const logoutHandler = useCallback(() => {
+        window.open('https://rain.bless.bet/auth/logout', '_self');
+    }, []);
 
     const routeToAccount = useCallback(() => {
         navigate(getRouteAccount());
@@ -43,7 +54,7 @@ const MainPage = () => {
                         theme="primary"
                         className="rounded-lg mt-[23px] md:mt-[38px] w-full md:w-[252px]"
                         size="xl"
-                        onClick={routeToAccount}
+                        onClick={userData ? routeToAccount : loginHandler}
                     >
                         Get started
                     </Button>
@@ -58,8 +69,9 @@ const MainPage = () => {
                                         theme="primary"
                                         className="rounded-lg w-full"
                                         size="md"
+                                        onClick={userData ? logoutHandler : loginHandler}
                                     >
-                                        Login with Х
+                                        {userData ? 'Logout' : 'Login with Х'}
                                     </Button>
                                 </span>
                             </span>
@@ -67,7 +79,7 @@ const MainPage = () => {
                     </div>
                 </div>
                 <div className="order-1 md:order-2 girls__block">
-                    <img src={MainImage} alt="anime-girls" className="w-full md:w-auto h-full" />
+                    <img src={MainImage} alt="anime-girls" className="w-full md:w-auto h-full object-cover" />
                 </div>
             </div>
         </>

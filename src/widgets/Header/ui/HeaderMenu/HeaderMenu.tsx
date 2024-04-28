@@ -9,6 +9,8 @@ import { Icon } from 'shared/ui/Icon/Icon';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { getRouteAccount, getRouteMain } from 'shared/const/router';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { getUserData } from 'entities/User';
 import cls from './HeaderMenu.module.scss';
 
 interface HeaderMenuProps {
@@ -19,14 +21,19 @@ export const HeaderMenu = memo((props: HeaderMenuProps) => {
         className,
     } = props;
     const navigate = useNavigate();
-
-    const routeToAccount = useCallback(() => {
-        navigate(getRouteAccount());
-    }, [navigate]);
+    const userData = useSelector(getUserData)?.data;
 
     const routeToMainPage = useCallback(() => {
         navigate(getRouteMain());
     }, [navigate]);
+
+    const loginHandler = useCallback(() => {
+        window.open('https://rain.bless.bet/auth/twitter', '_self');
+    }, []);
+
+    const logoutHandler = useCallback(() => {
+        window.open('https://rain.bless.bet/auth/logout', '_self');
+    }, []);
 
     return (
         <div
@@ -86,9 +93,9 @@ export const HeaderMenu = memo((props: HeaderMenuProps) => {
                                             className="rounded-lg"
                                             size="md"
                                             style={{ width: 132 }}
-                                            onClick={routeToAccount}
+                                            onClick={userData ? logoutHandler : loginHandler}
                                         >
-                                            Login with Х
+                                            {userData ? 'Logout' : 'Login with Х'}
                                         </Button>
                                     </span>
                                 </span>

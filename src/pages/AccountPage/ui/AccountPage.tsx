@@ -9,21 +9,34 @@ import { ToastCustom } from 'shared/ui/ToastCustom/ToastCustom';
 import { Button } from 'shared/ui/Button/Button';
 import { Icon } from 'shared/ui/Icon/Icon';
 import { Carousel } from 'shared/ui/Carousel/Carousel';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper';
 import { Input } from 'shared/ui/Input/Input';
 import { Helmet } from 'react-helmet';
-import { Toast } from 'react-toastify/dist/components';
-import { Tweet } from 'react-tweet';
+import { useSelector } from 'react-redux';
+import { getUserData, getUserError, getUserIsLoading } from 'entities/User';
+import { getRouteMain } from 'shared/const/router';
+import { useNavigate } from 'react-router-dom';
+import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
+import { Text, TextTheme, TextWeight } from 'shared/ui/Text/Text';
+import { PowerTweets, powerTweetsReducer } from 'entities/PowerTweets';
+import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import cls from './AccountPage.module.scss';
+
+const reducers: ReducersList = {
+    powerTweets: powerTweetsReducer,
+};
 
 const AccountPage = () => {
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
     const [copyValue, setCopyValue] = useState<string>('XXX');
     const [connectedWallet, setConnectedWallet] = useState<boolean>(false);
     const [connectedTelegram, setConnectedTelegram] = useState<boolean>(false);
     const [connectedTwitter, setConnectedTwitter] = useState<boolean>(false);
     const [connectedDiscord, setConnectedDiscord] = useState<boolean>(false);
+
+    const userData = useSelector(getUserData)?.data;
+    const userIsLoading = useSelector(getUserIsLoading);
+    const userError = useSelector(getUserError);
 
     const [subscribedTelegram, setSubscribedTelegram] = useState<boolean>(false);
     const [subscribedDiscord, setSubscribedDiscord] = useState<boolean>(false);
@@ -115,21 +128,34 @@ const AccountPage = () => {
         dispatch(appActions.setPlayingMode('null'));
     }, [dispatch]);
 
-    return (
-        <>
-            <Helmet>
-                <title>Bless Rain - Account</title>
-            </Helmet>
-            <div className={classNames(
-                'flex flex-col relative h-full -mt-[50px] md:mt-0 gap-3',
-                {},
-                [],
-            )}
+    useEffect(() => {
+        if (!userData) {
+            navigate(getRouteMain());
+        }
+    }, [navigate, userData]);
+
+    let content;
+
+    if (userIsLoading) {
+        content = (
+            <Skeleton width="100%" height={600} border="6px" />
+        );
+    } else if (userError) {
+        content = (
+            <Text
+                theme={TextTheme.ERROR}
+                weight={TextWeight.SEMIBOLD}
             >
+                An error occurred while loading, try refreshing the page
+            </Text>
+        );
+    } else {
+        content = (
+            <>
                 <div className="title-lg">
                     Hello,
                     {' '}
-                    {'<Username>'}
+                    {userData?.name}
                     !
                 </div>
 
@@ -579,162 +605,7 @@ const AccountPage = () => {
                     </div>
                 </div>
 
-                <Carousel
-                    className="relative"
-                >
-                    <div className={classNames(cls.userText, {}, ['caption-lg uppercase text-center mb-2.5'])}>
-                        Power tweets
-                    </div>
-                    <>
-                        <Swiper
-                            modules={[Navigation, Pagination]}
-                            className="w-full px-6 sm:px-9"
-                            slidesPerView={1}
-                            spaceBetween={16}
-                            autoHeight
-                            observer
-                            observeParents
-                            breakpoints={{
-                                675: {
-                                    slidesPerView: 2,
-                                },
-                                1024: {
-                                    slidesPerView: 3,
-                                },
-                                1440: {
-                                    slidesPerView: 4,
-                                },
-                                2560: {
-                                    slidesPerView: 5,
-                                },
-                                3080: {
-                                    slidesPerView: 6,
-                                },
-                            }}
-                            navigation={{
-                                nextEl: '.swiper-button-next',
-                                prevEl: '.swiper-button-prev',
-                            }}
-                            pagination={{
-                                el: '.indicators',
-                                type: 'bullets',
-                                clickable: true,
-                            }}
-                        >
-                            <SwiperSlide className="rounded-2xl tweet-max-h-enabled
-                        swiper-slide dashed-border glowing-blue"
-                            >
-                                <span className="dashed-border-top">
-                                    <span className="dashed-border-bottom">
-                                        <div
-                                            data-dnt="true"
-                                            data-theme="dark"
-                                            data-conversation="none"
-                                        >
-                                            <Tweet id="1701249242319233121" />
-                                        </div>
-                                    </span>
-                                </span>
-                            </SwiperSlide>
-                            <SwiperSlide className="rounded-2xl tweet-max-h-enabled
-                        swiper-slide dashed-border glowing-blue"
-                            >
-                                <span className="dashed-border-top">
-                                    <span className="dashed-border-bottom">
-                                        <div
-                                            data-dnt="true"
-                                            data-theme="dark"
-                                            data-conversation="none"
-                                        >
-                                            <Tweet id="1765785121074909644" />
-                                        </div>
-                                    </span>
-                                </span>
-                            </SwiperSlide>
-                            <SwiperSlide className="rounded-2xl tweet-max-h-enabled
-                        swiper-slide dashed-border glowing-blue"
-                            >
-                                <span className="dashed-border-top">
-                                    <span className="dashed-border-bottom">
-                                        <div
-                                            data-dnt="true"
-                                            data-theme="dark"
-                                            data-conversation="none"
-                                        >
-                                            <Tweet id="1765785125038501942" />
-                                        </div>
-                                    </span>
-                                </span>
-                            </SwiperSlide>
-                            <SwiperSlide className="rounded-2xl tweet-max-h-enabled
-                        swiper-slide dashed-border glowing-blue"
-                            >
-                                <span className="dashed-border-top">
-                                    <span className="dashed-border-bottom">
-                                        <div
-                                            data-dnt="true"
-                                            data-theme="dark"
-                                            data-conversation="none"
-                                        >
-                                            <Tweet id="1745861124333949328" />
-                                        </div>
-                                    </span>
-                                </span>
-                            </SwiperSlide>
-                            <SwiperSlide className="rounded-2xl tweet-max-h-enabled
-                        swiper-slide dashed-border glowing-blue"
-                            >
-                                <span className="dashed-border-top">
-                                    <span className="dashed-border-bottom">
-                                        <div
-                                            data-dnt="true"
-                                            data-theme="dark"
-                                            data-conversation="none"
-                                        >
-                                            <Tweet id="1701249242319233121" />
-                                        </div>
-                                    </span>
-                                </span>
-                            </SwiperSlide>
-                        </Swiper>
-                        <div
-                            className="flex gap-5 items-center justify-center mt-4"
-                        >
-                            <button
-                                type="button"
-                                className="swiper-button-prev bg-surface rounded-full w-10 h-10"
-                            >
-                                <div className="w-full h-full rounded-full flex
-                            items-center justify-center buttonArrow"
-                                >
-                                    <Icon
-                                        name="chevron-up"
-                                        className="text-2xl font-semibold
-                                text-icon-secondary -rotate-90"
-                                    />
-                                </div>
-                            </button>
-
-                            <div className="bg-dark flex justify-center my-2 gap-2 indicators" />
-
-                            <button
-                                type="button"
-                                className="swiper-button-next bg-surface rounded-full w-10 h-10"
-                            >
-                                <div
-                                    className="w-full h-full rounded-full flex
-                                                items-center justify-center buttonArrow"
-                                >
-                                    <Icon
-                                        name="chevron-up"
-                                        className="text-2xl font-semibold
-                                text-icon-secondary rotate-90"
-                                    />
-                                </div>
-                            </button>
-                        </div>
-                    </>
-                </Carousel>
+                <PowerTweets />
 
                 <Carousel className="relative !hidden">
                     <div className={classNames(cls.userText, {}, ['caption-lg uppercase text-center mb-2.5'])}>
@@ -778,8 +649,24 @@ const AccountPage = () => {
                         ))}
                     </div>
                 </Carousel>
+            </>
+        );
+    }
+
+    return (
+        <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
+            <Helmet>
+                <title>Bless Rain - Account</title>
+            </Helmet>
+            <div className={classNames(
+                'flex flex-col relative h-full -mt-[50px] md:mt-0 gap-3',
+                {},
+                [],
+            )}
+            >
+                {content}
             </div>
-        </>
+        </DynamicModuleLoader>
     );
 };
 

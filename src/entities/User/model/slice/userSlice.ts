@@ -1,33 +1,31 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { USER_IS_AUTH_LOCALSTORAGE_KEY } from 'shared/const/localstorage';
-import { UserSchema } from '../types/user';
+import { UserSchema, UserInfo } from '../types/user';
+import { fetchUserInfo } from '../services/fetchUserInfo/fetchUserInfo';
 
 const initialState: UserSchema = {
-    account: {
-        balance: 1000000,
-    },
-    email: '',
-    name: 'Mishutkin',
-    isAuth: false,
+    data: undefined,
+    isLoading: false,
+    error: undefined,
 };
 
 const userSlice = createSlice({
     name: 'user',
     initialState,
-    reducers: {
-        initAuth: (state) => {
-            if (localStorage.getItem(USER_IS_AUTH_LOCALSTORAGE_KEY)) {
-                state.isAuth = localStorage.getItem(USER_IS_AUTH_LOCALSTORAGE_KEY) === 'true';
-            }
-        },
-        signIn: (state) => {
-            state.isAuth = true;
-            localStorage.setItem(USER_IS_AUTH_LOCALSTORAGE_KEY, 'true');
-        },
-        logout: (state) => {
-            state.isAuth = false;
-            localStorage.removeItem(USER_IS_AUTH_LOCALSTORAGE_KEY);
-        },
+    reducers: {},
+    extraReducers: (builder) => {
+        builder
+            .addCase(fetchUserInfo.pending, (state) => {
+                state.error = undefined;
+                state.isLoading = true;
+            })
+            .addCase(fetchUserInfo.fulfilled, (state, action: PayloadAction<UserInfo>) => {
+                state.isLoading = false;
+                state.data = action.payload;
+            })
+            .addCase(fetchUserInfo.rejected, (state, action) => {
+                state.isLoading = false;
+                state.error = action.payload;
+            });
     },
 });
 

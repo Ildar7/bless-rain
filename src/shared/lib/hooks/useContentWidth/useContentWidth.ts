@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { getChatOpened } from 'entities/ChatBox';
 import { useMobile } from 'shared/lib/hooks/useMobile/useMobile';
 
 export const useContentWidth = (contentWidth: number, ref: any) => {
     const [contentColumn, setContentColumn] = useState(false);
-    const chatOpened = useSelector(getChatOpened);
     const { width } = useMobile();
 
     useEffect(() => {
@@ -18,7 +16,7 @@ export const useContentWidth = (contentWidth: number, ref: any) => {
                 }
             }
         }, 100);
-    }, [ref, chatOpened, width]);
+    }, [ref, width]);
 
     return contentColumn;
 };
