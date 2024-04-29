@@ -7,7 +7,7 @@ import { PlayingModeBanner } from 'widgets/PlayingModeBanner';
 import HeaderLogoSvg from 'shared/assets/icons/header-logo.svg';
 import { Icon } from 'shared/ui/Icon/Icon';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
-import { getRouteAccount, getRouteMain } from 'shared/const/router';
+import { getRouteMain } from 'shared/const/router';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getUserData } from 'entities/User';
@@ -22,6 +22,8 @@ export const HeaderMenu = memo((props: HeaderMenuProps) => {
     } = props;
     const navigate = useNavigate();
     const userData = useSelector(getUserData)?.data;
+
+    console.log(userData);
 
     const routeToMainPage = useCallback(() => {
         navigate(getRouteMain());

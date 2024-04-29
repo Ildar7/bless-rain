@@ -3,9 +3,8 @@ import { NotFoundPage } from 'pages/NotFoundPage';
 import { MainPage } from 'pages/MainPage';
 import { RatingPage } from 'pages/RatingPage';
 import { RulesPage } from 'pages/RulesPage';
-import { AccountPage } from 'pages/AccountPage';
 import {
-    AppRoutes, getRouteAccount, getRouteMain, getRouteRating, getRouteRules,
+    AppRoutes, getRouteMain, getRouteRating, getRouteRules,
 } from '../../const/router';
 
 export const routeConfig: Record<AppRoutes, RouteProps> = {
@@ -20,10 +19,6 @@ export const routeConfig: Record<AppRoutes, RouteProps> = {
     [AppRoutes.RULES]: {
         path: getRouteRules(),
         element: <RulesPage />,
-    },
-    [AppRoutes.ACCOUNT]: {
-        path: getRouteAccount(),
-        element: <AccountPage />,
     },
 
     // last

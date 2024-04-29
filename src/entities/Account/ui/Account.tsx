@@ -1,31 +1,34 @@
 import React, {
-    useCallback, useEffect, useMemo, useState,
+    memo, useCallback, useEffect, useMemo, useState,
 } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
-import './AccountPage.scss';
-import { appActions } from 'entities/App';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { ToastCustom } from 'shared/ui/ToastCustom/ToastCustom';
-import { Button } from 'shared/ui/Button/Button';
-import { Icon } from 'shared/ui/Icon/Icon';
-import { Carousel } from 'shared/ui/Carousel/Carousel';
-import { Input } from 'shared/ui/Input/Input';
-import { Helmet } from 'react-helmet';
+import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getUserData, getUserError, getUserIsLoading } from 'entities/User';
-import { getRouteMain } from 'shared/const/router';
-import { useNavigate } from 'react-router-dom';
-import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
-import { Text, TextTheme, TextWeight } from 'shared/ui/Text/Text';
-import { PowerTweets, powerTweetsReducer } from 'entities/PowerTweets';
+import { ToastCustom } from 'shared/ui/ToastCustom/ToastCustom';
+import { appActions } from 'entities/App';
+import { Helmet } from 'react-helmet';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import cls from './AccountPage.module.scss';
+import { Icon } from 'shared/ui/Icon/Icon';
+import { Button } from 'shared/ui/Button/Button';
+import { Input } from 'shared/ui/Input/Input';
+import { PowerTweets, powerTweetsReducer } from 'entities/PowerTweets';
+import { Carousel } from 'shared/ui/Carousel/Carousel';
+import { classNames } from 'shared/lib/classNames/classNames';
+import cls from './Account.module.scss';
+
+interface AccountProps {
+    className?: string;
+}
 
 const reducers: ReducersList = {
     powerTweets: powerTweetsReducer,
 };
 
-const AccountPage = () => {
+export const Account = memo((props: AccountProps) => {
+    const {
+        className,
+    } = props;
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const [copyValue, setCopyValue] = useState<string>('XXX');
@@ -128,30 +131,17 @@ const AccountPage = () => {
         dispatch(appActions.setPlayingMode('null'));
     }, [dispatch]);
 
-    useEffect(() => {
-        if (!userData) {
-            navigate(getRouteMain());
-        }
-    }, [navigate, userData]);
-
-    let content;
-
-    if (userIsLoading) {
-        content = (
-            <Skeleton width="100%" height={600} border="6px" />
-        );
-    } else if (userError) {
-        content = (
-            <Text
-                theme={TextTheme.ERROR}
-                weight={TextWeight.SEMIBOLD}
+    return (
+        <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
+            <Helmet>
+                <title>Bless Rain - Account</title>
+            </Helmet>
+            <div className={classNames(
+                'flex flex-col relative h-full -mt-[50px] md:mt-0 gap-3',
+                {},
+                [],
+            )}
             >
-                An error occurred while loading, try refreshing the page
-            </Text>
-        );
-    } else {
-        content = (
-            <>
                 <div className="title-lg">
                     Hello,
                     {' '}
@@ -296,9 +286,7 @@ const AccountPage = () => {
                                                 items-center btn square tertiary text-label-md"
                                                     onClick={onCopyHandler}
                                                 >
-                                                    <div
-                                                        className="flex"
-                                                    >
+                                                    <div className="flex">
                                                         <Icon name="copy" className="duration-100 text-2xl" />
                                                     </div>
                                                 </Button>
@@ -649,25 +637,7 @@ const AccountPage = () => {
                         ))}
                     </div>
                 </Carousel>
-            </>
-        );
-    }
-
-    return (
-        <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-            <Helmet>
-                <title>Bless Rain - Account</title>
-            </Helmet>
-            <div className={classNames(
-                'flex flex-col relative h-full -mt-[50px] md:mt-0 gap-3',
-                {},
-                [],
-            )}
-            >
-                {content}
             </div>
         </DynamicModuleLoader>
     );
-};
-
-export default AccountPage;
+});

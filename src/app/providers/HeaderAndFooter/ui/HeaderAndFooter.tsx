@@ -20,8 +20,6 @@ export const HeaderAndFooter = ({ className, children }: HeaderAndFooterProps) =
             )
         }
     >
-        {/* <AppPreloader /> */}
-
         <Header />
         {children}
         <Footer />

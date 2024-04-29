@@ -16,8 +16,8 @@ export function createReduxStore(
 ) {
     const rootReducers: ReducersMapObject<StateSchema> = {
         ...asyncReducers,
-        app: appReducer,
         user: userReducer,
+        app: appReducer,
     };
 
     const reducerManager = createReducerManager(rootReducers);
