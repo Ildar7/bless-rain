@@ -32,6 +32,12 @@ const MainPage = () => {
         navigate(getRouteAccount());
     }, [navigate]);
 
+    useEffect(() => {
+        if (userData) {
+            navigate(getRouteAccount());
+        }
+    }, [navigate, userData]);
+
     return (
         <>
             <Helmet>
