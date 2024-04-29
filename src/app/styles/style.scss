@@ -137,3 +137,8 @@ input {
 .btn.primary.disabled {
     color: rgb(255 255 255 / 60%);
 }
+
+#telegram-widget-container {
+    display: flex;
+    justify-content: center;
+}

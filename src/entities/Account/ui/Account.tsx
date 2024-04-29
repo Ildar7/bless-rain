@@ -38,8 +38,6 @@ export const Account = memo((props: AccountProps) => {
     const [connectedDiscord, setConnectedDiscord] = useState<boolean>(false);
 
     const userData = useSelector(getUserData)?.data;
-    const userIsLoading = useSelector(getUserIsLoading);
-    const userError = useSelector(getUserError);
 
     const [subscribedTelegram, setSubscribedTelegram] = useState<boolean>(false);
     const [subscribedDiscord, setSubscribedDiscord] = useState<boolean>(false);
@@ -130,6 +128,20 @@ export const Account = memo((props: AccountProps) => {
     useEffect(() => {
         dispatch(appActions.setPlayingMode('null'));
     }, [dispatch]);
+
+    useEffect(() => {
+        const button = document.createElement('script');
+        button.async = true;
+        button.src = 'https://telegram.org/js/telegram-widget.js?22';
+        button.setAttribute('data-telegram-login', 'blessrain_bot');
+        button.setAttribute('data-size', 'large');
+        button.setAttribute('data-userpic', 'false');
+        button.setAttribute('data-radius', '8');
+        button.setAttribute('data-auth-url', 'https://rain.bless.bet/auth/telegram/callback');
+        button.setAttribute('data-request-access', 'write');
+
+        document?.querySelector('#telegram-widget-container')?.appendChild(button);
+    }, []);
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
@@ -396,13 +408,14 @@ export const Account = memo((props: AccountProps) => {
                                         </div>
                                         <div className="flex flex-col gap-[6px]">
                                             {!connectedTelegram && !subscribedTelegram && (
-                                                <Button
-                                                    size="xl"
-                                                    className="rounded-lg text-label-md flex-1"
-                                                    onClick={onConnectTelegram}
-                                                >
-                                                    Connect Telegram
-                                                </Button>
+                                                <div id="telegram-widget-container" />
+                                                // <Button
+                                                //     size="xl"
+                                                //     className="rounded-lg text-label-md flex-1"
+                                                //     onClick={onConnectTelegram}
+                                                // >
+                                                //     Connect Telegram
+                                                // </Button>
                                             )}
                                             {connectedTelegram && !subscribedTelegram && (
                                                 <>
