@@ -7,6 +7,9 @@ import { CloseButton } from 'shared/ui/CloseButton/CloseButton';
 import { Portal } from 'shared/ui/Portal/Portal';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { fetchUserInfo } from 'entities/User';
+import { Helmet } from 'react-helmet';
+import FaviconImage from 'shared/assets/icons/favicon/favicon.png';
+import { Web3ModalProvider } from './providers/Web3ModalProvider';
 
 function App() {
     const dispatch = useAppDispatch();
@@ -18,10 +21,15 @@ function App() {
     return (
         <div className={classNames('app', {}, [])}>
             <Suspense fallback={<PageLoader />}>
-                <AppRouter />
-                <Portal>
-                    <ToastContainer closeButton={CloseButton} />
-                </Portal>
+                <Web3ModalProvider>
+                    <Helmet>
+                        <link rel="icon" href={FaviconImage} />
+                    </Helmet>
+                    <AppRouter />
+                    <Portal>
+                        <ToastContainer closeButton={CloseButton} />
+                    </Portal>
+                </Web3ModalProvider>
             </Suspense>
         </div>
     );

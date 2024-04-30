@@ -10,7 +10,8 @@ import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { getRouteMain } from 'shared/const/router';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { getUserData } from 'entities/User';
+import { getUserData, getUserIsLoading } from 'entities/User';
+import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import cls from './HeaderMenu.module.scss';
 
 interface HeaderMenuProps {
@@ -22,8 +23,7 @@ export const HeaderMenu = memo((props: HeaderMenuProps) => {
     } = props;
     const navigate = useNavigate();
     const userData = useSelector(getUserData)?.data;
-
-    console.log(userData);
+    const userIsLoading = useSelector(getUserIsLoading);
 
     const routeToMainPage = useCallback(() => {
         navigate(getRouteMain());
@@ -86,19 +86,28 @@ export const HeaderMenu = memo((props: HeaderMenuProps) => {
                         <div className="relative">
                             <div
                                 className="surface
-                                    p-1 rounded-xl cursor-pointer select-none flex glowing-blue dashed-border relative"
+                                            p-1 rounded-xl cursor-pointer select-none flex glowing-blue dashed-border relative"
                             >
-                                <span className="inner p-1 block dashed-border-top" style={{ borderRadius: 8 }}>
+                                <span
+                                    className="inner p-1 block dashed-border-top"
+                                    style={{ borderRadius: 8 }}
+                                >
                                     <span className="dashed-border-bottom">
-                                        <Button
-                                            theme="primary"
-                                            className="rounded-lg"
-                                            size="md"
-                                            style={{ width: 132 }}
-                                            onClick={userData ? logoutHandler : loginHandler}
-                                        >
-                                            {userData ? 'Logout' : 'Login with Х'}
-                                        </Button>
+                                        {
+                                            userIsLoading
+                                                ? (<Skeleton width={132} height={36} border="8px=" />)
+                                                : (
+                                                    <Button
+                                                        theme="primary"
+                                                        className="rounded-lg"
+                                                        size="md"
+                                                        style={{ width: 132 }}
+                                                        onClick={userData ? logoutHandler : loginHandler}
+                                                    >
+                                                        {userData ? 'Logout' : 'Login with Х'}
+                                                    </Button>
+                                                )
+                                        }
                                     </span>
                                 </span>
                             </div>

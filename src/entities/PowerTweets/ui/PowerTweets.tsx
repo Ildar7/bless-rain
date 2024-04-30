@@ -10,7 +10,8 @@ import { useSelector } from 'react-redux';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import { Text, TextTheme, TextWeight } from 'shared/ui/Text/Text';
 import {
-    getPowerTweetsData, getPowerTweetsError,
+    getPowerTweetsData,
+    getPowerTweetsError,
     getPowerTweetsIsLoading,
 } from '../model/selectors/getPowerTweetsInfo/getPowerTweetsInfo';
 import { fetchPowerTweets } from '../model/services/fetchPowerTweets/fetchPowerTweets';

@@ -7,6 +7,7 @@ import { NavigateOptions } from 'react-router/dist/lib/context';
 import { UserSchema } from 'entities/User';
 import { AppSchema } from 'entities/App';
 import { PowerTweetsSchema } from 'entities/PowerTweets';
+import { WalletSchema } from 'entities/Wallet';
 
 export interface StateSchema {
     user: UserSchema;
@@ -14,6 +15,7 @@ export interface StateSchema {
 
     // async-reducers
     powerTweets?: PowerTweetsSchema;
+    wallet?: WalletSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

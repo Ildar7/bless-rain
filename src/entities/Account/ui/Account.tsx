@@ -2,44 +2,53 @@ import React, {
     memo, useCallback, useEffect, useMemo, useState,
 } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { getUserData, getUserError, getUserIsLoading } from 'entities/User';
+import { fetchVerifyWalletSignMessage, getUserData } from 'entities/User';
 import { ToastCustom } from 'shared/ui/ToastCustom/ToastCustom';
 import { appActions } from 'entities/App';
 import { Helmet } from 'react-helmet';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { Icon } from 'shared/ui/Icon/Icon';
 import { Button } from 'shared/ui/Button/Button';
-import { Input } from 'shared/ui/Input/Input';
 import { PowerTweets, powerTweetsReducer } from 'entities/PowerTweets';
 import { Carousel } from 'shared/ui/Carousel/Carousel';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { useWeb3Modal } from '@web3modal/wagmi/react';
+import { useAccount, useDisconnect, useSignMessage } from 'wagmi';
+import { getWalletError, walletReducer } from 'entities/Wallet';
+import { getWalletData, getWalletIsLoading } from 'entities/Wallet/model/selectors/getWalletInfo/getWalletInfo';
+import { WalletData } from 'entities/Wallet/model/types/wallet';
 import cls from './Account.module.scss';
-
-interface AccountProps {
-    className?: string;
-}
 
 const reducers: ReducersList = {
     powerTweets: powerTweetsReducer,
+    wallet: walletReducer,
 };
 
-export const Account = memo((props: AccountProps) => {
-    const {
-        className,
-    } = props;
+export const Account = memo(() => {
     const dispatch = useAppDispatch();
-    const navigate = useNavigate();
-    const [copyValue, setCopyValue] = useState<string>('XXX');
-    const [connectedWallet, setConnectedWallet] = useState<boolean>(false);
-    const [connectedTelegram, setConnectedTelegram] = useState<boolean>(false);
+    const { open } = useWeb3Modal();
+    const { disconnect } = useDisconnect();
+    const {
+        address,
+        isConnecting,
+        isConnected,
+    } = useAccount();
+    const {
+        data: signMessageData, error, isPending, signMessage, variables,
+    } = useSignMessage();
     const [connectedTwitter, setConnectedTwitter] = useState<boolean>(false);
     const [connectedDiscord, setConnectedDiscord] = useState<boolean>(false);
+    const [initConnectWallet, setInitConnectWallet] = useState(false);
+
+    const verifyWalletMessageData = useSelector(getWalletData);
+    const verifyWalletMessageIsLoading = useSelector(getWalletIsLoading);
+    const verifyWalletMessageError = useSelector(getWalletError);
 
     const userData = useSelector(getUserData)?.data;
+    const telegramConnected = !!(userData?.telegram_id && userData.telegram_data);
+    const refLink = useMemo(() => `https://${window.location.host}/ref/${userData?.referral_code}`, [userData?.referral_code]);
 
-    const [subscribedTelegram, setSubscribedTelegram] = useState<boolean>(false);
     const [subscribedDiscord, setSubscribedDiscord] = useState<boolean>(false);
     const tasks = useMemo(() => [
         {
@@ -80,9 +89,9 @@ export const Account = memo((props: AccountProps) => {
     ], []);
 
     const onCopyHandler = useCallback(async () => {
-        await navigator.clipboard.writeText(copyValue!);
+        await navigator.clipboard.writeText(refLink);
         ToastCustom.success('Your referral link has been copied to the clipboard');
-    }, [copyValue]);
+    }, [refLink]);
 
     const getRewardHandler = (canGet: boolean) => {
         if (canGet) {
@@ -95,16 +104,12 @@ export const Account = memo((props: AccountProps) => {
     };
 
     const onConnectWallet = useCallback(() => {
-        setConnectedWallet(true);
-    }, []);
-
-    const onConnectTelegram = useCallback(() => {
-        setConnectedTelegram(true);
-    }, []);
+        open();
+        setInitConnectWallet(true);
+    }, [open]);
 
     const onSubscribeTelegram = useCallback(() => {
-        ToastCustom.success('You have been awarded 150 points');
-        setSubscribedTelegram(true);
+        window.open(process.env.REACT_APP_TELEGRAM_LINK);
     }, []);
 
     const onConnectTwitter = useCallback(() => {
@@ -142,6 +147,30 @@ export const Account = memo((props: AccountProps) => {
 
         document?.querySelector('#telegram-widget-container')?.appendChild(button);
     }, []);
+
+    useEffect(() => {
+        if (!isConnecting && isConnected && initConnectWallet) {
+            dispatch(fetchVerifyWalletSignMessage(address!))
+                .then((res) => {
+                    if (res.meta.requestStatus === 'fulfilled') {
+                        signMessage({ message: (res.payload as WalletData).message });
+                    }
+                });
+        }
+    }, [address, dispatch, initConnectWallet, isConnected, isConnecting, signMessage]);
+
+    useEffect(() => {
+        if (verifyWalletMessageError) {
+            disconnect();
+        }
+    }, [disconnect, verifyWalletMessageError]);
+
+    useEffect(() => {
+        if (!isPending && signMessageData && variables.message) {
+            console.log(variables.message);
+            console.log(signMessageData);
+        }
+    }, [isPending, signMessageData, variables?.message]);
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
@@ -291,10 +320,10 @@ export const Account = memo((props: AccountProps) => {
                                                 Reflink
                                             </div>
                                             <div className="user-dashboard-item-text flex items-center gap-3">
-                                                <div className="reflink-text">{copyValue}</div>
+                                                <div className="reflink-text">{refLink}</div>
                                                 <Button
                                                     className="copy-btn caption-sm rounded-lg
-                                                w-9 h-9 p-0 relative flex justify-center
+                                                min-w-[36px] h-9 p-0 relative flex justify-center
                                                 items-center btn square tertiary text-label-md"
                                                     onClick={onCopyHandler}
                                                 >
@@ -335,32 +364,34 @@ export const Account = memo((props: AccountProps) => {
                                     flex-col justify-between mt-4 md:mt-2 w-full"
                                     >
                                         <div className="user-dashboard-item">
-                                            {connectedWallet && (
-                                                <div>Your wallet to receive a reward</div>
-                                            )}
-                                            {!connectedWallet && (
-                                                <div>Connect your wallet to receive a reward</div>
-                                            )}
+                                            {/* {connectedWallet && ( */}
+                                            {/*    <div>Your wallet to receive a reward</div> */}
+                                            {/* )} */}
+                                            {/* {!connectedWallet && ( */}
+                                            {/*    */}
+                                            {/* )} */}
+                                            <div>Connect your wallet to receive a reward</div>
                                         </div>
                                         <div className="flex flex-col gap-[6px]">
-                                            {connectedWallet && (
-                                                <Input
-                                                    placeholder="Enter username"
-                                                    className={classNames(cls.inputAddress, {}, ['!mb-0'])}
-                                                    flat
-                                                    value="XXX XXX"
-                                                    readOnly
-                                                />
-                                            )}
-                                            {!connectedWallet && (
-                                                <Button
-                                                    size="xl"
-                                                    className="rounded-lg text-label-md flex-1"
-                                                    onClick={onConnectWallet}
-                                                >
-                                                    Connect your wallet
-                                                </Button>
-                                            )}
+                                            {/* {connectedWallet && ( */}
+                                            {/*    <Input */}
+                                            {/*        placeholder="Enter username" */}
+                                            {/*        className={classNames(cls.inputAddress, {}, ['!mb-0'])} */}
+                                            {/*        flat */}
+                                            {/*        value="XXX XXX" */}
+                                            {/*        readOnly */}
+                                            {/*    /> */}
+                                            {/* )} */}
+                                            {/* {!connectedWallet && ( */}
+                                            {/*    */}
+                                            {/* )} */}
+                                            <Button
+                                                size="xl"
+                                                className="rounded-lg text-label-md flex-1"
+                                                onClick={onConnectWallet}
+                                            >
+                                                Connect your wallet
+                                            </Button>
                                         </div>
                                     </div>
                                 </span>
@@ -396,28 +427,19 @@ export const Account = memo((props: AccountProps) => {
                                     flex-col justify-between mt-4 md:mt-2 w-full"
                                     >
                                         <div className="user-dashboard-item">
-                                            {!subscribedTelegram && (
-                                                <div>Subscribe to our telegram channel to receive 150 points</div>
-                                            )}
-                                            {subscribedTelegram && (
-                                                <div>
-                                                    You have successfully subscribed to our
-                                                    channel and received 150 points.
-                                                </div>
-                                            )}
+                                            <div>Subscribe to our telegram channel to receive 150 points</div>
+                                            {/* {subscribedTelegram && ( */}
+                                            {/*    <div> */}
+                                            {/*        You have successfully subscribed to our */}
+                                            {/*        channel and received 150 points. */}
+                                            {/*    </div> */}
+                                            {/* )} */}
                                         </div>
                                         <div className="flex flex-col gap-[6px]">
-                                            {!connectedTelegram && !subscribedTelegram && (
+                                            {!telegramConnected && (
                                                 <div id="telegram-widget-container" />
-                                                // <Button
-                                                //     size="xl"
-                                                //     className="rounded-lg text-label-md flex-1"
-                                                //     onClick={onConnectTelegram}
-                                                // >
-                                                //     Connect Telegram
-                                                // </Button>
                                             )}
-                                            {connectedTelegram && !subscribedTelegram && (
+                                            {telegramConnected && (
                                                 <>
                                                     <Button
                                                         size="xl"
@@ -435,17 +457,17 @@ export const Account = memo((props: AccountProps) => {
                                                     </Button>
                                                 </>
                                             )}
-                                            {connectedTelegram && subscribedTelegram && (
-                                                <Button
-                                                    size="xl"
-                                                    className="rounded-lg text-label-md flex-1"
-                                                    contentClassName="items-center gap-[5px]"
-                                                    theme="secondary"
-                                                >
-                                                    <Icon name="check-circle" className="duration-100 text-2xl" />
-                                                    <span>Done</span>
-                                                </Button>
-                                            )}
+                                            {/* {connectedTelegram && subscribedTelegram && ( */}
+                                            {/*    <Button */}
+                                            {/*        size="xl" */}
+                                            {/*        className="rounded-lg text-label-md flex-1" */}
+                                            {/*        contentClassName="items-center gap-[5px]" */}
+                                            {/*        theme="secondary" */}
+                                            {/*    > */}
+                                            {/*        <Icon name="check-circle" className="duration-100 text-2xl" /> */}
+                                            {/*        <span>Done</span> */}
+                                            {/*    </Button> */}
+                                            {/* )} */}
                                         </div>
                                     </div>
                                 </span>
@@ -518,7 +540,7 @@ export const Account = memo((props: AccountProps) => {
                         </div>
                     </div>
                     <div
-                        className="surface p-2 flex-1 !rounded-xl"
+                        className="surface p-2 flex-1 !rounded-xl hidden"
                     >
                         <div className={
                             classNames(

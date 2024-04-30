@@ -4,9 +4,7 @@ import { Input } from 'shared/ui/Input/Input';
 import { ChangeEvent, useCallback } from 'react';
 import { Button } from 'shared/ui/Button/Button';
 import ArrowAmount from 'shared/assets/icons/coin-flip-page/arrow-amount.svg';
-import { useForm } from 'react-hook-form';
 import { Icon } from 'shared/ui/Icon/Icon';
-import { Toast } from 'react-toastify/dist/components';
 import { ToastCustom } from 'shared/ui/ToastCustom/ToastCustom';
 import cls from './GamesInput.module.scss';
 

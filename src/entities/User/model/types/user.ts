@@ -6,6 +6,26 @@ interface UserPublicMetrics {
     following_count: number;
 }
 
+interface UserTelegramPhoto {
+    big_file_id: string;
+    big_file_unique_id: string;
+    small_file_id: string;
+    small_file_unique_id: string;
+}
+
+interface UserTelegramData {
+    accent_color_id: number;
+    active_usernames: string[];
+    bio: string | null;
+    emoji_status_custom_emoji_id: string | null;
+    first_name: string;
+    has_private_forwards: boolean;
+    id: number;
+    photo: UserTelegramPhoto | null;
+    type: string;
+    username: string;
+}
+
 export interface UserData {
     id: number;
     name: string;
@@ -18,6 +38,10 @@ export interface UserData {
     twitter_data: string;
     public_metrics: UserPublicMetrics;
     wallet: string | null;
+    telegram_data: UserTelegramData | null;
+    telegram_id: string | null;
+    referral_code: string;
+    referrer_id: null | string | number;
 }
 
 export interface UserInfo {
