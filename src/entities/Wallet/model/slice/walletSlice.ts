@@ -4,8 +4,10 @@ import { fetchVerifyWalletSignMessage } from '../services/fetchVerifyWalletSignM
 
 const initialState: WalletSchema = {
     data: undefined,
-    isLoading: true,
+    isLoading: false,
     error: undefined,
+    verifyIsLoading: false,
+    verifyError: undefined,
 };
 
 const walletSlice = createSlice({

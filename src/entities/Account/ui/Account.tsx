@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
-import { fetchVerifyWalletSignMessage, getUserData } from 'entities/User';
+import { getUserData } from 'entities/User';
 import { ToastCustom } from 'shared/ui/ToastCustom/ToastCustom';
 import { appActions } from 'entities/App';
 import { Helmet } from 'react-helmet';
@@ -15,14 +15,21 @@ import { Carousel } from 'shared/ui/Carousel/Carousel';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useWeb3Modal } from '@web3modal/wagmi/react';
 import { useAccount, useDisconnect, useSignMessage } from 'wagmi';
-import { getWalletError, walletReducer } from 'entities/Wallet';
-import { getWalletData, getWalletIsLoading } from 'entities/Wallet/model/selectors/getWalletInfo/getWalletInfo';
-import { WalletData } from 'entities/Wallet/model/types/wallet';
+import {
+    fetchVerifyWalletSignMessage,
+    getWalletData,
+    getWalletError,
+    getWalletIsLoading,
+    getWalletVerifyError,
+    getWalletVerifyIsLoading,
+} from 'entities/Wallet';
+import { Input } from 'shared/ui/Input/Input';
+import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
+import { verifyWallet } from 'entities/Wallet/model/services/verifyWallet/verifyWallet';
 import cls from './Account.module.scss';
 
 const reducers: ReducersList = {
     powerTweets: powerTweetsReducer,
-    wallet: walletReducer,
 };
 
 export const Account = memo(() => {
@@ -35,15 +42,20 @@ export const Account = memo(() => {
         isConnected,
     } = useAccount();
     const {
-        data: signMessageData, error, isPending, signMessage, variables,
+        data: signMessageData, error: signMessageError, isPending: signMessageIsLoading, signMessage,
     } = useSignMessage();
     const [connectedTwitter, setConnectedTwitter] = useState<boolean>(false);
     const [connectedDiscord, setConnectedDiscord] = useState<boolean>(false);
     const [initConnectWallet, setInitConnectWallet] = useState(false);
 
-    const verifyWalletMessageData = useSelector(getWalletData);
-    const verifyWalletMessageIsLoading = useSelector(getWalletIsLoading);
-    const verifyWalletMessageError = useSelector(getWalletError);
+    const walletMessageData = useSelector(getWalletData);
+    const walletMessageIsLoading = useSelector(getWalletIsLoading);
+    const walletMessageError = useSelector(getWalletError);
+
+    console.log(walletMessageData?.message);
+
+    const verifyWalletIsLoading = useSelector(getWalletVerifyIsLoading);
+    const verifyWalletError = useSelector(getWalletVerifyError);
 
     const userData = useSelector(getUserData)?.data;
     const telegramConnected = !!(userData?.telegram_id && userData.telegram_data);
@@ -150,27 +162,32 @@ export const Account = memo(() => {
 
     useEffect(() => {
         if (!isConnecting && isConnected && initConnectWallet) {
-            dispatch(fetchVerifyWalletSignMessage(address!))
-                .then((res) => {
-                    if (res.meta.requestStatus === 'fulfilled') {
-                        signMessage({ message: (res.payload as WalletData).message });
-                    }
-                });
+            dispatch(fetchVerifyWalletSignMessage(address!));
         }
     }, [address, dispatch, initConnectWallet, isConnected, isConnecting, signMessage]);
 
     useEffect(() => {
-        if (verifyWalletMessageError) {
-            disconnect();
+        if (walletMessageData) {
+            signMessage({ message: walletMessageData.message });
         }
-    }, [disconnect, verifyWalletMessageError]);
+    }, [signMessage, walletMessageData]);
 
     useEffect(() => {
-        if (!isPending && signMessageData && variables.message) {
-            console.log(variables.message);
+        if (signMessageData) {
             console.log(signMessageData);
+            dispatch(verifyWallet([address || '', signMessageData]));
         }
-    }, [isPending, signMessageData, variables?.message]);
+    }, [address, dispatch, signMessageData]);
+
+    useEffect(() => {
+        if (walletMessageError || signMessageError || verifyWalletError) {
+            console.log('walletMessageError', walletMessageError);
+            console.log('signMessageError', signMessageError);
+            console.log('verifyWalletError', verifyWalletError);
+            disconnect();
+            ToastCustom.error('An error occurred while trying to connect the wallet, please try again!');
+        }
+    }, [disconnect, signMessageError, verifyWalletError, walletMessageError]);
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
@@ -363,36 +380,41 @@ export const Account = memo(() => {
                                         className="gap-[12px] flex flex-1 items-stretch
                                     flex-col justify-between mt-4 md:mt-2 w-full"
                                     >
-                                        <div className="user-dashboard-item">
-                                            {/* {connectedWallet && ( */}
-                                            {/*    <div>Your wallet to receive a reward</div> */}
-                                            {/* )} */}
-                                            {/* {!connectedWallet && ( */}
-                                            {/*    */}
-                                            {/* )} */}
-                                            <div>Connect your wallet to receive a reward</div>
-                                        </div>
-                                        <div className="flex flex-col gap-[6px]">
-                                            {/* {connectedWallet && ( */}
-                                            {/*    <Input */}
-                                            {/*        placeholder="Enter username" */}
-                                            {/*        className={classNames(cls.inputAddress, {}, ['!mb-0'])} */}
-                                            {/*        flat */}
-                                            {/*        value="XXX XXX" */}
-                                            {/*        readOnly */}
-                                            {/*    /> */}
-                                            {/* )} */}
-                                            {/* {!connectedWallet && ( */}
-                                            {/*    */}
-                                            {/* )} */}
-                                            <Button
-                                                size="xl"
-                                                className="rounded-lg text-label-md flex-1"
-                                                onClick={onConnectWallet}
-                                            >
-                                                Connect your wallet
-                                            </Button>
-                                        </div>
+                                        {
+                                            signMessageIsLoading || verifyWalletIsLoading || walletMessageIsLoading
+                                                ? <Skeleton width="100%" height={250} border="10px" />
+                                                : (
+                                                    <>
+                                                        <div className="user-dashboard-item">
+                                                            {!userData?.wallet && (
+                                                                <div>Connect your wallet to receive a reward</div>
+                                                            )}
+                                                            {userData?.wallet && (
+                                                                <div>Your wallet to receive a reward</div>
+                                                            )}
+                                                        </div>
+                                                        <div className="flex flex-col gap-[6px]">
+                                                            {!userData?.wallet && (
+                                                                <Button
+                                                                    size="xl"
+                                                                    className="rounded-lg text-label-md flex-1"
+                                                                    onClick={onConnectWallet}
+                                                                >
+                                                                    Connect your wallet
+                                                                </Button>
+                                                            )}
+                                                            {userData?.wallet && (
+                                                                <Input
+                                                                    className={classNames(cls.inputAddress, {}, ['!mb-0'])}
+                                                                    flat
+                                                                    value={address}
+                                                                    readOnly
+                                                                />
+                                                            )}
+                                                        </div>
+                                                    </>
+                                                )
+                                        }
                                     </div>
                                 </span>
                             </span>

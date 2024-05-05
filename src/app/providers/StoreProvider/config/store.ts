@@ -6,6 +6,7 @@ import { To } from '@remix-run/router';
 import { NavigateOptions } from 'react-router/dist/lib/context';
 import { userReducer } from 'entities/User';
 import { appReducer } from 'entities/App';
+import { walletReducer } from 'entities/Wallet';
 import { createReducerManager } from './reducerManager';
 import { StateSchema } from './StateSchema';
 
@@ -18,6 +19,7 @@ export function createReduxStore(
         ...asyncReducers,
         user: userReducer,
         app: appReducer,
+        wallet: walletReducer,
     };
 
     const reducerManager = createReducerManager(rootReducers);

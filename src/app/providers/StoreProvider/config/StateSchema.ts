@@ -12,10 +12,10 @@ import { WalletSchema } from 'entities/Wallet';
 export interface StateSchema {
     user: UserSchema;
     app: AppSchema;
+    wallet: WalletSchema;
 
     // async-reducers
     powerTweets?: PowerTweetsSchema;
-    wallet?: WalletSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

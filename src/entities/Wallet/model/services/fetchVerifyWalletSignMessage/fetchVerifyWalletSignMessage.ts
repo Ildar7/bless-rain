@@ -3,7 +3,7 @@ import { ThunkConfig } from 'app/providers/StoreProvider';
 import { WalletData } from '../../types/wallet';
 
 export const fetchVerifyWalletSignMessage = createAsyncThunk<WalletData, string, ThunkConfig<string>>(
-    'user/fetchVerifyWalletSignMessage',
+    'wallet/fetchVerifyWalletSignMessage',
     async (address, thunkAPI) => {
         const { rejectWithValue, extra } = thunkAPI;
 
