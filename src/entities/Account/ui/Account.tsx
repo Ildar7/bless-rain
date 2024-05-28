@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
-import { getUserData } from 'entities/User';
+import { getUserData, getUserError, getUserIsLoading } from 'entities/User';
 import { ToastCustom } from 'shared/ui/ToastCustom/ToastCustom';
 import { appActions } from 'entities/App';
 import { Helmet } from 'react-helmet';
@@ -26,6 +26,8 @@ import {
 import { Input } from 'shared/ui/Input/Input';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import { verifyWallet } from 'entities/Wallet/model/services/verifyWallet/verifyWallet';
+import { WalletData } from 'entities/Wallet/model/types/wallet';
+import { use } from 'i18next';
 import cls from './Account.module.scss';
 
 const reducers: ReducersList = {
@@ -52,12 +54,12 @@ export const Account = memo(() => {
     const walletMessageIsLoading = useSelector(getWalletIsLoading);
     const walletMessageError = useSelector(getWalletError);
 
-    console.log(walletMessageData?.message);
-
     const verifyWalletIsLoading = useSelector(getWalletVerifyIsLoading);
     const verifyWalletError = useSelector(getWalletVerifyError);
 
     const userData = useSelector(getUserData)?.data;
+    const userIsLoading = useSelector(getUserIsLoading);
+    const userError = useSelector(getUserError);
     const telegramConnected = !!(userData?.telegram_id && userData.telegram_data);
     const refLink = useMemo(() => `https://${window.location.host}/ref/${userData?.referral_code}`, [userData?.referral_code]);
 
@@ -142,6 +144,11 @@ export const Account = memo(() => {
         setSubscribedDiscord(true);
     }, []);
 
+    const disconnectWallet = useCallback(() => {
+        disconnect();
+        ToastCustom.error('An error occurred while trying to connect the wallet, please try again!');
+    }, [disconnect]);
+
     useEffect(() => {
         dispatch(appActions.setPlayingMode('null'));
     }, [dispatch]);
@@ -150,7 +157,7 @@ export const Account = memo(() => {
         const button = document.createElement('script');
         button.async = true;
         button.src = 'https://telegram.org/js/telegram-widget.js?22';
-        button.setAttribute('data-telegram-login', 'blessrain_bot');
+        button.setAttribute('data-telegram-login', 'blessrain_bot,en');
         button.setAttribute('data-size', 'large');
         button.setAttribute('data-userpic', 'false');
         button.setAttribute('data-radius', '8');
@@ -162,32 +169,39 @@ export const Account = memo(() => {
 
     useEffect(() => {
         if (!isConnecting && isConnected && initConnectWallet) {
-            dispatch(fetchVerifyWalletSignMessage(address!));
+            dispatch(fetchVerifyWalletSignMessage(address!))
+                .then((res) => {
+                    if (res.meta.requestStatus === 'fulfilled') {
+                        signMessage({ message: (res.payload as WalletData).data.message });
+                    }
+                });
         }
     }, [address, dispatch, initConnectWallet, isConnected, isConnecting, signMessage]);
 
     useEffect(() => {
-        if (walletMessageData) {
-            signMessage({ message: walletMessageData.message });
+        if (signMessageData && address) {
+            dispatch(verifyWallet([address || '', signMessageData]))
+                .then((res) => {
+                    if (res.meta.requestStatus === 'rejected') {
+                        disconnectWallet();
+                    }
+                });
         }
-    }, [signMessage, walletMessageData]);
-
-    useEffect(() => {
-        if (signMessageData) {
-            console.log(signMessageData);
-            dispatch(verifyWallet([address || '', signMessageData]));
-        }
-    }, [address, dispatch, signMessageData]);
+    }, [address, disconnectWallet, dispatch, signMessageData]);
 
     useEffect(() => {
         if (walletMessageError || signMessageError || verifyWalletError) {
-            console.log('walletMessageError', walletMessageError);
-            console.log('signMessageError', signMessageError);
-            console.log('verifyWalletError', verifyWalletError);
-            disconnect();
-            ToastCustom.error('An error occurred while trying to connect the wallet, please try again!');
+            disconnectWallet();
         }
-    }, [disconnect, signMessageError, verifyWalletError, walletMessageError]);
+    }, [disconnect, disconnectWallet, signMessageError, verifyWalletError, walletMessageError]);
+
+    useEffect(() => {
+        if (!userIsLoading && userData) {
+            if (!userData.wallet) {
+                disconnect();
+            }
+        }
+    }, [disconnect, userData, userIsLoading]);
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>

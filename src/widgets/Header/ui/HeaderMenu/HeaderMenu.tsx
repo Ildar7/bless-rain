@@ -95,7 +95,7 @@ export const HeaderMenu = memo((props: HeaderMenuProps) => {
                                     <span className="dashed-border-bottom">
                                         {
                                             userIsLoading
-                                                ? (<Skeleton width={132} height={36} border="8px=" />)
+                                                ? (<Skeleton width={132} height={36} border="8px" />)
                                                 : (
                                                     <Button
                                                         theme="primary"

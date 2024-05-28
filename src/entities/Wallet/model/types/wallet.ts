@@ -1,6 +1,8 @@
 export interface WalletData {
     success: boolean;
-    message: string;
+    data: {
+        message: string;
+    }
 }
 
 export interface WalletSchema {

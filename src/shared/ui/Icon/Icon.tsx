@@ -18,7 +18,7 @@ export type IconName = 'animation'
     | 'shield-check' | 'sound-off' | 'sound-on' | 'staking' | 'star-smile'
     | 'star' | 'trash' | 'trend' | 'triangle-circle' | 'triangle-down' | 'triangle-up'
     | 'twitter' | 'user' | 'users' | 'warning' | 'xmark' | 'edit' | 'retweet' | 'comment'
-    | 'telegram' | 'social-x';
+    | 'telegram' | 'social-x' | 'check-list' | 'percents';
 
 export type IconGlow = 'pink' | 'primary' | 'green' | 'orange';
 interface IconProps {

@@ -95,6 +95,7 @@
 .girls__block {
     flex: 1;
     margin-left: -90px;
+    height: calc(100% + 100px);
 
     @media (min-width: 1024px) {
         position: absolute;

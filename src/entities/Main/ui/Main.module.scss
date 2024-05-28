@@ -1,0 +1,19 @@
+.firstScreen {
+    height: calc(100vh - 480px);
+
+    @media (min-width: 768px) {
+        height: calc(100vh - 420px);
+    }
+
+    @media (min-width: 1024px) {
+        height: calc(100vh - 256px);
+    }
+}
+
+.icon {
+    font-size: 60px;
+
+    @media (min-width: 768px) {
+        font-size: 80px;
+    }
+}

@@ -46,20 +46,20 @@ h2,
 .h2 {
     @apply font-clash;
 
-    font-size: 25px;
+    font-size: 36px;
     font-style: normal;
     font-weight: 600;
-    line-height: 28px;
+    line-height: 42px;
 }
 
 h3,
 .h3 {
     @apply font-clash;
 
-    font-size: 20px;
+    font-size: 28px;
     font-style: normal;
     font-weight: 600;
-    line-height: 28px;
+    line-height: 36px;
     letter-spacing: 0.34px;
 }
 
@@ -90,6 +90,12 @@ h5,
     font-style: normal;
     font-weight: 600;
     line-height: 24px;
+}
+
+.text-label-lg-bold {
+    @apply font-clash font-bold;
+
+    font-size: 18px;
 }
 
 .text-label-lg {

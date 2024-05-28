@@ -4,7 +4,7 @@ import './Button.scss';
 
 export type ButtonSize = 'xl' | 'lg' | 'md' | 'sm' | 'xs' | 'square';
 export type ButtonTheme = 'primary' | 'secondary' | 'tertiary' | 'outlined' | 'none' | 'tab' | 'reward';
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     children: ReactNode;
     className?: string;
     contentClassName?: string;
