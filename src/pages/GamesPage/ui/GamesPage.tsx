@@ -38,7 +38,7 @@ const GamesPage = memo((props: GamesPageProps) => {
                     to={getRouteRainySpeen()}
                 >
                     <span className="dashed-border-top">
-                        <span className="dashed-border-bottom relative">
+                        <span className="dashed-border-bottom">
                             <img src={RainySpeenImg} alt="rainy-speen" />
                             <div className={classNames(cls.gameName, {}, [])}>
                                 <div className="title-lg-clash-display w-full">
@@ -53,7 +53,7 @@ const GamesPage = memo((props: GamesPageProps) => {
                     to={getRouteMain()}
                 >
                     <span className="dashed-border-top">
-                        <span className="dashed-border-bottom relative">
+                        <span className="dashed-border-bottom">
                             <img src={PlinkoImg} alt="plinko" />
                             <div className={classNames(cls.gameName, {}, [])}>
                                 <div className="title-lg-clash-display w-full">
@@ -68,7 +68,7 @@ const GamesPage = memo((props: GamesPageProps) => {
                     to={getRouteMain()}
                 >
                     <span className="dashed-border-top">
-                        <span className="dashed-border-bottom relative">
+                        <span className="dashed-border-bottom">
                             <img src={LuckyDropletImg} alt="lucky-droplet" />
                             <div className={classNames(cls.gameName, {}, [])}>
                                 <div className="title-lg-clash-display w-full">

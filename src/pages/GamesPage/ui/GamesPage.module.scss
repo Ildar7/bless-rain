@@ -14,11 +14,16 @@
     left: 0;
     display: flex;
     align-items: flex-end;
-    padding: 19px;
 
     & > div {
         position: relative;
+        left: 19px;
+        bottom: 19px;
         z-index: 2;
+
+        @media (max-width: 560px) {
+            white-space: nowrap;
+        }
     }
 
     &:after {
