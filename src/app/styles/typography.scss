@@ -63,6 +63,13 @@ h3,
     letter-spacing: 0.34px;
 }
 
+.title-lg-clash-display {
+    font-family: var(--font-family-thirdity);
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: 0.408px;
+}
+
 .title-lg-inter {
     @apply font-inter;
 
@@ -74,8 +81,7 @@ h3,
 
 h4,
 .title-lg {
-    @apply font-clash;
-
+    font-family: var(--font-family-thirdity);
     font-size: 21px;
     font-style: normal;
     font-weight: 600;
@@ -84,8 +90,7 @@ h4,
 
 h5,
 .title-sm {
-    @apply font-clash;
-
+    font-family: var(--font-family-thirdity);
     font-size: 19px;
     font-style: normal;
     font-weight: 600;

@@ -3,8 +3,10 @@ import { NotFoundPage } from 'pages/NotFoundPage';
 import { MainPage } from 'pages/MainPage';
 import { RatingPage } from 'pages/RatingPage';
 import { RulesPage } from 'pages/RulesPage';
+import { GamesPage } from 'pages/GamesPage';
+import { RainySpeenPage } from 'pages/RainySpeenPage';
 import {
-    AppRoutes, getRouteMain, getRouteRating, getRouteRules,
+    AppRoutes, getRouteGames, getRouteMain, getRouteRainySpeen, getRouteRating, getRouteRules,
 } from '../../const/router';
 
 export const routeConfig: Record<AppRoutes, RouteProps> = {
@@ -19,6 +21,14 @@ export const routeConfig: Record<AppRoutes, RouteProps> = {
     [AppRoutes.RULES]: {
         path: getRouteRules(),
         element: <RulesPage />,
+    },
+    [AppRoutes.GAMES]: {
+        path: getRouteGames(),
+        element: <GamesPage />,
+    },
+    [AppRoutes.RAINY_SPEEN]: {
+        path: getRouteRainySpeen(),
+        element: <RainySpeenPage />,
     },
 
     // last

@@ -76,6 +76,7 @@
         position: absolute;
         height: 1px;
         pointer-events: none;
+        z-index: 3;
     }
 
     &::before {
@@ -167,7 +168,7 @@
         }
 
         span {
-            z-index: 2;
+            z-index: 3;
         }
 
         &.glowing-blue {

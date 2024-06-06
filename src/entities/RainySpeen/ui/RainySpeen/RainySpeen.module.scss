@@ -1,0 +1,63 @@
+.RainySpeen {
+    position: relative;
+    background-color: #04091b;
+    min-height: 100vh;
+    width: 100vw;
+    left: -20px;
+    z-index: 2;
+
+    @media (min-width: 1024px) {
+        left: -64px;
+    }
+}
+
+.game {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media (min-width: 768px) {
+        top: 48px;
+    }
+
+    img {
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.startBtn {
+    position: absolute;
+    z-index: 3;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 9.1388vh;
+    aspect-ratio: 320 / 278;
+
+    img {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+.screen {
+    position: absolute;
+    top: calc(50% + 17px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--white);
+    width: 212px;
+    height: 188px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.images {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}

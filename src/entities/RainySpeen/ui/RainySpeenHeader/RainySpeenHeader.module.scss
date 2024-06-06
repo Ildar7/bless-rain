@@ -1,0 +1,26 @@
+.RainySpeenHeader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 19px;
+    z-index: 3;
+}
+
+.balance {
+    border-style: solid;
+    border-width: 10px; /* Вы можете изменить толщину границы в соответствии с вашими требованиями */
+    -moz-border-image: url('shared/assets/icons/png/border.png') 10 repeat; /* Для Firefox */
+    -webkit-border-image: url('shared/assets/icons/png/border.png') 10 repeat; /* Для Safari и Chrome */
+    -o-border-image: url('shared/assets/icons/png/border.png') 10 repeat; /* Для Opera */
+    border-image: url('shared/assets/icons/png/border.png') 10 fill repeat; /* Стандартное свойство border-image */
+    height: 46px;
+    width: 145px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

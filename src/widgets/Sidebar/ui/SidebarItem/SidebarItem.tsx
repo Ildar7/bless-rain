@@ -1,5 +1,5 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import LeftHangingBars from 'shared/assets/icons/left-hanging-bars.svg';
+import LeftHangingBars from 'shared/assets/icons/left-hanging-bars.png';
 import { MouseEventHandler, ReactNode } from 'react';
 
 interface SidebarItemProps {
@@ -19,7 +19,7 @@ export const SidebarItem = (props: SidebarItemProps) => {
     return (
         <div className={classNames('flex w-auto sm:w-full items-center', {}, [className])}>
             <div>
-                <LeftHangingBars />
+                <img src={LeftHangingBars} alt="left-hanging-bars" />
             </div>
 
             <button

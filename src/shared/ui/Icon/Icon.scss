@@ -29,3 +29,12 @@
     text-shadow: 0 0 4px var(--secondary), 0 0 6px var(--secondary);
     -webkit-text-stroke: 0.3px var(--secondary);
 }
+
+
+.glow-blue {
+    @apply text-icon;
+
+    filter: blur(0.4);
+    text-shadow: 0 0 4px var(--effects-blue), 0 0 6px var(--effects-blue);
+    -webkit-text-stroke: 0.3px var(--effects-blue);
+}
