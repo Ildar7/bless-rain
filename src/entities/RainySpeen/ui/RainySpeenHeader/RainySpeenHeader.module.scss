@@ -8,7 +8,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 19px;
-    z-index: 3;
+    z-index: 20;
 }
 
 .balance {
@@ -18,8 +18,8 @@
     -webkit-border-image: url('shared/assets/icons/png/border.png') 10 repeat; /* Для Safari и Chrome */
     -o-border-image: url('shared/assets/icons/png/border.png') 10 repeat; /* Для Opera */
     border-image: url('shared/assets/icons/png/border.png') 10 fill repeat; /* Стандартное свойство border-image */
-    height: 46px;
-    width: 145px;
+    height: 48px;
+    width: 156px;
     display: flex;
     align-items: center;
     justify-content: center;

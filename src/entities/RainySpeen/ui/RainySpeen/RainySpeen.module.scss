@@ -45,19 +45,25 @@
 
 .screen {
     position: absolute;
-    top: calc(50% + 17px);
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: var(--white);
-    width: 212px;
-    height: 188px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
+    overflow: hidden;
 }
 
-.images {
-    display: flex;
-    align-items: center;
-    gap: 14px;
+.items {
+    width: 56px;
+    background-image: url('shared/assets/icons/png/speen-items.png');
+    background-position: center center;
+    background-repeat: repeat-y;
+    background-size: contain;
+    position: relative;
+    top: -2053px;
+}
+
+.borderWin {
+    transform: rotateY(180deg);
 }

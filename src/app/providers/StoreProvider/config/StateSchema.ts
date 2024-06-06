@@ -8,6 +8,7 @@ import { UserSchema } from 'entities/User';
 import { AppSchema } from 'entities/App';
 import { PowerTweetsSchema } from 'entities/PowerTweets';
 import { WalletSchema } from 'entities/Wallet';
+import { RainySpeenSchema } from 'entities/RainySpeen';
 
 export interface StateSchema {
     user: UserSchema;
@@ -16,6 +17,7 @@ export interface StateSchema {
 
     // async-reducers
     powerTweets?: PowerTweetsSchema;
+    rainySpeen?: RainySpeenSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

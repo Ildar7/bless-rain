@@ -1,0 +1,26 @@
+@keyframes speen-win-border-animate {
+    0% {
+        stroke-dashoffset: 600;
+    }
+
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes speen-win-border-appear {
+    to {
+        opacity: 1;
+    }
+}
+
+.speen-win-border-svg-shape {
+    opacity: 0;
+    animation: speen-win-border-appear 1s ease-out forwards;
+}
+
+.win-border_svg__speen-win-border-svg-rect {
+    stroke-dasharray: 600;
+    stroke-dashoffset: 600;
+    animation: speen-win-border-animate 0.25s linear forwards;
+}

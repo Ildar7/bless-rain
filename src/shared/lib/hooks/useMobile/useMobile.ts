@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 export const useMobile = () => {
     const [width, setWidth] = useState(window.innerWidth);
+    const [height, setHeight] = useState(window.innerHeight);
     const [isMobile, setIsMobile] = useState(false);
     const [isTablet, setIsTablet] = useState(false);
     const [isBigScreen, setIsBigScreen] = useState(false);
@@ -34,6 +35,7 @@ export const useMobile = () => {
         const handleResize = (event: Event) => {
             const target = event.target as Window;
             setWidth(target.innerWidth);
+            setHeight(target.innerHeight);
         };
         window.addEventListener('resize', handleResize);
         return () => {
@@ -43,6 +45,7 @@ export const useMobile = () => {
 
     return {
         width,
+        height,
         isMobile,
         isTablet,
         isBigScreen,
