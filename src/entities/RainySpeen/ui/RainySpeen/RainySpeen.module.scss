@@ -25,7 +25,6 @@
 
     img {
         height: 100%;
-        object-fit: cover;
     }
 }
 
@@ -34,7 +33,6 @@
     z-index: 3;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 9.1388vh;
     aspect-ratio: 320 / 278;
 
     img {
@@ -50,8 +48,9 @@
     background-color: var(--white);
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     overflow: hidden;
+    gap: 14px;
 }
 
 .items {

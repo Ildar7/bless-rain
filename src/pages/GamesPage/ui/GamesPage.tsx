@@ -41,7 +41,7 @@ const GamesPage = memo((props: GamesPageProps) => {
                         <span className="dashed-border-bottom relative">
                             <img src={RainySpeenImg} alt="rainy-speen" />
                             <div className={classNames(cls.gameName, {}, [])}>
-                                <div className="title-lg-clash-display">
+                                <div className="title-lg-clash-display w-full">
                                     RAINY SPEEN
                                 </div>
                             </div>
@@ -56,7 +56,7 @@ const GamesPage = memo((props: GamesPageProps) => {
                         <span className="dashed-border-bottom relative">
                             <img src={PlinkoImg} alt="plinko" />
                             <div className={classNames(cls.gameName, {}, [])}>
-                                <div className="title-lg-clash-display">
+                                <div className="title-lg-clash-display w-full">
                                     PLINKO
                                 </div>
                             </div>
@@ -71,7 +71,7 @@ const GamesPage = memo((props: GamesPageProps) => {
                         <span className="dashed-border-bottom relative">
                             <img src={LuckyDropletImg} alt="lucky-droplet" />
                             <div className={classNames(cls.gameName, {}, [])}>
-                                <div className="title-lg-clash-display">
+                                <div className="title-lg-clash-display w-full">
                                     LUCKY DROPLET
                                 </div>
                             </div>

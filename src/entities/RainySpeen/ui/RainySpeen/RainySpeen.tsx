@@ -137,7 +137,7 @@ export const RainySpeen = memo((props: RainySpeenProps) => {
                 setGameScreenWidth(gameScreenRef.current?.offsetWidth);
                 setGameScreenHeight(gameScreenRef.current?.offsetHeight);
             }
-        }, 100);
+        }, 200);
     }, [gameScreenRef, width, height]);
 
     return (
@@ -155,7 +155,10 @@ export const RainySpeen = memo((props: RainySpeenProps) => {
                     type="button"
                     className={cls.startBtn}
                     onClick={onStartHandler}
-                    style={{ width: `${gameScreenWidth / 2}px` }}
+                    style={{
+                        width: `${gameScreenWidth / 2}px`,
+                        bottom: `${0.0808 * gameScreenHeight}px`,
+                    }}
                     disabled={newGameInited && !gameFinished}
                 >
                     {btnPressed && (
