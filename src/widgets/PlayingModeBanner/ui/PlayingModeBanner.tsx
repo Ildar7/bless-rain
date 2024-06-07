@@ -59,6 +59,14 @@ export const PlayingModeBanner = ({ className }: PlayingModeBannerProps) => {
         },
     ], [onChangePlayingMode, playingMode]);
 
+    if (isMobile) {
+        return (
+            <SidebarMob
+                items={sidebarItems}
+            />
+        );
+    }
+
     return (
         <div className={classNames(
             cls.PlayingModeBanner,
@@ -66,75 +74,66 @@ export const PlayingModeBanner = ({ className }: PlayingModeBannerProps) => {
             [className, 'fixed sm:relative z-20 flex-1 sm:flex-auto flex flex-col'],
         )}
         >
-            {!isMobile && (
-                <>
-                    <div className="w-full mx-2 flex justify-between">
-                        <img src={TopHangingBars} alt="top-hanging-bars" />
-                        <img className="mr-6" src={TopHangingBars} alt="top-hanging-bars" />
-                    </div>
-                    <div
-                        className="surface p-1 sm:p-2 flex-1 sm:flex-none rounded-xl cursor-pointer select-none flex gap-2"
-                    >
-                        <div
-                            className={classNames(
-                                'inner rounded-xl px-2 py-2 sm:px-3 sm:py-3 flex '
-                                + 'items-center justify-start gap-3 dashed-border',
-                                {
-                                    'glowing-pink': playingMode === 'rules',
-                                },
-                                [],
-                            )}
-                            onClick={() => {
-                                onChangePlayingMode('rules');
-                            }}
-                        >
-                            <Icon name="gamepad" glow="pink" className="text-2xl" />
-                            <span className="dashed-border-top">
-                                <span className="text-label-sm dashed-border-bottom">RULES</span>
-                            </span>
-                        </div>
-                        <div
-                            className={classNames(
-                                'inner rounded-xl px-3 py-2.5 flex items-center justify-start gap-2 dashed-border',
-                                {
-                                    'glowing-pink': playingMode === 'rating',
-                                },
-                                [],
-                            )}
-                            onClick={() => {
-                                onChangePlayingMode('rating');
-                            }}
-                        >
-                            <Icon name="star" glow="pink" className="text-2xl" />
-                            <span className="dashed-border-top">
-                                <span className="text-label-sm dashed-border-bottom">RATING</span>
-                            </span>
-                        </div>
-                        <div
-                            className={classNames(
-                                'inner rounded-xl px-3 py-2.5 flex items-center justify-start gap-2 dashed-border',
-                                {
-                                    'glowing-blue': playingMode === 'games',
-                                },
-                                [],
-                            )}
-                            onClick={() => {
-                                onChangePlayingMode('games');
-                            }}
-                        >
-                            <Icon name="xbox-gamepad" glow="blue" className="text-2xl" />
-                            <span className="dashed-border-top">
-                                <span className="text-label-sm dashed-border-bottom">GAMES</span>
-                            </span>
-                        </div>
-                    </div>
-                </>
-            )}
-            {isMobile && (
-                <SidebarMob
-                    items={sidebarItems}
-                />
-            )}
+            <div className="w-full mx-2 flex justify-between">
+                <img src={TopHangingBars} alt="top-hanging-bars" />
+                <img className="mr-6" src={TopHangingBars} alt="top-hanging-bars" />
+            </div>
+            <div
+                className="surface p-1 sm:p-2 flex-1 sm:flex-none rounded-xl cursor-pointer select-none flex gap-2"
+            >
+                <div
+                    className={classNames(
+                        'inner rounded-xl px-2 py-2 sm:px-3 sm:py-3 flex '
+                        + 'items-center justify-start gap-3 dashed-border',
+                        {
+                            'glowing-pink': playingMode === 'rules',
+                        },
+                        [],
+                    )}
+                    onClick={() => {
+                        onChangePlayingMode('rules');
+                    }}
+                >
+                    <Icon name="gamepad" glow="pink" className="text-2xl" />
+                    <span className="dashed-border-top">
+                        <span className="text-label-sm dashed-border-bottom">RULES</span>
+                    </span>
+                </div>
+                <div
+                    className={classNames(
+                        'inner rounded-xl px-3 py-2.5 flex items-center justify-start gap-2 dashed-border',
+                        {
+                            'glowing-pink': playingMode === 'rating',
+                        },
+                        [],
+                    )}
+                    onClick={() => {
+                        onChangePlayingMode('rating');
+                    }}
+                >
+                    <Icon name="star" glow="pink" className="text-2xl" />
+                    <span className="dashed-border-top">
+                        <span className="text-label-sm dashed-border-bottom">RATING</span>
+                    </span>
+                </div>
+                <div
+                    className={classNames(
+                        'inner rounded-xl px-3 py-2.5 flex items-center justify-start gap-2 dashed-border',
+                        {
+                            'glowing-blue': playingMode === 'games',
+                        },
+                        [],
+                    )}
+                    onClick={() => {
+                        onChangePlayingMode('games');
+                    }}
+                >
+                    <Icon name="xbox-gamepad" glow="blue" className="text-2xl" />
+                    <span className="dashed-border-top">
+                        <span className="text-label-sm dashed-border-bottom">GAMES</span>
+                    </span>
+                </div>
+            </div>
         </div>
     );
 };
