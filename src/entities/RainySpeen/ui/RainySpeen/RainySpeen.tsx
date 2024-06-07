@@ -3,6 +3,7 @@ import React, {
 } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import RainySpeenGame from 'shared/assets/icons/png/speen-bg.png';
+import RainySpeenGamePc from 'shared/assets/icons/png/speen-bg-pc.png';
 import PlayBtnImg from 'shared/assets/icons/png/play-btn.png';
 import PlayBtnPressedImg from 'shared/assets/icons/png/play-btn-pressed.png';
 import BorderWin from 'shared/assets/icons/png/win-border.svg';
@@ -45,6 +46,7 @@ export const RainySpeen = memo((props: RainySpeenProps) => {
     const newGameInited = useSelector(getRainySpeenNewGameInited);
     const balance = useSelector(getRainySpeenBalance);
     const [visibleWinModal, setVisibleWinModal] = useState(false);
+    const [canResizeScreen, setCanResizeScreen] = useState(false);
 
     const pressBtnAudioRef = useRef<HTMLAudioElement | null>(null);
     const rollingSlotsAudioRef = useRef<HTMLAudioElement | null>(null);
@@ -75,6 +77,7 @@ export const RainySpeen = memo((props: RainySpeenProps) => {
         dispatch(rainySpeenActions.changeGameFinished(false));
         dispatch(rainySpeenActions.changeCanUpdateBalance(false));
         dispatch(rainySpeenActions.changeBalance(newBalance));
+        setCanResizeScreen(false);
 
         pressBtnAudioRef.current?.play();
 
@@ -85,6 +88,10 @@ export const RainySpeen = memo((props: RainySpeenProps) => {
         setTimeout(() => {
             dispatch(rainySpeenActions.changeBtnPressed(true));
             dispatch(rainySpeenActions.changeGameStarted(true));
+
+            setTimeout(() => {
+                setCanResizeScreen(true);
+            }, 2000);
 
             setFirstRollPosition({
                 ...firstRollPosition,
@@ -148,7 +155,7 @@ export const RainySpeen = memo((props: RainySpeenProps) => {
             <div className={cls.game}>
                 <img
                     ref={gameScreenRef}
-                    src={RainySpeenGame}
+                    src={width >= 768 ? RainySpeenGamePc : RainySpeenGame}
                     alt="game-screen"
                 />
                 <button
@@ -172,17 +179,19 @@ export const RainySpeen = memo((props: RainySpeenProps) => {
             <div
                 className={classNames(
                     cls.screen,
-                    { screenResize: gameStarted },
+                    { screenResize: canResizeScreen },
                     [],
                 )}
                 style={{
                     width: `${0.6625 * gameScreenWidth}px`,
                     height: `${0.33041 * gameScreenHeight}px`,
-                    top: `calc(50% + ${0.0299 * gameScreenHeight}px)`,
+                    top: `calc(50% + ${0.0299 * gameScreenHeight}px + ${width >= 768 ? '48px' : '0px'})`,
                 }}
             >
                 {gameFinished && (
-                    <BorderWin className={classNames(cls.borderWin, {}, ['absolute'])} />
+                    <BorderWin
+                        className={classNames(cls.borderWin, {}, ['absolute'])}
+                    />
                 )}
                 <div
                     className={classNames(
@@ -217,8 +226,16 @@ export const RainySpeen = memo((props: RainySpeenProps) => {
 
                 <style>
                     {`
-                       
-                        
+                        @keyframes resize-screen {
+                            0% {
+                                height: ${0.33041 * gameScreenHeight}px
+                            }
+                            
+                            100% {
+                                height: ${0.1406 * gameScreenHeight}px
+                            }
+                        }
+                    
                         @keyframes roll-first-slot {
                             0% {
                                 transform: translateY(${firstRollPosition.start}px);
@@ -233,7 +250,7 @@ export const RainySpeen = memo((props: RainySpeenProps) => {
                             }
                             
                             85% {
-                                transform: translateY(${(firstRollPosition.end) + 10}px);
+                                transform: translateY(${(firstRollPosition.end) + 5}px);
                             }
                             
                             100% {
@@ -263,7 +280,7 @@ export const RainySpeen = memo((props: RainySpeenProps) => {
                             }
                             
                             90% {
-                                transform: translateY(${secondRollPosition.end + 10}px);
+                                transform: translateY(${secondRollPosition.end + 5}px);
                             }
                             
                             100% {
@@ -293,7 +310,7 @@ export const RainySpeen = memo((props: RainySpeenProps) => {
                             }
                             
                             95% {
-                                transform: translateY(${thirdRollPosition.end + 10}px);
+                                transform: translateY(${thirdRollPosition.end + 5}px);
                             }
                             
                             100% {
@@ -313,7 +330,9 @@ export const RainySpeen = memo((props: RainySpeenProps) => {
                             animation: roll-third-slot 3s ease-in-out forwards;
                         }
                         
-                       
+                       .screenResize {
+                            animation: resize-screen 0.3s linear forwards;
+                       }
                     `}
                 </style>
             </div>

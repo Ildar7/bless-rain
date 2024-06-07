@@ -27,6 +27,7 @@ export const RainySpeenWinModal = memo((props: RainySpeenWinModalProps) => {
     const balance = useSelector(getRainySpeenBalance);
     const dispatch = useAppDispatch();
     const winModalAudioRef = useRef<HTMLAudioElement | null>(null);
+    const [canCloseModal, setCanCloseModal] = useState(false);
 
     useEffect(() => {
         winModalAudioRef.current?.play();
@@ -37,6 +38,7 @@ export const RainySpeenWinModal = memo((props: RainySpeenWinModalProps) => {
         }, 250);
 
         setTimeout(() => {
+            setCanCloseModal(true);
             dispatch(rainySpeenActions.changeBalance((balance || 0) + 1500));
         }, 2000);
     }, [dispatch]);
@@ -44,7 +46,7 @@ export const RainySpeenWinModal = memo((props: RainySpeenWinModalProps) => {
     return (
         <div
             className={classNames(cls.RainySpeenWinModal, { [cls.visible]: visible }, [className])}
-            onClick={onClose}
+            onClick={canCloseModal ? onClose : undefined}
         >
             <AnimatedText
                 className={cls.winText}

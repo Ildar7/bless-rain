@@ -6,7 +6,8 @@ import { AppPlayingMode, getAppPlayingMode } from 'entities/App';
 import { useNavigate } from 'react-router-dom';
 import { getRouteGames, getRouteRating, getRouteRules } from 'shared/const/router';
 import { useMobile } from 'shared/lib/hooks/useMobile/useMobile';
-import LeftHangingBars from 'shared/assets/icons/left-hanging-bars.png';
+import { SidebarMob, SidebarMobItem } from 'widgets/SidebarMob';
+import { useCallback, useMemo } from 'react';
 import cls from './PlayingModeBanner.module.scss';
 
 interface PlayingModeBannerProps {
@@ -17,7 +18,7 @@ export const PlayingModeBanner = ({ className }: PlayingModeBannerProps) => {
     const navigate = useNavigate();
     const { isMobile } = useMobile();
 
-    const onChangePlayingMode = (mode: AppPlayingMode) => {
+    const onChangePlayingMode = useCallback((mode: AppPlayingMode) => {
         if (mode === 'rules') {
             navigate(getRouteRules());
             return;
@@ -29,7 +30,34 @@ export const PlayingModeBanner = ({ className }: PlayingModeBannerProps) => {
         }
 
         navigate(getRouteGames());
-    };
+    }, [navigate]);
+
+    const sidebarItems: SidebarMobItem[] = useMemo(() => [
+        {
+            id: 1,
+            title: 'RULES',
+            glow: 'pink',
+            onClick: () => onChangePlayingMode('rules'),
+            icon: 'gamepad',
+            active: playingMode === 'rules',
+        },
+        {
+            id: 2,
+            title: 'RATING',
+            glow: 'pink',
+            onClick: () => onChangePlayingMode('rating'),
+            icon: 'star',
+            active: playingMode === 'rating',
+        },
+        {
+            id: 3,
+            title: 'GAMES',
+            glow: 'blue',
+            onClick: () => onChangePlayingMode('games'),
+            icon: 'xbox-gamepad',
+            active: playingMode === 'games',
+        },
+    ], [onChangePlayingMode, playingMode]);
 
     return (
         <div className={classNames(
@@ -103,74 +131,9 @@ export const PlayingModeBanner = ({ className }: PlayingModeBannerProps) => {
                 </>
             )}
             {isMobile && (
-                <div className="flex flex-col gap-3">
-                    <div className="flex items-center">
-                        <img src={LeftHangingBars} alt="left-hanging-bars" />
-                        <div className="surface p-1 min-w-[200px]">
-                            <div
-                                className={classNames(
-                                    'inner rounded-xl p-2 flex items-center justify-start gap-3 dashed-border',
-                                    {
-                                        'glowing-pink': playingMode === 'rules',
-                                    },
-                                    [],
-                                )}
-                                onClick={() => {
-                                    onChangePlayingMode('rules');
-                                }}
-                            >
-                                <Icon name="gamepad" glow="pink" className="text-2xl" />
-                                <span className="dashed-border-top">
-                                    <span className="text-label-sm dashed-border-bottom">RULES</span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="flex items-center">
-                        <img src={LeftHangingBars} alt="left-hanging-bars" />
-                        <div className="surface p-1 min-w-[200px]">
-                            <div
-                                className={classNames(
-                                    'inner rounded-xl p-2 flex items-center justify-start gap-3 dashed-border',
-                                    {
-                                        'glowing-pink': playingMode === 'rating',
-                                    },
-                                    [],
-                                )}
-                                onClick={() => {
-                                    onChangePlayingMode('rating');
-                                }}
-                            >
-                                <Icon name="star" glow="pink" className="text-2xl" />
-                                <span className="dashed-border-top">
-                                    <span className="text-label-sm dashed-border-bottom">RATING</span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="flex items-center">
-                        <img src={LeftHangingBars} alt="left-hanging-bars" />
-                        <div className="surface p-1 min-w-[200px]">
-                            <div
-                                className={classNames(
-                                    'inner rounded-xl p-2 flex items-center justify-start gap-3 dashed-border',
-                                    {
-                                        'glowing-blue': playingMode === 'games',
-                                    },
-                                    [],
-                                )}
-                                onClick={() => {
-                                    onChangePlayingMode('games');
-                                }}
-                            >
-                                <Icon name="xbox-gamepad" glow="blue" className="text-2xl" />
-                                <span className="dashed-border-top">
-                                    <span className="text-label-sm dashed-border-bottom">GAMES</span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <SidebarMob
+                    items={sidebarItems}
+                />
             )}
         </div>
     );
