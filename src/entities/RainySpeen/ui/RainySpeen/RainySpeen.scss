@@ -19,7 +19,8 @@
     animation: speen-win-border-appear 1s ease-out forwards;
 }
 
-.win-border_svg__speen-win-border-svg-rect {
+.win-border_svg__speen-win-border-svg-rect,
+.win-border-big-height_svg__speen-win-border-svg-rect {
     stroke-dasharray: 600;
     stroke-dashoffset: 600;
     animation: speen-win-border-animate 0.25s linear forwards;
