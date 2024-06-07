@@ -7,6 +7,7 @@ import RainySpeenGamePc from 'shared/assets/icons/png/speen-bg-pc.png';
 import PlayBtnImg from 'shared/assets/icons/png/play-btn.png';
 import PlayBtnPressedImg from 'shared/assets/icons/png/play-btn-pressed.png';
 import BorderWin from 'shared/assets/icons/png/win-border.svg';
+import BorderWinBigHeight from 'shared/assets/icons/png/win-border-big-height.svg';
 import { useMobile } from 'shared/lib/hooks/useMobile/useMobile';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
@@ -189,9 +190,17 @@ export const RainySpeen = memo((props: RainySpeenProps) => {
                 }}
             >
                 {gameFinished && (
-                    <BorderWin
-                        className={classNames(cls.borderWin, {}, ['absolute'])}
-                    />
+                    height > 1000
+                        ? (
+                            <BorderWinBigHeight
+                                className={classNames(cls.borderWin, {}, ['absolute'])}
+                            />
+                        )
+                        : (
+                            <BorderWin
+                                className={classNames(cls.borderWin, {}, ['absolute'])}
+                            />
+                        )
                 )}
                 <div
                     className={classNames(
@@ -232,7 +241,7 @@ export const RainySpeen = memo((props: RainySpeenProps) => {
                             }
                             
                             100% {
-                                height: ${0.1406 * gameScreenHeight}px
+                                height: calc(${0.1406 * gameScreenHeight}px - ${height > 1000 ? 70 : 0}px)
                             }
                         }
                     
