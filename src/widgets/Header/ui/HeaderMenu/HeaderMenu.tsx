@@ -70,7 +70,7 @@ export const HeaderMenu = memo((props: HeaderMenuProps) => {
                 ['relative z-70 flex'],
             )}
             >
-                {(sidebarOpened || width > 768) && (
+                {(sidebarOpened || width >= 768) && (
                     <PlayingModeBanner />
                 )}
                 {/* <BonusBanner /> */}
