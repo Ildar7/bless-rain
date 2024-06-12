@@ -3,11 +3,9 @@ import { Icon } from 'shared/ui/Icon/Icon';
 import TopHangingBars from 'shared/assets/icons/top-hanging-bars.png';
 import { useSelector } from 'react-redux';
 import { AppPlayingMode, getAppPlayingMode } from 'entities/App';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { getRouteGames, getRouteRating, getRouteRules } from 'shared/const/router';
-import { useMobile } from 'shared/lib/hooks/useMobile/useMobile';
-import { SidebarMob, SidebarMobItem } from 'widgets/SidebarMob';
-import { useCallback, useMemo } from 'react';
+import { useCallback } from 'react';
 import cls from './PlayingModeBanner.module.scss';
 
 interface PlayingModeBannerProps {
@@ -16,7 +14,7 @@ interface PlayingModeBannerProps {
 export const PlayingModeBanner = ({ className }: PlayingModeBannerProps) => {
     const playingMode = useSelector(getAppPlayingMode);
     const navigate = useNavigate();
-    const { isMobile } = useMobile();
+    const { pathname } = useLocation();
 
     const onChangePlayingMode = useCallback((mode: AppPlayingMode) => {
         if (mode === 'rules') {
@@ -31,41 +29,6 @@ export const PlayingModeBanner = ({ className }: PlayingModeBannerProps) => {
 
         navigate(getRouteGames());
     }, [navigate]);
-
-    const sidebarItems: SidebarMobItem[] = useMemo(() => [
-        {
-            id: 1,
-            title: 'RULES',
-            glow: 'pink',
-            onClick: () => onChangePlayingMode('rules'),
-            icon: 'gamepad',
-            active: playingMode === 'rules',
-        },
-        {
-            id: 2,
-            title: 'RATING',
-            glow: 'pink',
-            onClick: () => onChangePlayingMode('rating'),
-            icon: 'star',
-            active: playingMode === 'rating',
-        },
-        {
-            id: 3,
-            title: 'GAMES',
-            glow: 'blue',
-            onClick: () => onChangePlayingMode('games'),
-            icon: 'xbox-gamepad',
-            active: playingMode === 'games',
-        },
-    ], [onChangePlayingMode, playingMode]);
-
-    if (isMobile) {
-        return (
-            <SidebarMob
-                items={sidebarItems}
-            />
-        );
-    }
 
     return (
         <div className={classNames(
@@ -120,7 +83,7 @@ export const PlayingModeBanner = ({ className }: PlayingModeBannerProps) => {
                     className={classNames(
                         'inner rounded-xl px-3 py-2.5 flex items-center justify-start gap-2 dashed-border',
                         {
-                            'glowing-blue': playingMode === 'games',
+                            'glowing-blue': playingMode === 'games' || pathname.includes(getRouteGames()),
                         },
                         [],
                     )}

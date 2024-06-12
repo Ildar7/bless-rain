@@ -1,4 +1,6 @@
 .signin-buttons {
+    display: flex;
+    align-items: stretch;
     z-index: 55;
 
     @media (max-width: 768px) {
@@ -6,5 +8,3 @@
         right: 1rem;
     }
 }
-
-

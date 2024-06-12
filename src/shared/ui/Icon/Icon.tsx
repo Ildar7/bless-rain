@@ -18,7 +18,8 @@ export type IconName = 'animation'
     | 'shield-check' | 'sound-off' | 'sound-on' | 'staking' | 'star-smile'
     | 'star' | 'trash' | 'trend' | 'triangle-circle' | 'triangle-down' | 'triangle-up'
     | 'twitter' | 'user' | 'users' | 'warning' | 'xmark' | 'edit' | 'retweet' | 'comment'
-    | 'telegram' | 'social-x' | 'check-list' | 'percents' | 'xbox-gamepad' | 'table';
+    | 'telegram' | 'social-x' | 'check-list' | 'percents' | 'xbox-gamepad' | 'table'
+    | 'dollar' | 'arrows-up-boxed' | 'check-list-boxed';
 
 export type IconGlow = 'pink' | 'primary' | 'green' | 'orange' | 'blue';
 interface IconProps {

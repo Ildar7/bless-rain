@@ -7,9 +7,9 @@ import { AnimatedCounter } from 'shared/ui/AnimatedCounter/AnimatedCounter';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
 import WinModalAudio from 'shared/assets/songs/rainySpeen/win-modal.mp3';
+import { getUserBalance, userActions } from 'entities/User';
 import { rainySpeenActions } from '../../model/slice/rainySpeenSlice';
 import cls from './RainySpeenWinModal.module.scss';
-import { getRainySpeenBalance } from '../../model/selectors/getRainySpeen/getRainySpeen';
 
 interface RainySpeenWinModalProps {
     className?: string;
@@ -24,7 +24,7 @@ export const RainySpeenWinModal = memo((props: RainySpeenWinModalProps) => {
         onClose,
     } = props;
     const [visibleWinValue, setVisibleWinValue] = useState(false);
-    const balance = useSelector(getRainySpeenBalance);
+    const balance = useSelector(getUserBalance);
     const dispatch = useAppDispatch();
     const winModalAudioRef = useRef<HTMLAudioElement | null>(null);
     const [canCloseModal, setCanCloseModal] = useState(false);
@@ -39,7 +39,7 @@ export const RainySpeenWinModal = memo((props: RainySpeenWinModalProps) => {
 
         setTimeout(() => {
             setCanCloseModal(true);
-            dispatch(rainySpeenActions.changeBalance((balance || 0) + 1500));
+            dispatch(userActions.changeBalance((balance || 0) + 1500));
         }, 2000);
     }, [dispatch]);
 

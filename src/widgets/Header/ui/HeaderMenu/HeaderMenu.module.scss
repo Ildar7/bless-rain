@@ -8,8 +8,9 @@
 
 .headerMenuLogo {
     @media (max-width: 1279px) {
-        scale: 0.8;
-        top: -17px !important;
+        scale: 0.7;
+        top: -24px !important;
+        left: calc(50% - 32px) !important;
     }
 }
 
@@ -34,4 +35,8 @@
     height: 160px;
     position: relative;
     top: -7px;
+}
+
+.money {
+    font-family: var(--font-family-thirdity);
 }

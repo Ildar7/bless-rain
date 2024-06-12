@@ -5,9 +5,12 @@ import { Footer } from 'widgets/Footer';
 import './HeaderAndFooter.scss';
 import { getRouteRainySpeen } from 'shared/const/router';
 import { useLocation } from 'react-router-dom';
+import { useMobile } from 'shared/lib/hooks/useMobile/useMobile';
+import { MobileMenu } from 'widgets/MobileMenu';
 import { Container } from '../../Container';
+import cls from './HeaderAndFooter.module.scss';
 
-const withoutHeaderAndFooterPages = [getRouteRainySpeen()];
+const withoutFooterPages = [getRouteRainySpeen()];
 
 interface HeaderAndFooterProps {
     className?: string;
@@ -16,8 +19,7 @@ interface HeaderAndFooterProps {
 
 export const HeaderAndFooter = ({ className, children }: HeaderAndFooterProps) => {
     const { pathname } = useLocation();
-
-    console.log(pathname);
+    const { isMobile } = useMobile();
 
     return (
         <Container
@@ -29,13 +31,23 @@ export const HeaderAndFooter = ({ className, children }: HeaderAndFooterProps) =
                 )
             }
         >
-            {!withoutHeaderAndFooterPages.includes(pathname) && (
-                <Header />
+            {((withoutFooterPages.includes(pathname) && !isMobile) || !withoutFooterPages.includes(pathname)) && (
+                <Header
+                    className={classNames(
+                        '',
+                        {
+                            [cls.gamesHeader]: withoutFooterPages.includes(pathname),
+                            'px-5 md:px-16': withoutFooterPages.includes(pathname),
+                        },
+                        [],
+                    )}
+                />
             )}
             {children}
-            {!withoutHeaderAndFooterPages.includes(pathname) && (
+            {!withoutFooterPages.includes(pathname) && (
                 <Footer />
             )}
+            {isMobile && !withoutFooterPages.includes(pathname) && <MobileMenu />}
         </Container>
     );
 };

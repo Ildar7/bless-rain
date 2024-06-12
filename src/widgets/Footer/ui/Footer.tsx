@@ -2,12 +2,13 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { Icon } from 'shared/ui/Icon/Icon';
 import './Footer.scss';
 import FooterLogo from 'shared/assets/icons/png/footer-logo.png';
+import cls from './Footer.module.scss';
 
 interface FooterProps {
   className?: string;
 }
 export const Footer = ({ className }: FooterProps) => (
-    <footer className={classNames('mt-10 md:mt-20 w-full', {}, [className])}>
+    <footer className={classNames(cls.footer, {}, [className, 'mt-10 md:mt-20 w-full'])}>
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 w-full">
             <div className="flex justify-between md:justify-start w-full md:w-auto
             items-center gap-[75px] md:gap-[125px]"

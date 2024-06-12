@@ -6,12 +6,17 @@ const initialState: UserSchema = {
     data: undefined,
     isLoading: true,
     error: undefined,
+    balance: 10000,
 };
 
 const userSlice = createSlice({
     name: 'user',
     initialState,
-    reducers: {},
+    reducers: {
+        changeBalance: (state, action: PayloadAction<number>) => {
+            state.balance = action.payload;
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchUserInfo.pending, (state) => {
@@ -64,6 +69,7 @@ const userSlice = createSlice({
                 //         referral_code: '8056cdfe60',
                 //     },
                 // };
+                // state.data = info;
                 state.data = action.payload;
             })
             .addCase(fetchUserInfo.rejected, (state, action) => {

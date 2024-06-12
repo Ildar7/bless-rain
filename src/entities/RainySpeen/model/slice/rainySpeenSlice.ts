@@ -9,7 +9,6 @@ const initialState: RainySpeenSchema = {
         newGameInited: false,
         canUpdateBalance: false,
     },
-    balance: 5000,
 };
 
 const rainySpeenSlice = createSlice({
@@ -27,9 +26,6 @@ const rainySpeenSlice = createSlice({
         },
         changeNewGameInited: (state, action: PayloadAction<boolean>) => {
             state.settings.newGameInited = action.payload;
-        },
-        changeBalance: (state, action: PayloadAction<number>) => {
-            state.balance = action.payload;
         },
         changeCanUpdateBalance: (state, action: PayloadAction<boolean>) => {
             state.settings.canUpdateBalance = action.payload;

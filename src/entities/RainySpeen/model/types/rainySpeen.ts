@@ -8,5 +8,4 @@ interface RainySpeenSettings {
 
 export interface RainySpeenSchema {
     settings: RainySpeenSettings;
-    balance: number;
 }

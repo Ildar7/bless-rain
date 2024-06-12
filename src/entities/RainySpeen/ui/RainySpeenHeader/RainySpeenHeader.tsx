@@ -1,5 +1,5 @@
 import React, {
-    memo, useCallback, useEffect, useMemo, useState,
+    memo, useCallback, useMemo, useState,
 } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import InfoIcon from 'shared/assets/icons/png/info.png';
@@ -8,12 +8,11 @@ import { useNavigate } from 'react-router-dom';
 import { getRouteGames } from 'shared/const/router';
 import { useSelector } from 'react-redux';
 import { AnimatedCounter } from 'shared/ui/AnimatedCounter/AnimatedCounter';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { rainySpeenActions } from 'entities/RainySpeen/model/slice/rainySpeenSlice';
-import { SidebarMob, SidebarMobItem } from 'widgets/SidebarMob';
+import { ApplicationModal, ApplicationModalButtons } from 'widgets/ApplicationModal';
+import { RainySpeenRules, RainySpeenWinTable } from 'entities/RainySpeen';
+import { getUserBalance } from 'entities/User';
 import cls from './RainySpeenHeader.module.scss';
 import {
-    getRainySpeenBalance,
     getRainySpeenCanUpdateBalance,
     getRainySpeenNewGameInited,
 } from '../../model/selectors/getRainySpeen/getRainySpeen';
@@ -27,48 +26,50 @@ export const RainySpeenHeader = memo((props: RainySpeenHeaderProps) => {
         className,
     } = props;
     const navigate = useNavigate();
-    const balance = useSelector(getRainySpeenBalance);
+    const balance = useSelector(getUserBalance);
     const newGameInited = useSelector(getRainySpeenNewGameInited);
     const canUpdateBalance = useSelector(getRainySpeenCanUpdateBalance);
-    const [sidebarVisible, setSidebarVisible] = useState(false);
+    const [applicationModalOpened, setApplicationModalOpened] = useState(false);
+
+    const buttons: ApplicationModalButtons[] = useMemo(() => [
+        {
+            id: 1,
+            name: 'Rules',
+            icon: 'gamepad',
+            active: true,
+            component: <RainySpeenRules />,
+        },
+        {
+            id: 2,
+            name: 'Win table',
+            icon: 'table',
+            active: false,
+            component: <RainySpeenWinTable />,
+        },
+    ], []);
 
     const closeGame = useCallback(() => {
         navigate(getRouteGames());
     }, [navigate]);
 
-    const sidebarItems: SidebarMobItem[] = useMemo(() => [
-        {
-            id: 1,
-            title: 'RULES',
-            glow: 'pink',
-            onClick: () => { setSidebarVisible(false); },
-            icon: 'gamepad',
-            active: false,
-        },
-        {
-            id: 2,
-            title: 'WIN TABLE',
-            glow: 'blue',
-            onClick: () => { setSidebarVisible(false); },
-            icon: 'table',
-            active: false,
-        },
-    ], []);
+    const onOpenApplicationModal = useCallback(() => {
+        setApplicationModalOpened(true);
+    }, []);
 
-    const onToggleSidebar = useCallback(() => {
-        setSidebarVisible((prevState) => !prevState);
+    const onCloseApplicationModal = useCallback(() => {
+        setApplicationModalOpened(false);
     }, []);
 
     return (
         <>
-            <div className={classNames(cls.RainySpeenHeader, { }, [className])}>
+            <div className={classNames(cls.RainySpeenHeader, {}, [className])}>
                 <button
                     type="button"
-                    onClick={onToggleSidebar}
+                    onClick={onOpenApplicationModal}
                 >
                     <img src={InfoIcon} alt="info" />
                 </button>
-                <div className={classNames(cls.balance, { }, ['title-sm'])}>
+                <div className={classNames(cls.balance, {}, ['title-sm'])}>
                     {(newGameInited || canUpdateBalance) && (
                         <AnimatedCounter
                             from={balance!}
@@ -87,9 +88,12 @@ export const RainySpeenHeader = memo((props: RainySpeenHeaderProps) => {
                     <img src={CloseIcon} alt="close" />
                 </button>
             </div>
-            {sidebarVisible && (
-                <SidebarMob items={sidebarItems} />
-            )}
+
+            <ApplicationModal
+                isOpen={applicationModalOpened}
+                onCloseModal={onCloseApplicationModal}
+                buttons={buttons}
+            />
         </>
     );
 });

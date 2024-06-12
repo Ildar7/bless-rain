@@ -63,21 +63,26 @@ const GamesPage = memo((props: GamesPageProps) => {
                         </span>
                     </span>
                 </AppLink>
-                <AppLink
-                    className={classNames(cls.link, {}, ['flex-1 glowing-blue dashed-border rounded-xl overflow-hidden'])}
-                    to={getRouteMain()}
+                <div
+                    className={classNames(
+                        cls.link,
+                        {},
+                        [cls.linkBlured, 'flex-1 glowing-blue dashed-border rounded-xl overflow-hidden'],
+                    )}
                 >
                     <span className="dashed-border-top">
                         <span className="dashed-border-bottom">
-                            <img src={LuckyDropletImg} alt="lucky-droplet" />
+                            <div className={cls.linkImg}>
+                                <img src={LuckyDropletImg} alt="lucky-droplet" />
+                            </div>
                             <div className={classNames(cls.gameName, {}, [])}>
-                                <div className="title-lg-clash-display w-full">
-                                    LUCKY DROPLET
+                                <div className="title-lg-clash-display w-full opacity-60">
+                                    COMING SOON
                                 </div>
                             </div>
                         </span>
                     </span>
-                </AppLink>
+                </div>
             </div>
         </div>
     );

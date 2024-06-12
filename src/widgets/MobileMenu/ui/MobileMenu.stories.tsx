@@ -1,16 +1,16 @@
 import React, { memo } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { SidebarMob } from './SidebarMob';
+import { MobileMenu } from './MobileMenu';
 
 export default {
-    title: 'shared/SidebarMob',
-    component: SidebarMob,
+    title: 'shared/MobileMenu',
+    component: MobileMenu,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-} as ComponentMeta<typeof SidebarMob>;
+} as ComponentMeta<typeof MobileMenu>;
 
-const Template: ComponentStory<typeof SidebarMob> = (args) => <SidebarMob {...args} />;
+const Template: ComponentStory<typeof MobileMenu> = (args) => <MobileMenu {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {};

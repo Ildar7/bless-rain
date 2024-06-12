@@ -6,7 +6,6 @@ const initialState: AppSchema = {
         playing: {
             mode: 'null',
         },
-        sidebarOpened: false,
     },
 };
 
@@ -16,9 +15,6 @@ const appSlice = createSlice({
     reducers: {
         setPlayingMode: (state, action: PayloadAction<AppPlayingMode>) => {
             state.settings.playing.mode = action.payload;
-        },
-        toggleVisibleSidebar: (state) => {
-            state.settings.sidebarOpened = !state.settings.sidebarOpened;
         },
     },
 });

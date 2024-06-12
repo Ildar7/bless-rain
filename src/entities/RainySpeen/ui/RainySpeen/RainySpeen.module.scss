@@ -39,6 +39,10 @@
     transform: translateX(-50%);
     aspect-ratio: 320 / 278;
 
+    @media (min-width: 768px) {
+        aspect-ratio: 320 / 220;
+    }
+
     img {
         width: 100%;
         max-width: 100%;

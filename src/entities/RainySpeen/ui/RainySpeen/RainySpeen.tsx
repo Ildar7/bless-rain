@@ -5,7 +5,9 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import RainySpeenGame from 'shared/assets/icons/png/speen-bg.png';
 import RainySpeenGamePc from 'shared/assets/icons/png/speen-bg-pc.png';
 import PlayBtnImg from 'shared/assets/icons/png/play-btn.png';
+import PlayBtnPcImg from 'shared/assets/icons/png/play-btn-pc.png';
 import PlayBtnPressedImg from 'shared/assets/icons/png/play-btn-pressed.png';
+import PlayBtnPressedPcImg from 'shared/assets/icons/png/play-btn-pressed-pc.png';
 import BorderWin from 'shared/assets/icons/png/win-border.svg';
 import BorderWinBigHeight from 'shared/assets/icons/png/win-border-big-height.svg';
 import { useMobile } from 'shared/lib/hooks/useMobile/useMobile';
@@ -19,13 +21,13 @@ import cls from './RainySpeen.module.scss';
 import './RainySpeen.scss';
 import { rainySpeenActions } from '../../model/slice/rainySpeenSlice';
 import {
-    getRainySpeenBalance,
     getRainySpeenBtnPressed,
     getRainySpeenGameFinished,
     getRainySpeenGameStarted,
     getRainySpeenNewGameInited,
 } from '../../model/selectors/getRainySpeen/getRainySpeen';
 import { RainySpeenWinModal } from '../RainySpeenWinModal/RainySpeenWinModal';
+import { getUserBalance, userActions } from 'entities/User';
 
 interface RainySpeenProps {
     className?: string;
@@ -39,13 +41,13 @@ export const RainySpeen = memo((props: RainySpeenProps) => {
     const gameScreenRef = useRef<HTMLImageElement | null>(null);
     const [gameScreenWidth, setGameScreenWidth] = useState(0);
     const [gameScreenHeight, setGameScreenHeight] = useState(0);
-    const { width, height } = useMobile();
+    const { width, height, isMobile } = useMobile();
     const [gameNum, setGameNum] = useState(1);
     const btnPressed = useSelector(getRainySpeenBtnPressed);
     const gameStarted = useSelector(getRainySpeenGameStarted);
     const gameFinished = useSelector(getRainySpeenGameFinished);
     const newGameInited = useSelector(getRainySpeenNewGameInited);
-    const balance = useSelector(getRainySpeenBalance);
+    const balance = useSelector(getUserBalance);
     const [visibleWinModal, setVisibleWinModal] = useState(false);
     const [canResizeScreen, setCanResizeScreen] = useState(false);
 
@@ -77,7 +79,7 @@ export const RainySpeen = memo((props: RainySpeenProps) => {
         dispatch(rainySpeenActions.changeGameStarted(false));
         dispatch(rainySpeenActions.changeGameFinished(false));
         dispatch(rainySpeenActions.changeCanUpdateBalance(false));
-        dispatch(rainySpeenActions.changeBalance(newBalance));
+        dispatch(userActions.changeBalance(newBalance));
         setCanResizeScreen(false);
 
         pressBtnAudioRef.current?.play();
@@ -152,7 +154,7 @@ export const RainySpeen = memo((props: RainySpeenProps) => {
         <div
             className={classNames(cls.RainySpeen, {}, [className])}
         >
-            <RainySpeenHeader />
+            {isMobile && <RainySpeenHeader />}
             <div className={cls.game}>
                 <img
                     ref={gameScreenRef}
@@ -165,15 +167,15 @@ export const RainySpeen = memo((props: RainySpeenProps) => {
                     onClick={onStartHandler}
                     style={{
                         width: `${gameScreenWidth / 2}px`,
-                        bottom: `${0.0808 * gameScreenHeight}px`,
+                        bottom: `${(width >= 768 ? 0.03 : 0.0808) * gameScreenHeight}px`,
                     }}
                     disabled={newGameInited && !gameFinished}
                 >
                     {btnPressed && (
-                        <img src={PlayBtnPressedImg} alt="play-btn-pressed" />
+                        <img src={width >= 768 ? PlayBtnPressedPcImg : PlayBtnPressedImg} alt="play-btn-pressed" />
                     )}
                     {!btnPressed && (
-                        <img src={PlayBtnImg} alt="play-btn" />
+                        <img src={width >= 768 ? PlayBtnPcImg : PlayBtnImg} alt="play-btn" />
                     )}
                 </button>
             </div>
@@ -184,13 +186,13 @@ export const RainySpeen = memo((props: RainySpeenProps) => {
                     [],
                 )}
                 style={{
-                    width: `${0.6625 * gameScreenWidth}px`,
-                    height: `${0.33041 * gameScreenHeight}px`,
-                    top: `calc(50% + ${0.0299 * gameScreenHeight}px + ${width >= 768 ? '48px' : '0px'})`,
+                    width: `${(width >= 768 ? 0.59 : 0.6625) * gameScreenWidth}px`,
+                    height: `${(width >= 768 ? 0.34 : 0.33041) * gameScreenHeight}px`,
+                    top: `calc(50% + ${(width >= 768 ? 0.075 : 0.0299) * gameScreenHeight}px + ${width >= 768 ? '48px' : '0px'})`,
                 }}
             >
                 {gameFinished && (
-                    height > 1000
+                    height > 900
                         ? (
                             <BorderWinBigHeight
                                 className={classNames(cls.borderWin, {}, ['absolute'])}
@@ -241,7 +243,8 @@ export const RainySpeen = memo((props: RainySpeenProps) => {
                             }
                             
                             100% {
-                                height: calc(${0.1406 * gameScreenHeight}px - ${height > 1000 ? 70 : 0}px)
+                                height: calc(${(width >= 768 && width <= 1920
+            ? 0.17 : 0.1406) * gameScreenHeight}px - ${height > 900 ? 70 : 0}px)
                             }
                         }
                     

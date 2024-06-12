@@ -53,4 +53,5 @@ export interface UserSchema {
     data?: UserInfo;
     isLoading: boolean;
     error?: string;
+    balance: number;
 }

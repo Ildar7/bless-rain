@@ -1,4 +1,4 @@
-export { getAppPlayingMode, getAppSidebarOpened } from './model/selectors/getAppPlayingMode/getAppPlayingMode';
+export { getAppPlayingMode } from './model/selectors/getAppPlayingMode/getAppPlayingMode';
 
 export { appReducer, appActions } from './model/slice/appSlice';
 

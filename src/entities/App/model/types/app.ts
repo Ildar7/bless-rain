@@ -6,7 +6,6 @@ interface AppSettingsPlaying {
 }
 interface AppSettings {
     playing: AppSettingsPlaying;
-    sidebarOpened: boolean;
 }
 
 export interface AppSchema {
