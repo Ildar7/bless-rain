@@ -6,7 +6,7 @@ import RainySpeenImg from 'shared/assets/icons/png/rainy_speen.png';
 import PlinkoImg from 'shared/assets/icons/png/plinko.png';
 import LuckyDropletImg from 'shared/assets/icons/png/lucky_droplet.png';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
-import { getRouteMain, getRouteRainySpeen } from 'shared/const/router';
+import { getRouteMain, getRoutePlinko, getRouteRainySpeen } from 'shared/const/router';
 import { useMobile } from 'shared/lib/hooks/useMobile/useMobile';
 import cls from './GamesPage.module.scss';
 
@@ -50,7 +50,7 @@ const GamesPage = memo((props: GamesPageProps) => {
                 </AppLink>
                 <AppLink
                     className={classNames(cls.link, {}, ['flex-1 glowing-blue dashed-border rounded-xl overflow-hidden'])}
-                    to={getRouteMain()}
+                    to={getRoutePlinko()}
                 >
                     <span className="dashed-border-top">
                         <span className="dashed-border-bottom">
@@ -72,9 +72,7 @@ const GamesPage = memo((props: GamesPageProps) => {
                 >
                     <span className="dashed-border-top">
                         <span className="dashed-border-bottom">
-                            <div className={cls.linkImg}>
-                                <img src={LuckyDropletImg} alt="lucky-droplet" />
-                            </div>
+                            <img src={LuckyDropletImg} alt="lucky-droplet" />
                             <div className={classNames(cls.gameName, {}, [])}>
                                 <div className="title-lg-clash-display w-full opacity-60">
                                     COMING SOON

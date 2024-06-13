@@ -3,14 +3,14 @@ import { ReactNode } from 'react';
 import { Header } from 'widgets/Header';
 import { Footer } from 'widgets/Footer';
 import './HeaderAndFooter.scss';
-import { getRouteRainySpeen } from 'shared/const/router';
+import { getRoutePlinko, getRouteRainySpeen } from 'shared/const/router';
 import { useLocation } from 'react-router-dom';
 import { useMobile } from 'shared/lib/hooks/useMobile/useMobile';
 import { MobileMenu } from 'widgets/MobileMenu';
 import { Container } from '../../Container';
 import cls from './HeaderAndFooter.module.scss';
 
-const withoutFooterPages = [getRouteRainySpeen()];
+const withoutFooterPages = [getRouteRainySpeen(), getRoutePlinko()];
 
 interface HeaderAndFooterProps {
     className?: string;

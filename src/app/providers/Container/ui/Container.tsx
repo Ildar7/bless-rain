@@ -6,7 +6,7 @@ interface ContainerProps {
     children: ReactNode;
 }
 export const Container = ({ className, children }: ContainerProps) => (
-    <div className={classNames('px-5 md:px-16 w-full h-full', {}, [className])}>
+    <div className={classNames('px-5 md:px-16 w-full h-full min-h-screen', {}, [className])}>
         {children}
     </div>
 );

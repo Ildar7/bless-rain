@@ -4,6 +4,7 @@ export enum AppRoutes {
     RULES = 'rules',
     GAMES = 'games',
     RAINY_SPEEN = 'rainy_speen',
+    PLINKO = 'plinko',
 
     // last
     NOT_FOUND = 'not_found',
@@ -14,3 +15,4 @@ export const getRouteRating = () => '/rating';
 export const getRouteRules = () => '/rules';
 export const getRouteGames = () => '/games';
 export const getRouteRainySpeen = () => '/games/rainy-speen';
+export const getRoutePlinko = () => '/games/plinko';

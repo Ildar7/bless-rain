@@ -1,0 +1,23 @@
+.PlinkoPage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.game {
+    position: relative;
+    z-index: 2;
+}
+
+.plinkoBg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('shared/assets/icons/png/plinko-bg.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
