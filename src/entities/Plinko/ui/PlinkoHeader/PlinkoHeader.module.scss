@@ -1,0 +1,23 @@
+.PlinkoHeader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 19px;
+    z-index: 80;
+}
+
+.balance {
+    border-radius: 4px;
+    border: 2px solid #FBE3A5;
+    background-color: #AA4B23;
+    height: 32px;
+    width: 132px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

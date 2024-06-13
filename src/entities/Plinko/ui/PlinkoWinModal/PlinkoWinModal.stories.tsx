@@ -1,16 +1,16 @@
 import React, { memo } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { RainySpeenWinModal } from './RainySpeenWinModal';
+import { PlinkoWinModal } from './PlinkoWinModal';
 
 export default {
     title: 'shared/PlinkoWinModal',
-    component: RainySpeenWinModal,
+    component: PlinkoWinModal,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-} as ComponentMeta<typeof RainySpeenWinModal>;
+} as ComponentMeta<typeof PlinkoWinModal>;
 
-const Template: ComponentStory<typeof RainySpeenWinModal> = (args) => <RainySpeenWinModal {...args} />;
+const Template: ComponentStory<typeof PlinkoWinModal> = (args) => <PlinkoWinModal {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {};
