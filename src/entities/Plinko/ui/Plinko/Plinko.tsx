@@ -42,7 +42,7 @@ export const Plinko = memo((props: PlinkoProps) => {
     const engine = useRef<Matter.Engine | null>(null);
     const yPositionsRef = useRef<number[]>([]);
     const [visibleWinModal, setVisibleWinModal] = useState(false);
-    const { isMobile } = useMobile();
+    const { isMobile, width } = useMobile();
 
     const binImages = useMemo(() => [
         BinIcon10x,
@@ -108,8 +108,8 @@ export const Plinko = memo((props: PlinkoProps) => {
                     render: {
                         sprite: {
                             texture: PegIconNormal,
-                            xScale: 0.05,
-                            yScale: 0.05,
+                            xScale: 1,
+                            yScale: 1,
                         },
                     },
                     label: 'peg',
@@ -135,13 +135,13 @@ export const Plinko = memo((props: PlinkoProps) => {
             const leftX = binSpacing + i * (binWidth + binSpacing);
             const rightX = leftX + binWidth;
 
-            const leftBorder = Bodies.rectangle(leftX + 11, height + 15, 3, 40, {
+            const leftBorder = Bodies.rectangle(leftX + 11, height + 15, 2, 40, {
                 isStatic: true,
                 render: { visible: false },
                 label: 'border',
             });
 
-            const rightBorder = Bodies.rectangle(rightX + 11, height + 15, 3, 40, {
+            const rightBorder = Bodies.rectangle(rightX + 12, height + 15, 2, 40, {
                 isStatic: true,
                 render: { visible: false },
                 label: 'border',
@@ -164,6 +164,11 @@ export const Plinko = memo((props: PlinkoProps) => {
             }, 1000);
         };
 
+        const isLastPegRow = (pegY: number) => {
+            const lastRowY = yPositionsRef.current[pegRows - 1];
+            return Math.abs(pegY - lastRowY) < 5;
+        };
+
         Events.on(engine.current, 'collisionStart', (event) => {
             event.pairs.forEach((pair) => {
                 const { bodyA, bodyB } = pair;
@@ -175,11 +180,29 @@ export const Plinko = memo((props: PlinkoProps) => {
                         dispatch(plinkoActions.changeGameStarted(false));
                         dispatch(plinkoActions.changeCanUpdateBalance(true));
                         setVisibleWinModal(true);
-                    }, 750);
+                    }, 1250);
                 } else if (bodyB.label === 'peg' && bodyA.label === 'ball') {
                     handlePegCollision(bodyB);
+                    if (isLastPegRow(bodyB.position.y)) {
+                        setTimeout(() => {
+                            dispatch(plinkoActions.changeGameFinished(true));
+                            dispatch(plinkoActions.changeNewGameInited(false));
+                            dispatch(plinkoActions.changeGameStarted(false));
+                            dispatch(plinkoActions.changeCanUpdateBalance(true));
+                            setVisibleWinModal(true);
+                        }, 1250);
+                    }
                 } else if (bodyA.label === 'peg' && bodyB.label === 'ball') {
                     handlePegCollision(bodyA);
+                    if (isLastPegRow(bodyA.position.y)) {
+                        setTimeout(() => {
+                            dispatch(plinkoActions.changeGameFinished(true));
+                            dispatch(plinkoActions.changeNewGameInited(false));
+                            dispatch(plinkoActions.changeGameStarted(false));
+                            dispatch(plinkoActions.changeCanUpdateBalance(true));
+                            setVisibleWinModal(true);
+                        }, 1250);
+                    }
                 }
             });
         });
@@ -212,8 +235,8 @@ export const Plinko = memo((props: PlinkoProps) => {
             render: {
                 sprite: {
                     texture: DropIcon,
-                    xScale: 0.9,
-                    yScale: 0.9,
+                    xScale: 1,
+                    yScale: 1,
                 },
             },
             label: 'ball',
@@ -252,29 +275,34 @@ export const Plinko = memo((props: PlinkoProps) => {
         <div className={classNames(cls.Plinko, {}, [className])}>
             {isMobile && <PlinkoHeader />}
 
-            <div className={cls.scene} ref={scene} />
-            <div className={cls.btns}>
-                {binImages.map((image, idx) => (
-                    <div
-                        className={cls.bucketBtn}
-                        key={idx}
-                    >
-                        <img
-                            src={image}
-                            alt="bucket-img"
-                        />
-                    </div>
-                ))}
-            </div>
-
-            <Button
-                theme="none"
-                className={cls.playBtn}
-                onClick={() => addBall(1)}
-                disabled={gameStarted && !gameFinished}
+            <div
+                className={cls.content}
+                style={{ transform: `scale(${width * (width >= 768 ? width > 1024 ? 0.001 : 0.002 : 0.003125)})` }}
             >
-                <PlayText />
-            </Button>
+                <div className={cls.scene} ref={scene} />
+                <div className={cls.btns}>
+                    {binImages.map((image, idx) => (
+                        <div
+                            className={cls.bucketBtn}
+                            key={idx}
+                        >
+                            <img
+                                src={image}
+                                alt="bucket-img"
+                            />
+                        </div>
+                    ))}
+                </div>
+
+                <Button
+                    theme="none"
+                    className={cls.playBtn}
+                    onClick={() => addBall(1)}
+                    disabled={gameStarted && !gameFinished}
+                >
+                    <PlayText />
+                </Button>
+            </div>
 
             {gameFinished && !newGameInited && (
                 <PlinkoWinModal
