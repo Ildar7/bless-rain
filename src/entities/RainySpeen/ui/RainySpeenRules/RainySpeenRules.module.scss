@@ -15,3 +15,15 @@
     line-height: 16px;
     color: var(--content-secondary);
 }
+
+.item {
+    position: relative;
+    padding-left: 10px;
+
+    &:before {
+        content: '-';
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}

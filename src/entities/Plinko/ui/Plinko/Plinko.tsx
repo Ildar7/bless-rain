@@ -277,7 +277,7 @@ export const Plinko = memo((props: PlinkoProps) => {
 
             <div
                 className={cls.content}
-                style={{ transform: `scale(${width * (width >= 768 ? width > 1024 ? 0.001 : 0.002 : 0.003125)})` }}
+                style={{ transform: `scale(${width * (width > 768 ? width >= 1024 ? 0.001 : 0.002 : 0.003125)})` }}
             >
                 <div className={cls.scene} ref={scene} />
                 <div className={cls.btns}>

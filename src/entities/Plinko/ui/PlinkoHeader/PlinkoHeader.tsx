@@ -37,13 +37,13 @@ export const PlinkoHeader = memo((props: PlinkoHeaderProps) => {
             active: true,
             component: <PlinkoRules />,
         },
-        {
-            id: 2,
-            name: 'Win table',
-            icon: 'table',
-            active: false,
-            component: <PlinkoWinTable />,
-        },
+        // {
+        //     id: 2,
+        //     name: 'Win table',
+        //     icon: 'table',
+        //     active: false,
+        //     component: <PlinkoWinTable />,
+        // },
     ], []);
 
     const closeGame = useCallback(() => {

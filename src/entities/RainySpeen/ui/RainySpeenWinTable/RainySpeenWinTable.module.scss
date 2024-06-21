@@ -15,3 +15,15 @@
     line-height: 16px;
     color: var(--content-secondary);
 }
+
+th,
+td {
+    border: 2px solid var(--white);
+    padding: 7px;
+    color: var(--white);
+    font-size: 10px;
+
+    @media (min-width: 450px) {
+        font-size: 12px;
+    }
+}
