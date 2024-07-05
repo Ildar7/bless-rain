@@ -154,7 +154,7 @@ export const RainySpeen = memo((props: RainySpeenProps) => {
         <div
             className={classNames(cls.RainySpeen, {}, [className])}
         >
-            {isMobile && <RainySpeenHeader />}
+            <RainySpeenHeader />
             <div className={cls.game}>
                 <img
                     ref={gameScreenRef}

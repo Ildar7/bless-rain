@@ -31,7 +31,7 @@ export const HeaderAndFooter = ({ className, children }: HeaderAndFooterProps) =
                 )
             }
         >
-            {((withoutFooterPages.includes(pathname) && !isMobile) || !withoutFooterPages.includes(pathname)) && (
+            {!withoutFooterPages.includes(pathname) && (
                 <Header
                     className={classNames(
                         '',

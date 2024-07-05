@@ -1,7 +1,7 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Icon, IconName } from 'shared/ui/Icon/Icon';
 import { Modal } from 'shared/ui/Modal/Modal';
-import { ReactNode, useMemo, useState } from 'react';
+import { ReactNode, useState } from 'react';
 import cls from './ApplicationModal.module.scss';
 
 export interface ApplicationModalButtons {

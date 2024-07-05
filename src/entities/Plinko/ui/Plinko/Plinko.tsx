@@ -42,7 +42,7 @@ export const Plinko = memo((props: PlinkoProps) => {
     const engine = useRef<Matter.Engine | null>(null);
     const yPositionsRef = useRef<number[]>([]);
     const [visibleWinModal, setVisibleWinModal] = useState(false);
-    const { isMobile, width } = useMobile();
+    const { width } = useMobile();
 
     const binImages = useMemo(() => [
         BinIcon10x,
@@ -273,8 +273,7 @@ export const Plinko = memo((props: PlinkoProps) => {
 
     return (
         <div className={classNames(cls.Plinko, {}, [className])}>
-            {isMobile && <PlinkoHeader />}
-
+            <PlinkoHeader />
             <div
                 className={cls.content}
                 style={{ transform: `scale(${width * (width > 768 ? width >= 1024 ? 0.001 : 0.002 : 0.003125)})` }}
