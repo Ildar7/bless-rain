@@ -1,0 +1,131 @@
+.TapMain {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 240px);
+}
+
+.barText {
+    color: var(--content-secondary);
+    text-shadow: 0px 0px 3px #AF5FFF;
+    font-size: 12px;
+    line-height: 15px;
+    font-family: var(--font-family-secondary);
+    font-weight: var(--font-medium);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.icon {
+    font-size: 24px;
+}
+
+.barWrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.scaleBar {
+    border-radius: 8px;
+    border: 1px solid var(--content-secondary);
+    height: 16px;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    flex: 1;
+    position: relative;
+
+    span {
+        background: var(--content-secondary);
+        box-shadow: 0px 0px 6.3px 0px #8CA0CF;
+        box-shadow: 0px 0px 12.74px 0px #003BC6;
+        width: 50%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        border-radius: 8px;
+        left: 0;
+    }
+}
+
+.energyWrapper {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.energyBlock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+            linear-gradient(var(--bg-color) 0 0) padding-box, /*this is your grey background*/
+            linear-gradient(117.22deg, #93A5FF 8.37%, #FFFFFF 50.88%, #92A4FF 91.87%, #56D9FF 91.88%) border-box;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    padding: 8px 16px !important;
+}
+
+.energyText {
+    line-height: 16px;
+}
+
+.energyIcon {
+    text-shadow: 0px 0px 3px #AF5FFF;
+    font-size: 24px;
+}
+
+.energyLimit {
+    font-family: var(--font-family-secondary);
+    font-weight: var(--font-semibold);
+    font-size: 16px;
+    line-height: 17px;
+}
+
+.middle {
+    flex: 1;
+}
+
+.bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.infoImg {
+    width: 31px;
+}
+
+.rulesText {
+    font-family: var(--font-family-secondary);
+    font-weight: var(--font-semibold);
+    font-size: 16px;
+    line-height: 17px;
+}
+
+.boostBtn {
+    background:
+            linear-gradient(var(--bg-color) 0 0) padding-box, /*this is your grey background*/
+            linear-gradient(117.22deg, #93A5FF 8.37%, #FFFFFF 50.88%, #92A4FF 91.87%, #56D9FF 91.88%) border-box;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    padding: 8px 20px 8px 12px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.boostText {
+    font-size: 16px;
+    line-height: 17px;
+    font-weight: var(--font-medium);
+    font-family: var(--font-family-secondary);
+    margin-top: 3px;
+}
+
+.cosmoIcon {
+    font-size: 38px;
+    max-height: 24px;
+}

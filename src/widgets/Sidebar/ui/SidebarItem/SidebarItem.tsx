@@ -1,6 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import LeftHangingBars from 'shared/assets/icons/left-hanging-bars.png';
 import { MouseEventHandler, ReactNode } from 'react';
+import cls from './SidebarItem.module.scss';
 
 interface SidebarItemProps {
     className?: string;
@@ -18,28 +18,20 @@ export const SidebarItem = (props: SidebarItemProps) => {
 
     return (
         <div className={classNames('flex w-auto sm:w-full items-center', {}, [className])}>
-            <div>
-                <img src={LeftHangingBars} alt="left-hanging-bars" />
-            </div>
-
             <button
                 type="button"
-                className="surface cursor-pointer w-[135px] xs:w-[156px] sm:w-[200px]"
+                className="cursor-pointer"
                 onClick={onClick}
             >
                 <div className={
                     classNames(
-                        'inner p-2 flex gap-2 items-center dashed-border',
-                        {
-                            'glowing-blue': active,
-                        },
-                        [],
+                        cls.item,
+                        { [cls.itemActive]: active },
+                        ['text-label-md text-icon-secondary'],
                     )
                 }
                 >
-                    <span className="text-label-md dashed-border-top">
-                        <span className="dashed-border-bottom">{children}</span>
-                    </span>
+                    {children}
                 </div>
             </button>
 

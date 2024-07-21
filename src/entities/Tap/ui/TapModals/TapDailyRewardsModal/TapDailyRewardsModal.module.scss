@@ -1,0 +1,14 @@
+.claimBtn {
+    padding: 11.5px 36px !important;
+    background:
+            linear-gradient(#18181C 0 0) padding-box, /*this is your grey background*/
+            linear-gradient(117.22deg, #93A5FF 8.37%, #FFFFFF 50.88%, #92A4FF 91.87%, #56D9FF 91.88%) border-box;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    margin-top: 45px;
+    margin-bottom: 42px;
+    font-size: 16px;
+    line-height: 17px;
+    font-weight: var(--font-semibold);
+    font-family: var(--font-family-secondary);
+}

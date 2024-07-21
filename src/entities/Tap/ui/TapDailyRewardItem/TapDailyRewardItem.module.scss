@@ -1,0 +1,39 @@
+.TapDailyRewardItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 80px;
+    background-color: #546385;
+    border-radius: 16px;
+}
+
+.title,
+.coins,
+.coinIcon {
+    color: var(--content-secondary);
+}
+
+.coinIcon {
+    font-size: 22px;
+}
+
+.TapDailyRewardItemDisabled {
+    background-color: var(--bg-color);
+
+    .coins {
+        color: var(--white);
+    }
+}
+
+.TapDailyRewardItemActive {
+    background-color: var(--primary);
+
+    .coins {
+        color: var(--white);
+    }
+
+    .title,
+    .coinIcon {
+        color: var(--content-colorful);
+    }
+}

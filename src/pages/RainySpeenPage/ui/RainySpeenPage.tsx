@@ -24,7 +24,7 @@ const RainySpeenPage = memo((props: RainySpeenPageProps) => {
                 <title>Bless Rain - Rainy Speen</title>
             </Helmet>
             <DynamicModuleLoader reducers={reducers}>
-                <div className={classNames(cls.RainySpeenPage, {}, [className, 'mt-[-9rem]'])}>
+                <div className={classNames(cls.RainySpeenPage, {}, [className, 'mt-[-6rem]'])}>
                     <RainySpeen />
                 </div>
             </DynamicModuleLoader>

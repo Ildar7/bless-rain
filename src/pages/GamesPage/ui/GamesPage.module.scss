@@ -14,16 +14,12 @@
     left: 0;
     display: flex;
     align-items: flex-end;
+    padding: 0 19px;
 
     & > div {
         position: relative;
-        left: 19px;
-        bottom: 19px;
+        bottom: 13px;
         z-index: 2;
-
-        @media (max-width: 560px) {
-            white-space: nowrap;
-        }
     }
 
     &:after {
@@ -39,9 +35,16 @@
 }
 
 .link {
+    max-height: 164px;
+
     img {
         max-width: 100%;
         width: 100%;
         object-fit: cover;
     }
+}
+
+.descr {
+    font-size: 14px;
+    line-height: 16px;
 }

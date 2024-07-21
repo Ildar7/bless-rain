@@ -1,0 +1,49 @@
+.content {
+    background:
+            linear-gradient(var(--surface) 0 0) padding-box, /*this is your grey background*/
+            linear-gradient(117.22deg, #93A5FF 8.37%, #FFFFFF 50.88%, #92A4FF 91.87%, #56D9FF 91.88%) border-box;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    width: calc(100vw - 32px);
+    padding: 16px;
+    text-align: center;
+}
+
+.infoBtn {
+    color: var(--content-secondary);
+    padding: 8px 16px !important;
+    border: 1px solid var(--content-secondary) !important;
+    border-radius: 32px;
+}
+
+.infoBtnContent {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-family-secondary);
+    font-weight: var(--font-regular);
+}
+
+.exclamIcon {
+    font-size: 24px;
+}
+
+.howWorkText {
+    font-size: 16px;
+    line-height: 10px;
+    font-family: var(--font-family-secondary);
+}
+
+.closeBtn {
+    padding: 0 !important;
+}
+
+.closeIcon {
+    font-size: 31px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

@@ -41,16 +41,13 @@ export const Sidebar = memo((props: SidebarProps) => {
     return (
         <div className={
             classNames(
-                '-ml-5 md:-ml-16 text-white '
-                + 'flex gap-1 sm:gap-0 flex-col justify-center select-none z-60',
+                'text-white flex gap-1 sm:gap-0 flex-col justify-center select-none z-60',
                 {},
                 [],
             )
         }
         >
-            <div className="flex flex-row sm:flex-col gap-0 sm:gap-2
-            gap-y-3 max-w-[456px] sm:max-w-none flex-wrap"
-            >
+            <div className="flex flex-row sm:flex-col gap-3 max-w-[456px] sm:max-w-none flex-wrap">
                 {items.map((item) => (
                     <SidebarItem
                         onClick={() => { onChangeActiveTab(item.id); }}

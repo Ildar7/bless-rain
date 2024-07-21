@@ -1,14 +1,14 @@
-import React, { memo, useEffect } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper';
+import React, {
+    memo, useCallback, useEffect, useState,
+} from 'react';
 import { Icon } from 'shared/ui/Icon/Icon';
-import { Carousel } from 'shared/ui/Carousel/Carousel';
 import { Tweet } from 'react-tweet';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import { Text, TextTheme, TextWeight } from 'shared/ui/Text/Text';
+import { Button } from 'shared/ui/Button/Button';
 import {
     getPowerTweetsData,
     getPowerTweetsError,
@@ -31,10 +31,15 @@ export const PowerTweets = memo((props: PowerTweetsProps) => {
         className,
     } = props;
     const dispatch = useAppDispatch();
+    const [showMore, setShowMore] = useState(false);
 
     const powerTweetsData = useSelector(getPowerTweetsData)?.data;
     const powerTweetsIsLoading = useSelector(getPowerTweetsIsLoading);
     const powerTweetsError = useSelector(getPowerTweetsError);
+
+    const changeShowMore = useCallback(() => {
+        setShowMore((prevState) => !prevState);
+    }, []);
 
     useEffect(() => {
         dispatch(fetchPowerTweets());
@@ -57,110 +62,47 @@ export const PowerTweets = memo((props: PowerTweetsProps) => {
         );
     } else {
         content = (
-            <>
-                <Swiper
-                    modules={[Navigation, Pagination]}
-                    className="w-full px-6 sm:px-9"
-                    slidesPerView={1}
-                    spaceBetween={16}
-                    autoHeight
-                    observer
-                    observeParents
-                    breakpoints={{
-                        675: {
-                            slidesPerView: 2,
-                        },
-                        1024: {
-                            slidesPerView: 3,
-                        },
-                        1440: {
-                            slidesPerView: 4,
-                        },
-                        2560: {
-                            slidesPerView: 5,
-                        },
-                        3080: {
-                            slidesPerView: 6,
-                        },
-                    }}
-                    navigation={{
-                        nextEl: '.swiper-button-next',
-                        prevEl: '.swiper-button-prev',
-                    }}
-                    pagination={{
-                        el: '.indicators',
-                        type: 'bullets',
-                        clickable: true,
-                    }}
-                >
-                    {powerTweetsData?.map((tweet) => (
-                        <SwiperSlide
-                            className="rounded-2xl tweet-max-h-enabled
-                            swiper-slide dashed-border glowing-blue"
-                            key={tweet.id}
-                        >
-                            <span className="dashed-border-top">
-                                <span className="dashed-border-bottom">
-                                    <div
-                                        data-dnt="true"
-                                        data-theme="dark"
-                                        data-conversation="none"
-                                    >
-                                        <Tweet id={getTweetId(tweet.tweet)} />
-                                    </div>
-                                </span>
-                            </span>
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
-                <div
-                    className="flex gap-5 items-center justify-center mt-4"
-                >
-                    <button
-                        type="button"
-                        className="swiper-button-prev bg-surface rounded-full w-10 h-10"
-                    >
-                        <div className="w-full h-full rounded-full flex
-                                items-center justify-center buttonArrow"
-                        >
-                            <Icon
-                                name="chevron-up"
-                                className="text-2xl font-semibold
-                                    text-icon-secondary -rotate-90"
-                            />
-                        </div>
-                    </button>
-
-                    <div className="bg-dark flex justify-center my-2 gap-2 indicators" />
-
-                    <button
-                        type="button"
-                        className="swiper-button-next bg-surface rounded-full w-10 h-10"
+            <div
+                className="w-full flex flex-col gap-4"
+            >
+                {powerTweetsData?.slice(0, showMore ? powerTweetsData?.length : 3).map((tweet) => (
+                    <div
+                        className={classNames(cls.tweetItem, {}, ['rounded-2xl tweet-max-h-enabled'])}
+                        key={tweet.id}
                     >
                         <div
-                            className="w-full h-full rounded-full flex
-                                                    items-center justify-center buttonArrow"
+                            data-dnt="true"
+                            data-theme="dark"
+                            data-conversation="none"
                         >
-                            <Icon
-                                name="chevron-up"
-                                className="text-2xl font-semibold
-                                    text-icon-secondary rotate-90"
-                            />
+                            <Tweet id={getTweetId(tweet.tweet)} />
                         </div>
-                    </button>
-                </div>
-            </>
+                    </div>
+                ))}
+                <Button
+                    theme="none"
+                    className={classNames(cls.moreBtn, {}, ['text-label-md text-icon-secondary'])}
+                    onClick={changeShowMore}
+                >
+                    {showMore ? 'Show less' : 'Show more'}
+                </Button>
+            </div>
         );
     }
 
     return (
-        <Carousel
-            className={classNames(cls.PowerTweets, {}, [className, 'relative'])}
+        <div
+            className={classNames(cls.PowerTweets, {}, [className, 'relative py-6 px-4'])}
         >
-            <div className={classNames(cls.userText, {}, ['caption-lg uppercase text-center mb-2.5'])}>
-                Power tweets
+            <div className={classNames(cls.userText, {}, ['title-lg mb-6'])}>
+                <Icon name="lighting" className={cls.titleIcon} />
+                <span className={cls.title}>Power tweets</span>
+            </div>
+            <div className={classNames(cls.descr, {}, ['caption-lg mb-6'])}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </div>
             {content}
-        </Carousel>
+        </div>
     );
 });

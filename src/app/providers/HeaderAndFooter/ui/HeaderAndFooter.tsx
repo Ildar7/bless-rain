@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 import { Header } from 'widgets/Header';
 import { Footer } from 'widgets/Footer';
 import './HeaderAndFooter.scss';
-import { getRoutePlinko, getRouteRainySpeen } from 'shared/const/router';
+import { getRouteMain, getRoutePlinko, getRouteRainySpeen } from 'shared/const/router';
 import { useLocation } from 'react-router-dom';
 import { useMobile } from 'shared/lib/hooks/useMobile/useMobile';
 import { MobileMenu } from 'widgets/MobileMenu';
@@ -31,7 +31,7 @@ export const HeaderAndFooter = ({ className, children }: HeaderAndFooterProps) =
                 )
             }
         >
-            {!withoutFooterPages.includes(pathname) && (
+            {!withoutFooterPages.includes(pathname) && pathname !== getRouteMain() && (
                 <Header
                     className={classNames(
                         '',
@@ -44,9 +44,6 @@ export const HeaderAndFooter = ({ className, children }: HeaderAndFooterProps) =
                 />
             )}
             {children}
-            {!withoutFooterPages.includes(pathname) && (
-                <Footer />
-            )}
             {isMobile && !withoutFooterPages.includes(pathname) && <MobileMenu />}
         </Container>
     );

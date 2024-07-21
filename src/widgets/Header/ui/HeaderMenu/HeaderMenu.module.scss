@@ -38,5 +38,13 @@
 }
 
 .money {
-    font-family: var(--font-family-thirdity);
+    font-family: var(--font-family-secondary);
+    font-weight: var(--font-medium);
+}
+
+.name {
+    font-family: var(--font-family-secondary);
+    font-size: 14px;
+    line-height: 19px;
+    font-weight: var(--font-medium);
 }

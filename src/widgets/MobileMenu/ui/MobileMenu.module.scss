@@ -1,33 +1,45 @@
 .MobileMenu {
     position: fixed;
-    left: 0;
-    bottom: 0;
-    background-color: var(--surface-second);
-    width: 100vw;
+    left: 8px;
+    bottom: 15px;
+    background-color: var(--outline);
+    width: calc(100vw - 16px);
     z-index: 100;
     padding: 5vw;
     display: flex;
     align-items: stretch;
     justify-content: space-between;
     gap: 5vw;
+    border-radius: 80px;
 }
 
 .item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.25vw;
+    gap: 8px;
     flex: 1;
 
     i {
         font-size: 6.25vw;
+        color: var(--content-secondary);
+        transition: color 0.2s ease-in-out;
+    }
+
+    .usersIcon {
+        fill: var(--content-secondary);
         transition: color 0.2s ease-in-out;
     }
 
     &:hover {
         i {
             transition: color 0.2s ease-in-out;
-            color: var(--primary);
+            color: var(--white);
+        }
+
+        .usersIcon {
+            fill: var(--white);
+            transition: color 0.2s ease-in-out;
         }
     }
 
@@ -35,12 +47,15 @@
 
 .itemActive {
     i {
-        color: var(--primary);
+        color: var(--white);
+    }
+
+    .usersIcon {
+        fill: var(--white);
     }
 }
 
 .itemText {
-    font-family: var(--font-family-fourdity);
-    font-size: 3.75vw;
-    line-height: 5vw;
+    font-size: 10px;
+    line-height: 12px;
 }

@@ -1,0 +1,64 @@
+.TapBoosts {
+
+}
+
+.balanceWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.balanceText {
+    font-weight: var(--font-medium);
+    color: #C4C7CC;
+}
+
+.balanceNum {
+    font-size: 48px;
+    line-height: 59px;
+    color: var(--content-secondary);
+    font-family: var(--font-family-secondary);
+    font-weight: var(--font-semibold);
+}
+
+.howWorkBtn {
+    padding: 0 !important;
+}
+
+.howWorkBtnContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+}
+
+.howWorkImg {
+    width: 24px;
+}
+
+.howWorkDescr {
+    font-weight: var(--font-medium);
+}
+
+.boosters {
+    margin-top: 62px;
+}
+
+.exitBtn {
+    padding: 0 !important;
+}
+
+.exitBtnContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    color: var(--content-secondary);
+}
+
+.exitIcon {
+    color: var(--content-secondary);
+    font-size: 30px;
+}

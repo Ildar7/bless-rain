@@ -1,10 +1,7 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import TopHangingBars from 'shared/assets/icons/top-hanging-bars.png';
 import { Button } from 'shared/ui/Button/Button';
 import { memo, useCallback } from 'react';
 import './HeaderMenu.scss';
-import { PlayingModeBanner } from 'widgets/PlayingModeBanner';
-import HeaderLogoSvg from 'shared/assets/icons/header-logo.svg';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { getRouteMain } from 'shared/const/router';
 import { useSelector } from 'react-redux';
@@ -24,7 +21,7 @@ export const HeaderMenu = memo((props: HeaderMenuProps) => {
     const userData = useSelector(getUserData)?.data;
     const userBalance = useSelector(getUserBalance);
     const userIsLoading = useSelector(getUserIsLoading);
-    const { width, isMobile } = useMobile();
+    const { isMobile } = useMobile();
 
     const loginHandler = useCallback(() => {
         window.open('https://rain.bless.bet/auth/twitter', '_self');
@@ -33,73 +30,20 @@ export const HeaderMenu = memo((props: HeaderMenuProps) => {
     return (
         <div
             className={classNames(
-                'flex justify-between items-stretch sm:items-start w-full',
+                'flex justify-between items-stretch sm:items-start w-full mt-[42px]',
                 {},
                 [className],
             )}
         >
-            <div className={classNames(
-                cls.headerMenuItem,
-                {},
-                ['relative z-70 flex'],
-            )}
-            >
-                {width >= 768 && (
-                    <PlayingModeBanner />
-                )}
-                {/* <BonusBanner /> */}
-            </div>
-
-            <AppLink
-                className={classNames(
-                    cls.headerMenuItem,
-                    {},
-                    [cls.headerMenuLogo, 'flex', 'absolute top-0 left-1/2 -translate-x-1/2 hidden md:block z-20'],
-                )}
-                to={getRouteMain()}
-            >
-                <HeaderLogoSvg className={cls.headerLogo} />
-            </AppLink>
-
-            <div className={classNames(cls.headerMenuItem, {}, ['relative z-80'])}>
-                <div className="flex gap-4 lg:gap-8 signin-buttons">
-                    {userData && (
-                        <div className="flex flex-col items-center">
-                            <div className="flex w-full px-[15px] justify-between">
-                                <img src={TopHangingBars} alt="top-hanging-bars" />
-                                <img src={TopHangingBars} alt="top-hanging-bars" />
-                            </div>
-
-                            <div
-                                className="surface p-2 rounded-xl select-none flex gap-2 h-full"
-                            >
-                                <div
-                                    className={classNames(
-                                        cls.money,
-                                        {},
-                                        ['inner text-white rounded-xl flex items-center justify-center pr-2 pl-6'],
-                                    )}
-                                >
-                                    {
-                                        userIsLoading
-                                            ? <Skeleton width="100%" height="100%" border="6px" />
-                                            : (formatNumberWithSeparators(userBalance, true))
-                                    }
-                                </div>
-                            </div>
-                        </div>
-                    )}
+            <div className={classNames(cls.headerMenuItem, {}, ['relative z-80 w-full'])}>
+                <div className="flex justify-between gap-4 lg:gap-8 signin-buttons">
+                    {!userData && <span />}
                     <div className="flex flex-col items-center">
-                        <div className="flex w-full px-[15px] justify-between">
-                            <img src={TopHangingBars} alt="top-hanging-bars" />
-                            <img src={TopHangingBars} alt="top-hanging-bars" />
-                        </div>
-
                         {
                             userData
                                 ? (
                                     <div
-                                        className="surface p-2 rounded-xl cursor-pointer select-none flex gap-2"
+                                        className="rounded-xl cursor-pointer select-none flex gap-2"
                                     >
                                         {
                                             userIsLoading
@@ -107,13 +51,10 @@ export const HeaderMenu = memo((props: HeaderMenuProps) => {
                                                 : (
                                                     <AppLink
                                                         to={getRouteMain()}
-                                                        className="inner text-white rounded-xl flex items-center justify-center"
+                                                        className="text-white rounded-xl flex items-center justify-center"
                                                     >
-                                                        <div className={classNames(cls.profileName, {}, ['px-4'])}>
-                                                            {userData.name}
-                                                        </div>
                                                         <div
-                                                            className="w-11 h-11 rounded-md bg-center
+                                                            className="w-9 h-9 rounded-md bg-center
                                                             bg-cover bg-content-secondary"
                                                             style={{
                                                                 backgroundImage:
@@ -121,6 +62,10 @@ export const HeaderMenu = memo((props: HeaderMenuProps) => {
                                                                 ,
                                                             }}
                                                         />
+                                                        <div className={classNames(cls.profileName, {}, ['px-2.5'])}>
+                                                            <div className={cls.name}>{userData.name}</div>
+                                                            <div className="text-label-md text-icon-secondary">7 level</div>
+                                                        </div>
                                                     </AppLink>
                                                 )
                                         }
@@ -130,14 +75,14 @@ export const HeaderMenu = memo((props: HeaderMenuProps) => {
                                     <div className="relative">
                                         <div
                                             className={classNames(
-                                                'surface p-1 rounded-lg sm:rounded-xl cursor-pointer select-none flex relative',
+                                                'rounded-lg sm:rounded-xl cursor-pointer select-none flex relative',
                                                 { 'glowing-blue dashed-border': !isMobile },
                                                 [''],
                                             )}
                                         >
                                             <span
                                                 className={classNames(
-                                                    'inner p-0.5 sm:p-1 block',
+                                                    'block',
                                                     { 'dashed-border-top': !isMobile },
                                                     [],
                                                 )}
@@ -152,16 +97,15 @@ export const HeaderMenu = memo((props: HeaderMenuProps) => {
                                                 >
                                                     {
                                                         userIsLoading
-                                                            ? (<Skeleton width={132} height={36} border="8px" />)
+                                                            ? (<Skeleton width={94} height={48} border="8px" />)
                                                             : (
                                                                 <Button
                                                                     theme="primary"
-                                                                    className="relative z-80 rounded-md sm:rounded-lg"
-                                                                    size="md"
-                                                                    style={{ width: 132 }}
+                                                                    className="relative z-80 rounded-lg"
+                                                                    size="xl"
                                                                     onClick={loginHandler}
                                                                 >
-                                                                    Login with Х
+                                                                    Login
                                                                 </Button>
                                                             )
                                                     }
@@ -172,6 +116,27 @@ export const HeaderMenu = memo((props: HeaderMenuProps) => {
                                 )
                         }
                     </div>
+                    {userData && (
+                        <div className="flex flex-col items-center">
+                            <div
+                                className="rounded-xl select-none flex gap-2 h-full"
+                            >
+                                <div
+                                    className={classNames(
+                                        cls.money,
+                                        {},
+                                        ['text-white rounded-xl flex items-center justify-center'],
+                                    )}
+                                >
+                                    {
+                                        userIsLoading
+                                            ? <Skeleton width="100%" height="100%" border="6px" />
+                                            : formatNumberWithSeparators(userBalance, false)
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>

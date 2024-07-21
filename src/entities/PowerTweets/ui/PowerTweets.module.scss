@@ -1,3 +1,37 @@
 .userText {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.title {
+    color: var(--white);
+}
+
+.PowerTweets {
+    background: linear-gradient(270deg, #031827 0%, #0B2A42 100%);
+    border-radius: 16px;
+}
+
+.titleIcon {
     color: var(--content-secondary);
+    font-size: 26px;
+}
+
+.tweetItem {
+    background-color: var(--bg-color);
+}
+
+.descr {
+    line-height: 16px;
+    color: #546385;
+}
+
+.moreBtn {
+    font-weight: 500;
+    padding: 0 !important;
+
+    &:hover {
+        color: var(--white);
+    }
 }

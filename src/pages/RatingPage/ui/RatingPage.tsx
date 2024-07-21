@@ -7,6 +7,8 @@ import { Sidebar } from 'widgets/Sidebar';
 import GirlImg from 'shared/assets/icons/png/rating-img.png';
 import { SidebarItems } from 'widgets/Sidebar/ui/Sidebar/Sidebar';
 import { Helmet } from 'react-helmet';
+import UsersIcon from 'shared/assets/icons/users.svg';
+import { ReflinkCopy } from 'widgets/ReflinkCopy';
 import cls from './RatingPage.module.scss';
 
 export interface RatingItem {
@@ -35,35 +37,35 @@ const RatingPage = () => {
                 {
                     id: 2,
                     img: GirlImg,
-                    points: 7312.46,
+                    points: 7312,
                     place: 2,
                     name: 'Iréné Codjo',
                 },
                 {
                     id: 3,
                     img: GirlImg,
-                    points: 7222.55,
+                    points: 7222,
                     place: 3,
                     name: 'Kowiou Akplogan',
                 },
                 {
                     id: 4,
                     img: GirlImg,
-                    points: 6879.11,
+                    points: 6879,
                     place: 4,
                     name: 'Wilfrid Codjo',
                 },
                 {
                     id: 5,
                     img: GirlImg,
-                    points: 6324.89,
+                    points: 6324,
                     place: 5,
                     name: 'Roland Yarigo',
                 },
                 {
                     id: 6,
                     img: GirlImg,
-                    points: 6283.08,
+                    points: 6283,
                     place: 6,
                     name: 'Antony Bessan',
                 },
@@ -225,11 +227,11 @@ const RatingPage = () => {
     return (
         <>
             <Helmet>
-                <title>Bless Rain - Rating</title>
+                <title>Bless Rain - Friends</title>
             </Helmet>
             <div className={classNames(
                 'flex flex-col sm:flex-row items-start gap-6 '
-                + 'justify-start sm:justify-between relative h-full md:mt-0',
+                + 'justify-start sm:justify-between relative h-full mt-[-67px] mb-[140px]',
                 {},
                 [],
             )}
@@ -240,9 +242,9 @@ const RatingPage = () => {
                 />
 
                 <div
-                    className="surface relative lobby-bless-item lobby-bless-item-linear-bg p-2 !w-full sm:flex-1"
+                    className="relative lobby-bless-item lobby-bless-item-linear-bg !w-full sm:flex-1"
                 >
-                    <div className="relative z-10 py-5 px-[2px] sm:px-3.5">
+                    <div className="relative z-10 py-5 px-2.5">
                         <div className={cls.row}>
                             <div className={classNames(cls.userName, {}, [cls.rowItem, 'caption-md-semibold'])}>
                                 USername
@@ -262,9 +264,9 @@ const RatingPage = () => {
                                     return item.items?.map((activeItem) => (
                                         <div
                                             key={activeItem.id}
-                                            className={classNames(cls.rowContentSurface, {}, ['surface'])}
+                                            className={classNames(cls.rowContentSurface, {}, [])}
                                         >
-                                            <div className={classNames(cls.row, {}, [cls.rowContentRow, 'inner'])}>
+                                            <div className={classNames(cls.row, {}, [cls.rowContentRow])}>
                                                 <div
                                                     className={classNames(cls.userName, {}, [cls.rowItem, 'caption-lg'])}
                                                 >
@@ -278,7 +280,7 @@ const RatingPage = () => {
                                                 <div
                                                     className={classNames(cls.points, {}, [cls.rowItem, 'caption-lg'])}
                                                 >
-                                                    {activeItem.points.toFixed(2)}
+                                                    {activeItem.points}
                                                 </div>
                                                 <div className={classNames(cls.place, {}, [cls.rowItem, 'caption-lg'])}>
                                                     {activeItem.place}
@@ -291,6 +293,20 @@ const RatingPage = () => {
                         </div>
                     </div>
                 </div>
+
+                <div className={classNames(cls.pointsWrapper, {}, ['flex items-center w-full gap-4'])}>
+                    <UsersIcon className={cls.usersIcon} />
+                    <div>
+                        <div className={classNames(cls.point, {}, ['text-label-lg'])}>
+                            10 000 points
+                        </div>
+                        <div className="caption-sm text-icon-secondary">
+                            from 20 referrals
+                        </div>
+                    </div>
+                </div>
+
+                <ReflinkCopy />
             </div>
         </>
     );

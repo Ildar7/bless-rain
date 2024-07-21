@@ -14,15 +14,10 @@
 }
 
 .rowsContent {
-    margin-top: 13px;
+    margin-top: 23px;
     display: flex;
     flex-direction: column;
     gap: 6px;
-}
-
-
-.rowContentRow {
-    padding: 12px 6px;
 }
 
 .rowImg {
@@ -46,7 +41,7 @@
     min-width: 150px;
     text-align: left;
     justify-content: flex-start;
-    padding-left: 12px;
+    padding-left: 10px;
 
     @media (min-width: 768px) {
         min-width: auto;
@@ -63,6 +58,14 @@
 }
 
 .rowContentSurface {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-radius: 12px;
+    overflow-x: hidden;
+    background-color: #000717;
+    padding: 8px 10px;
+
     &:before {
         display: none;
     }
@@ -74,4 +77,18 @@
     .points {
         color: var(--success);
     }
+}
+
+.pointsWrapper {
+    background: linear-gradient(270deg, #031827 0%, #0B2A42 100%);
+    border-radius: 16px;
+    padding: 8.5px 16px;
+}
+
+.usersIcon {
+    fill: var(--white);
+}
+
+.point {
+    font-weight: var(--font-medium);
 }

@@ -34,10 +34,6 @@ const MainPage = () => {
                 An error occurred while loading, try refreshing the page
             </Text>
         );
-    } else if (!userData) {
-        content = (
-            <Main />
-        );
     } else {
         content = (
             <Account />

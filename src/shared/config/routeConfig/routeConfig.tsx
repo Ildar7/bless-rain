@@ -6,8 +6,17 @@ import { RulesPage } from 'pages/RulesPage';
 import { GamesPage } from 'pages/GamesPage';
 import { RainySpeenPage } from 'pages/RainySpeenPage';
 import { PlinkoPage } from 'pages/PlinkoPage';
+import { TapPage } from 'pages/TapPage';
+import { EarnPage } from 'pages/EarnPage';
 import {
-    AppRoutes, getRouteGames, getRouteMain, getRoutePlinko, getRouteRainySpeen, getRouteRating, getRouteRules,
+    AppRoutes, getRouteEarn,
+    getRouteGames,
+    getRouteMain,
+    getRoutePlinko,
+    getRouteRainySpeen,
+    getRouteRating,
+    getRouteRules,
+    getRouteTap,
 } from '../../const/router';
 
 export const routeConfig: Record<AppRoutes, RouteProps> = {
@@ -34,6 +43,14 @@ export const routeConfig: Record<AppRoutes, RouteProps> = {
     [AppRoutes.PLINKO]: {
         path: getRoutePlinko(),
         element: <PlinkoPage />,
+    },
+    [AppRoutes.TAP]: {
+        path: getRouteTap(),
+        element: <TapPage />,
+    },
+    [AppRoutes.EARN]: {
+        path: getRouteEarn(),
+        element: <EarnPage />,
     },
 
     // last

@@ -3,9 +3,12 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { Icon } from 'shared/ui/Icon/Icon';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
 import {
+    getRouteEarn,
     getRouteGames, getRouteMain, getRouteRating, getRouteRules,
+    getRouteTap,
 } from 'shared/const/router';
 import { useLocation } from 'react-router-dom';
+import UsersIcon from 'shared/assets/icons/users.svg';
 import cls from './MobileMenu.module.scss';
 
 interface MobileMenuProps {
@@ -21,12 +24,30 @@ export const MobileMenu = memo((props: MobileMenuProps) => {
     return (
         <div className={classNames(cls.MobileMenu, {}, [className])}>
             <AppLink
+                className={classNames(cls.item, { [cls.itemActive]: pathname === getRouteTap() }, [])}
+                to={getRouteTap()}
+            >
+                <Icon name="tap" />
+                <div className={cls.itemText}>
+                    Tap
+                </div>
+            </AppLink>
+            <AppLink
                 className={classNames(cls.item, { [cls.itemActive]: pathname === getRouteMain() }, [])}
                 to={getRouteMain()}
             >
-                <Icon name="dollar" />
+                <Icon name="home" />
                 <div className={cls.itemText}>
-                    Tasks
+                    Home
+                </div>
+            </AppLink>
+            <AppLink
+                className={classNames(cls.item, { [cls.itemActive]: pathname === getRouteEarn() }, [])}
+                to={getRouteEarn()}
+            >
+                <Icon name="coins" />
+                <div className={cls.itemText}>
+                    Earn
                 </div>
             </AppLink>
             <AppLink
@@ -42,18 +63,9 @@ export const MobileMenu = memo((props: MobileMenuProps) => {
                 className={classNames(cls.item, { [cls.itemActive]: pathname === getRouteRating() }, [])}
                 to={getRouteRating()}
             >
-                <Icon name="arrows-up-boxed" />
+                <UsersIcon className={cls.usersIcon} />
                 <div className={cls.itemText}>
-                    Rating
-                </div>
-            </AppLink>
-            <AppLink
-                className={classNames(cls.item, { [cls.itemActive]: pathname === getRouteRules() }, [])}
-                to={getRouteRules()}
-            >
-                <Icon name="check-list-boxed" />
-                <div className={cls.itemText}>
-                    Rules
+                    Friends
                 </div>
             </AppLink>
         </div>

@@ -1,0 +1,28 @@
+.ReflinkCopy {
+    background-color: #8CA0CF99;
+    border-radius: 16px;
+    padding: 12px 8px 8px 8px;
+}
+
+.reflink {
+    font-weight: var(--font-medium);
+}
+
+.refBtn {
+    padding: 14px 20px !important;
+    width: 100%;
+    border-radius: 10px;
+    background-color: var(--content-secondary) !important;
+}
+
+.refBtnAnim {
+    background-color: #546385 !important;
+
+    &:disabled {
+        color: var(--white) !important;
+    }
+}
+
+.copyIcon {
+    font-size: 24px;
+}

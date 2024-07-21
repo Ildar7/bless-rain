@@ -19,7 +19,8 @@ export type IconName = 'animation'
     | 'star' | 'trash' | 'trend' | 'triangle-circle' | 'triangle-down' | 'triangle-up'
     | 'twitter' | 'user' | 'users' | 'warning' | 'xmark' | 'edit' | 'retweet' | 'comment'
     | 'telegram' | 'social-x' | 'check-list' | 'percents' | 'xbox-gamepad' | 'table'
-    | 'dollar' | 'arrows-up-boxed' | 'check-list-boxed';
+    | 'dollar' | 'arrows-up-boxed' | 'check-list-boxed' | 'tap' | 'lighting' | 'like' | 'telegram-plane'
+    | 'instagram' | 'youtube' | 'lighting-big' | 'world' | 'turbo' | 'xmark-rounded' | 'cosmo';
 
 export type IconGlow = 'pink' | 'primary' | 'green' | 'orange' | 'blue';
 interface IconProps {

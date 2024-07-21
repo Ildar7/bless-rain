@@ -1,0 +1,112 @@
+.TaskItem {
+    background: linear-gradient(270deg, #031827 0%, #0B2A42 100%);
+    padding: 4.5px 8px 4.5px 16px;
+    border-radius: 16px;
+    min-height: 57px;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.icon {
+    color: var(--content-secondary);
+    font-size: 36px;
+}
+
+.name {
+    font-weight: 500;
+}
+
+.points {
+    color: var(--content-secondary);
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-width: 86px;
+
+    &:disabled {
+        background-color: #546385 !important;
+        color: var(--white) !important;
+    }
+}
+
+.TaskItemCompleted {
+    padding: 5.75px 16px;
+    background: var(--primary);
+
+    .icon {
+        color: var(--white);
+    }
+
+    .points {
+        color: var(--white);
+    }
+}
+
+.btnCompleted {
+    padding: 0 !important;
+    min-width: auto;
+
+    &:disabled {
+        background-color: var(--primary) !important;
+    }
+}
+
+.checkIcon {
+    font-size: 40px;
+}
+
+.openLink {
+    color: var(--outline);
+    padding: 12px 20px;
+    background-color: var(--content-secondary);
+    border-radius: 8px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        background-color: var(--outline);
+        color: var(--content-secondary);
+    }
+}
+
+.TaskItemCheck {
+    padding: 8px;
+
+    .content {
+        padding-left: 8px;
+    }
+}
+
+.loader {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #FFF;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.xmark {
+    font-size: 24px;
+}
