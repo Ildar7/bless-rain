@@ -142,3 +142,13 @@ input {
     display: flex;
     justify-content: center;
 }
+
+.spine-player-button-icon-spine-logo {
+    display: none;
+}
+
+#toad-tap {
+    .spine-player {
+        scale: 2;
+    }
+}

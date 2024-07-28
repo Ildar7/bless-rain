@@ -5,6 +5,7 @@ import InfoIcon from 'shared/assets/icons/png/info.png';
 import { Button } from 'shared/ui/Button/Button';
 import { TapDailyRewardsModal } from 'entities/Tap/ui/TapModals/TapDailyRewardsModal/TapDailyRewardsModal';
 import cls from './TapMain.module.scss';
+import { TapAnimation } from '../TapAnimation/TapAnimation';
 
 interface TapMainProps {
     className?: string;
@@ -54,7 +55,9 @@ export const TapMain = memo((props: TapMainProps) => {
                         </div>
                     </div>
                 </div>
-                <div className={cls.middle} />
+                <div className={cls.middle}>
+                    <TapAnimation />
+                </div>
                 <div className={cls.bottom}>
                     <div className="flex items-center gap-2">
                         <div className={cls.infoImg}>

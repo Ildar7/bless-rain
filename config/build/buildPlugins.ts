@@ -4,6 +4,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import Dotenv from 'dotenv-webpack';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 import { BuildOptions } from './types/config';
 
 export function buildPlugins({ paths, isDev }: BuildOptions): webpack.WebpackPluginInstance[] {
@@ -20,6 +21,13 @@ export function buildPlugins({ paths, isDev }: BuildOptions): webpack.WebpackPlu
             __IS_DEV__: JSON.stringify(isDev),
         }),
         new Dotenv(),
+        new CopyWebpackPlugin({
+            patterns: [
+                { from: 'src/shared/assets/animations/tap/Toad.json', to: 'animations/tap/Toad.json' },
+                { from: 'src/shared/assets/animations/tap/Toad.atlas', to: 'animations/tap/Toad.atlas' },
+                { from: 'src/shared/assets/animations/tap/Toad.png', to: 'animations/tap/Toad.png' },
+            ],
+        }),
     ];
 
     if (isDev) {

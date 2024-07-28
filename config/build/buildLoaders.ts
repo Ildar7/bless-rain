@@ -31,7 +31,7 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
     };
 
     const fileLoader = {
-        test: /\.mp3$/,
+        test: /\.(mp3|atlas)$/,
         use: [
             {
                 loader: 'file-loader',
