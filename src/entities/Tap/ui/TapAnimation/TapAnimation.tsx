@@ -14,12 +14,18 @@ export const TapAnimation = memo((props: TapAnimationProps) => {
         new SpinePlayer('toad-tap', {
             jsonUrl: 'animations/tap/Toad.json',
             atlasUrl: 'animations/tap/Toad.atlas',
-            animation: 'rain',
-            backgroundColor: '#000717',
+            animation: 'grass',
+            backgroundColor: '#00000000',
             showControls: false,
             preserveDrawingBuffer: true,
             showLoading: false,
             alpha: true,
+            viewport: {
+                x: -2088.49,
+                y: -1265.39,
+                width: 4032.28,
+                height: 5486.7,
+            },
         });
     }, []);
 
