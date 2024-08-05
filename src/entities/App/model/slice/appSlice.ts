@@ -7,6 +7,7 @@ const initialState: AppSchema = {
             mode: 'null',
         },
     },
+    isLoadingTapGifs: true,
 };
 
 const appSlice = createSlice({
@@ -15,6 +16,9 @@ const appSlice = createSlice({
     reducers: {
         setPlayingMode: (state, action: PayloadAction<AppPlayingMode>) => {
             state.settings.playing.mode = action.payload;
+        },
+        changeLoadingTapGifs: (state, action: PayloadAction<boolean>) => {
+            state.isLoadingTapGifs = action.payload;
         },
     },
 });

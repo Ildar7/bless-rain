@@ -10,4 +10,5 @@ interface AppSettings {
 
 export interface AppSchema {
     settings: AppSettings;
+    isLoadingTapGifs: boolean;
 }

@@ -13,6 +13,11 @@ import { Web3ModalProvider } from './providers/Web3ModalProvider';
 
 function App() {
     const dispatch = useAppDispatch();
+    const tg = window.Telegram.WebApp;
+
+    useEffect(() => {
+        tg.expand();
+    }, [tg]);
 
     useEffect(() => {
         dispatch(fetchUserInfo());

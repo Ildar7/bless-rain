@@ -18,7 +18,7 @@ const TapPage = memo((props: TapPageProps) => {
             <Helmet>
                 <title>Bless Rain - Tap</title>
             </Helmet>
-            <div className={classNames(cls.TapPage, {}, [className, 'mt-[-60px]'])}>
+            <div className={classNames(cls.TapPage, {}, [className, 'mt-[-80px]'])}>
                 <Tap />
             </div>
         </>

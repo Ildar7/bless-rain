@@ -19,7 +19,8 @@ export const ReflinkCopy = memo((props: ReflinkCopyProps) => {
     const [copiedAnim, setCopiedAnim] = useState(false);
     const userData = useSelector(getUserData)?.data;
 
-    const refLink = useMemo(() => `https://${window.location.host}/ref/${userData?.referral_code}`, [userData?.referral_code]);
+    const refLink = useMemo(() => `https://rain.bless.bet/ref/${userData?.referral_code}`, [userData?.referral_code]);
+    // const refLink = useMemo(() => `https://${window.location.host}/ref/${userData?.referral_code}`, [userData?.referral_code]);
 
     const onCopyHandler = useCallback(async () => {
         setCopiedAnim(true);

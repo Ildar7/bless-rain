@@ -1,0 +1,47 @@
+.TapAnimationToad {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 70vw;
+    height: 82.21vw;
+
+    img {
+        width: 100%;
+        transform: translateY(60px);
+    }
+
+    .toadRightBottom {
+        min-width: 77.5vw;
+        left: 8px;
+        top: 14.5px;
+     }
+
+    .toadRightTop {
+        min-width: 77vw;
+        left: 9px;
+        top: -16px;
+    }
+
+    .toadLeftBottom {
+        min-width: 81.5vw;
+        left: -62px;
+        top: 18px;
+    }
+
+    .toadLeftTop {
+        min-width: 80vw;
+        left: -54px;
+        top: -9px;
+    }
+
+    .toadCenter {
+        min-width: 78vw;
+        left: -29px;
+        top: 21px;
+    }
+}
+
+.toad {
+    position: absolute;
+}

@@ -4,6 +4,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import Dotenv from 'dotenv-webpack';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 import { BuildOptions } from './types/config';
 
 export function buildPlugins({ paths, isDev }: BuildOptions): webpack.WebpackPluginInstance[] {
@@ -20,6 +21,18 @@ export function buildPlugins({ paths, isDev }: BuildOptions): webpack.WebpackPlu
             __IS_DEV__: JSON.stringify(isDev),
         }),
         new Dotenv(),
+        new CopyWebpackPlugin({
+            patterns: [
+                { from: 'src/shared/assets/anims/grass.gif', to: 'assets/anims/grass.gif' },
+                { from: 'src/shared/assets/anims/idle.gif', to: 'assets/anims/idle.gif' },
+                { from: 'src/shared/assets/anims/rain.gif', to: 'assets/anims/rain.gif' },
+                { from: 'src/shared/assets/anims/toad_anim_center.gif', to: 'assets/anims/toad_anim_center.gif' },
+                { from: 'src/shared/assets/anims/toad_anim_left_bottom.gif', to: 'assets/anims/toad_anim_left_bottom.gif' },
+                { from: 'src/shared/assets/anims/toad_anim_left_top.gif', to: 'assets/anims/toad_anim_left_top.gif' },
+                { from: 'src/shared/assets/anims/toad_anim_right_bottom.gif', to: 'assets/anims/toad_anim_right_bottom.gif' },
+                { from: 'src/shared/assets/anims/toad_anim_right_top.gif', to: 'assets/anims/toad_anim_right_top.gif' },
+            ],
+        }),
     ];
 
     if (isDev) {

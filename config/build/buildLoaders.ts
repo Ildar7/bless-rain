@@ -43,7 +43,7 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
     };
 
     const pngLoader = {
-        test: /\.(png|jpg|jpeg|gif)$/i,
+        test: /\.(png|jpg|jpeg)$/i,
         type: 'asset/resource',
     };
 

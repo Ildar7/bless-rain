@@ -1,7 +1,9 @@
 .TapMain {
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 240px);
+    height: calc(100vh - 220px);
+    min-height: 550.4px;
+    margin-bottom: 115px;
 }
 
 .barText {
@@ -59,12 +61,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background:
-            linear-gradient(var(--bg-color) 0 0) padding-box, /*this is your grey background*/
-            linear-gradient(117.22deg, #93A5FF 8.37%, #FFFFFF 50.88%, #92A4FF 91.87%, #56D9FF 91.88%) border-box;
+    background: url('shared/assets/icons/png/energy-border.png') center (center / cover) no-repeat;
     border: 2px solid transparent;
     border-radius: 8px;
-    padding: 8px 16px !important;
+    padding: 8px 28px !important;
+}
+
+.fullEnergyBtn {
+    padding: 8px 21px !important;
 }
 
 .energyText {
@@ -85,6 +89,13 @@
 
 .middle {
     flex: 1;
+    position: relative;
+    width: 100vw;
+    left: -20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 60px;
 }
 
 .bottom {
@@ -105,12 +116,10 @@
 }
 
 .boostBtn {
-    background:
-            linear-gradient(var(--bg-color) 0 0) padding-box, /*this is your grey background*/
-            linear-gradient(117.22deg, #93A5FF 8.37%, #FFFFFF 50.88%, #92A4FF 91.87%, #56D9FF 91.88%) border-box;
+    background: url('shared/assets/icons/png/boosts-border.png') center (center / cover) no-repeat;
     border: 2px solid transparent;
     border-radius: 8px;
-    padding: 8px 20px 8px 12px !important;
+    padding: 6px 20px 8px 12px !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -128,4 +137,10 @@
 .cosmoIcon {
     font-size: 38px;
     max-height: 24px;
+}
+
+.top,
+.bottom {
+    position: relative;
+    z-index: 3;
 }
