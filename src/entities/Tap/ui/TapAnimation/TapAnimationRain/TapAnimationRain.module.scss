@@ -1,10 +1,27 @@
 .TapAnimationRain {
     width: 237vw;
+    max-height: 475px;
+    overflow: hidden;
     position: absolute;
     left: -68vw;
     top: -55px;
 
+    @media (max-height: 765px) {
+        max-height: 340px;
+        width: 220vw;
+        left: -60vw;
+    }
+
+    @media (max-height: 639px) {
+        max-height: 270px;
+    }
+
+    @media (min-width: 545px) {
+        left: -220px;
+    }
+
     img {
         width: 100%;
+        max-width: 1300px;
     }
 }

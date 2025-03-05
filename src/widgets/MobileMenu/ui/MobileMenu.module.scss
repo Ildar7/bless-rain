@@ -1,16 +1,24 @@
 .MobileMenu {
     position: fixed;
-    left: 8px;
+    left: 50%;
+    transform: translateX(-50%);
     bottom: 15px;
     background-color: var(--outline);
     width: calc(100vw - 16px);
+    max-width: 768px;
     z-index: 100;
-    padding: 5vw;
+    padding: 22px 15px;
     display: flex;
     align-items: stretch;
     justify-content: space-between;
-    gap: 5vw;
+    gap: 16px;
     border-radius: 80px;
+
+    @media (max-height: 639px) {
+        padding: 15px 10px;
+        bottom: 10px;
+        gap: 8px;
+    }
 }
 
 .item {
@@ -20,8 +28,12 @@
     gap: 8px;
     flex: 1;
 
+    @media (max-height: 639px) {
+        gap: 4px;
+    }
+
     i {
-        font-size: 6.25vw;
+        font-size: 24px;
         color: var(--content-secondary);
         transition: color 0.2s ease-in-out;
     }

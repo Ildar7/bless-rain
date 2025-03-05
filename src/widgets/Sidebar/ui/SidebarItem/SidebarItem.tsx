@@ -17,7 +17,7 @@ export const SidebarItem = (props: SidebarItemProps) => {
     } = props;
 
     return (
-        <div className={classNames('flex w-auto sm:w-full items-center', {}, [className])}>
+        <div className={classNames('flex w-auto items-center', {}, [className])}>
             <button
                 type="button"
                 className="cursor-pointer"

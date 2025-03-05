@@ -6,6 +6,7 @@ import { Icon } from 'shared/ui/Icon/Icon';
 import InfoIcon from 'shared/assets/icons/png/info.png';
 import { Button } from 'shared/ui/Button/Button';
 import { TapDailyRewardsModal } from 'entities/Tap/ui/TapModals/TapDailyRewardsModal/TapDailyRewardsModal';
+import { useMobile } from 'shared/lib/hooks/useMobile/useMobile';
 import cls from './TapMain.module.scss';
 import { TapAnimation } from '../TapAnimation/TapAnimation/TapAnimation';
 
@@ -19,6 +20,7 @@ export const TapMain = memo((props: TapMainProps) => {
         className,
         showBoosts,
     } = props;
+    const { isMobile } = useMobile();
     const [dailyRewardsModalVisible, setDailyRewardsModalVisible] = useState(false);
 
     const onShowDailyRewardsModalVisible = useCallback(() => {
@@ -56,28 +58,32 @@ export const TapMain = memo((props: TapMainProps) => {
                 const { width } = rect;
                 const { height } = rect;
 
-                const centerWidth = width * 0.3;
-                const centerHeight = height * 0.3;
-                const centerXStart = (width - centerWidth) / 2;
-                const centerYStart = (height - centerHeight) / 2;
+                const sectionWidth = width / 11;
+                const sectionHeight = height / 11;
 
                 let newAnimation: string | null = null;
 
-                if (
-                    x >= centerXStart
-                    && x <= centerXStart + centerWidth
-                    && y >= centerYStart
-                    && y <= centerYStart + centerHeight
-                ) {
-                    newAnimation = 'center';
-                } else if (x < width / 2 && y < height / 2) {
-                    newAnimation = 'top-left';
-                } else if (x >= width / 2 && y < height / 2) {
-                    newAnimation = 'top-right';
-                } else if (x < width / 2 && y >= height / 2) {
-                    newAnimation = 'bottom-left';
-                } else if (x >= width / 2 && y >= height / 2) {
-                    newAnimation = 'bottom-right';
+                const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K'];
+                const numbers = Array.from({ length: 11 }, (_, i) => i + 1);
+
+                for (let i = 0; i < 11; i++) {
+                    for (let j = 0; j < 11; j++) {
+                        const sectionXStart = sectionWidth * j;
+                        const sectionYStart = sectionHeight * i;
+
+                        if (
+                            x >= sectionXStart
+                            && x <= sectionXStart + sectionWidth
+                            && y >= sectionYStart
+                            && y <= sectionYStart + sectionHeight
+                        ) {
+                            newAnimation = `${letters[j]}${numbers[i]}`;
+                            break;
+                        }
+                    }
+                    if (newAnimation) {
+                        break;
+                    }
                 }
 
                 tapCountRef.current += 1;
@@ -100,44 +106,40 @@ export const TapMain = memo((props: TapMainProps) => {
 
                 timeoutRef.current = window.setTimeout(() => {
                     const timeSinceLastTap = Date.now() - (lastTapTimeRef.current || 0);
-                    if (timeSinceLastTap >= 220) {
+                    if (timeSinceLastTap >= 340) {
                         setAnimation('idle');
                         tapCountRef.current = 0; // Сбросить счетчик кликов после задержки
                     }
-                }, 220);
+                }, 340);
             }
         };
 
         const viewport = viewportRef.current;
         if (viewport) {
+            if (isMobile) {
+                viewport.addEventListener('touchstart', handleClickOrTouch);
+                return () => {
+                    viewport.removeEventListener('touchstart', handleClickOrTouch);
+                    if (timeoutRef.current) {
+                        clearTimeout(timeoutRef.current);
+                    }
+                };
+            }
             viewport.addEventListener('click', handleClickOrTouch);
-            viewport.addEventListener('touchstart', handleClickOrTouch);
             return () => {
                 viewport.removeEventListener('click', handleClickOrTouch);
-                viewport.removeEventListener('touchstart', handleClickOrTouch);
                 if (timeoutRef.current) {
                     clearTimeout(timeoutRef.current);
                 }
             };
         }
-    }, []);
+    }, [isMobile]);
 
     const getAnimationSrc = () => {
-        switch (animation) {
-        case 'top-left':
-            return 'assets/anims/toad_anim_left_top.gif';
-        case 'top-right':
-            return 'assets/anims/toad_anim_right_top.gif';
-        case 'bottom-left':
-            return 'assets/anims/toad_anim_left_bottom.gif';
-        case 'bottom-right':
-            return 'assets/anims/toad_anim_right_bottom.gif';
-        case 'center':
-            return 'assets/anims/toad_anim_center.gif';
-        case 'idle':
-        default:
-            return 'assets/anims/idle.gif';
+        if (animation && animation !== 'idle') {
+            return animation;
         }
+        return 'idle';
     };
 
     return (
@@ -173,7 +175,7 @@ export const TapMain = memo((props: TapMainProps) => {
                     ref={viewportRef}
                 >
                     <TapAnimation
-                        toadAnimSrc={getAnimationSrc()}
+                        toadAnimPosition={getAnimationSrc()}
                     />
                 </div>
                 <div className={cls.bottom}>

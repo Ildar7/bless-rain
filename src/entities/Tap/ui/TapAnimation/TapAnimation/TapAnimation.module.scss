@@ -2,7 +2,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     position: relative;
     width: 100%;
     user-select: none;
+    height: 353px;
+
+    @media (max-height: 765px) {
+        height: 225px;
+    }
+
+    @media (max-height: 639px) {
+        height: 150px;
+    }
 }

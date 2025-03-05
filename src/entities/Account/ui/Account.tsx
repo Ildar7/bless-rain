@@ -217,7 +217,7 @@ export const Account = memo(() => {
                 <title>Bless Rain - Account</title>
             </Helmet>
             <div className={classNames(
-                'flex flex-col relative h-full -mt-[32px] md:mt-0 gap-3 mb-[130px]',
+                'flex flex-col relative h-full -mt-[32px] gap-3 mb-[130px]',
                 {},
                 [],
             )}
@@ -260,9 +260,9 @@ export const Account = memo(() => {
                     !
                 </div>
 
-                <div className="flex flex-col md:flex-row items-stretch gap-3">
+                <div className="flex flex-col items-stretch gap-3">
                     <div
-                        className="w-full md:w-[218px] !rounded-xl"
+                        className="w-full !rounded-xl"
                     >
                         <div className={
                             classNames(

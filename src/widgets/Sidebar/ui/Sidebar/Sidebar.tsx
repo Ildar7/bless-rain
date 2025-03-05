@@ -47,7 +47,7 @@ export const Sidebar = memo((props: SidebarProps) => {
             )
         }
         >
-            <div className="flex flex-row sm:flex-col gap-3 max-w-[456px] sm:max-w-none flex-wrap">
+            <div className="flex flex-row gap-3 max-w-[456px] sm:max-w-none flex-wrap">
                 {items.map((item) => (
                     <SidebarItem
                         onClick={() => { onChangeActiveTab(item.id); }}

@@ -4,6 +4,16 @@
     height: calc(100vh - 220px);
     min-height: 550.4px;
     margin-bottom: 115px;
+
+    @media (max-height: 765px) {
+        min-height: 410px;
+    }
+
+    @media (max-height: 639px) {
+        min-height: 325px;
+        height: calc(100vh - 170px);
+        margin-bottom: 100px;
+    }
 }
 
 .barText {
@@ -55,6 +65,10 @@
     text-align: center;
     gap: 8px;
     margin-top: 15px;
+
+    @media (max-height: 639px) {
+        margin-top: 10px;
+    }
 }
 
 .energyBlock {
@@ -65,6 +79,14 @@
     border: 2px solid transparent;
     border-radius: 8px;
     padding: 8px 28px !important;
+
+    @media (max-width: 380px) {
+        padding: 8px 32px !important;
+    }
+
+    @media (max-height: 639px) {
+        padding: 6px 40px !important;
+    }
 }
 
 .fullEnergyBtn {
@@ -85,6 +107,14 @@
     font-weight: var(--font-semibold);
     font-size: 16px;
     line-height: 17px;
+
+    @media (max-width: 380px) {
+        font-size: 14px;
+    }
+
+    @media (max-height: 639px) {
+        font-size: 12px;
+    }
 }
 
 .middle {

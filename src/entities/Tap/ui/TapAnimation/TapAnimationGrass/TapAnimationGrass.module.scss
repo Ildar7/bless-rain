@@ -2,8 +2,19 @@
     position: absolute;
     left: 0;
     bottom: -78px;
+    width: 100%;
+    max-width: 768px;
+    display: flex;
+    justify-content: center;
+
+    @media (max-height: 765px) {
+        width: 90%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 
     img {
         width: 100%;
+        max-width: 576px;
     }
 }

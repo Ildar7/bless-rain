@@ -10,13 +10,31 @@ import { TapAnimationToad } from '../TapAnimationToad/TapAnimationToad';
 
 interface TapAnimationProps {
     className?: string;
-    toadAnimSrc: string;
+    toadAnimPosition: string;
 }
+
+// const parseTgInfo = (url: string) => {
+//     const decodedUrl = decodeURIComponent(decodeURIComponent(url.split('#tgWebAppData=')[1])).split('&');
+//     const tgInfo: any = {};
+//
+//     for (let i = 0; i < decodedUrl.length; i++) {
+//         const elemName = decodedUrl[i].split('=')[0];
+//         const elemInfo = decodedUrl[i].split('=')[1];
+//
+//         if (elemInfo[0] !== '{') {
+//             tgInfo[elemName] = elemInfo;
+//         } else {
+//             tgInfo[elemName] = JSON.parse(elemInfo);
+//         }
+//     }
+//
+//     return tgInfo;
+// };
 
 export const TapAnimation = memo((props: TapAnimationProps) => {
     const {
         className,
-        toadAnimSrc,
+        toadAnimPosition,
     } = props;
     const isLoadingAnims = useSelector(getAppIsLoadingTapGifs);
 
@@ -31,7 +49,7 @@ export const TapAnimation = memo((props: TapAnimationProps) => {
             <>
                 <TapAnimationRain />
                 <TapAnimationToad
-                    animSrc={toadAnimSrc}
+                    toadAnimPosition={toadAnimPosition}
                 />
                 <TapAnimationGrass />
             </>

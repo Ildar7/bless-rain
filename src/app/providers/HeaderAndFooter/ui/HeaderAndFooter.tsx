@@ -1,11 +1,9 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { ReactNode } from 'react';
 import { Header } from 'widgets/Header';
-import { Footer } from 'widgets/Footer';
 import './HeaderAndFooter.scss';
 import { getRouteMain, getRoutePlinko, getRouteRainySpeen } from 'shared/const/router';
 import { useLocation } from 'react-router-dom';
-import { useMobile } from 'shared/lib/hooks/useMobile/useMobile';
 import { MobileMenu } from 'widgets/MobileMenu';
 import { Container } from '../../Container';
 import cls from './HeaderAndFooter.module.scss';
@@ -19,7 +17,6 @@ interface HeaderAndFooterProps {
 
 export const HeaderAndFooter = ({ className, children }: HeaderAndFooterProps) => {
     const { pathname } = useLocation();
-    const { isMobile } = useMobile();
 
     return (
         <Container
@@ -44,7 +41,7 @@ export const HeaderAndFooter = ({ className, children }: HeaderAndFooterProps) =
                 />
             )}
             {children}
-            {isMobile && !withoutFooterPages.includes(pathname) && <MobileMenu />}
+            {!withoutFooterPages.includes(pathname) && <MobileMenu />}
         </Container>
     );
 };

@@ -230,8 +230,8 @@ const RatingPage = () => {
                 <title>Bless Rain - Friends</title>
             </Helmet>
             <div className={classNames(
-                'flex flex-col sm:flex-row items-start gap-6 '
-                + 'justify-start sm:justify-between relative h-full mt-[-67px] mb-[140px]',
+                'flex flex-col items-start gap-6 '
+                + 'justify-start relative h-full mt-[-67px] mb-[140px]',
                 {},
                 [],
             )}

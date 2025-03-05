@@ -24,10 +24,6 @@
     z-index: -1;
     cursor: default;
 
-    @media (min-width: 768px) {
-        top: 48px;
-    }
-
     @media (min-width: 1024px) {
         font-size: 135px;
         line-height: 150px;

@@ -1,3 +1,9 @@
+.HeaderMenu {
+    @media (max-height: 639px) {
+        margin-top: 21px !important;
+    }
+}
+
 .headerMenuItem {
     gap: 44px;
 

@@ -33,7 +33,7 @@ const GamesPage = memo((props: GamesPageProps) => {
                 <div className="title-lg">
                     Games
                 </div>
-                <div className="flex flex-col sm:flex-row items-stretch gap-6 mt-4">
+                <div className="flex flex-col gap-6 mt-4">
                     <AppLink
                         className={classNames(cls.link, {}, ['flex-1 dashed-border rounded-lg overflow-hidden'])}
                         to={getRouteRainySpeen()}

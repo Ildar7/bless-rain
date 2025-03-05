@@ -1,47 +1,4093 @@
-.TapAnimationToad {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    width: 70vw;
-    height: 82.21vw;
+.TapAnimationToadWrapper {
+    position: absolute;
+    height: 353px;
+    width: 100vw;
+    max-width: 768px;
+    left: 0;
 
-    img {
-        width: 100%;
-        transform: translateY(60px);
+    @media (max-height: 765px) {
+        height: 225px;
+        top: -60px;
     }
 
-    .toadRightBottom {
-        min-width: 77.5vw;
-        left: 8px;
-        top: 14.5px;
-     }
-
-    .toadRightTop {
-        min-width: 77vw;
-        left: 9px;
-        top: -16px;
-    }
-
-    .toadLeftBottom {
-        min-width: 81.5vw;
-        left: -62px;
-        top: 18px;
-    }
-
-    .toadLeftTop {
-        min-width: 80vw;
-        left: -54px;
-        top: -9px;
-    }
-
-    .toadCenter {
-        min-width: 78vw;
-        left: -29px;
-        top: 21px;
+    @media (max-height: 639px) {
+        height: 150px;
+        top: -130px;
     }
 }
 
 .toad {
     position: absolute;
+    transform: translateX(-50%);
+}
+
+.TapAnimationToadIdle,
+.TapAnimationToadIdleOld {
+    top: 60px;
+    left: 50%;
+    width: 301px;
+    height: 353px;
+
+    @media (max-height: 765px) {
+        left: calc(50% - 60px);
+        scale: 0.6374;
+    }
+}
+
+.TapAnimationToadIdle {
+    background: transparent url('shared/assets/anims/60/idle.png') 0 0 no-repeat;
+    animation: idle 1.5s steps(100) infinite;
+}
+
+@keyframes idle {
+    100% { background-position: -30100px 0; }
+}
+
+.TapAnimationToadIdleOld {
+    background: transparent url('shared/assets/anims/30/idle.png') 0 0 no-repeat;
+    animation: idleOld 1.5s steps(50) infinite;
+}
+
+@keyframes idleOld {
+    100% { background-position: -15050px 0; }
+}
+
+.TapAnimationToadA1,
+.TapAnimationToadA1Old {
+    left: calc(50% + 5px);
+    top: -20px;
+    width: 273px;
+    height: 353px;
+    scale: 1.46;
+
+    @media (max-height: 765px) {
+        scale: 0.92;
+        left: calc(50% - 54px);
+        top: 11px;
+    }
+}
+
+.TapAnimationToadA1 {
+    background: transparent url('shared/assets/anims/60/A1.png') 0 0 no-repeat;
+    animation: A1 0.34s steps(17);
+}
+
+
+@keyframes A1 {
+    100% { background-position: -4641px 0; }
+}
+
+.TapAnimationToadA1Old {
+    background: transparent url('shared/assets/anims/30/A1.png') 0 0 no-repeat;
+    animation: A1Old 0.34s steps(9);
+}
+
+
+@keyframes A1Old {
+    100% { background-position: -2457px 0; }
+}
+
+.TapAnimationToadA2,
+.TapAnimationToadA2Old {
+    left: calc(50% - 13px);
+    top: 8px;
+    width: 303px;
+    height: 353px;
+    scale: 1.3;
+
+    @media (max-height: 765px) {
+        scale: 0.83;
+        left: calc(50% - 68px);
+        top: 26px;
+    }
+}
+
+.TapAnimationToadA2 {
+    background: transparent url('shared/assets/anims/60/A2.png') 0 0 no-repeat;
+    animation: A2 0.34s steps(17);
+}
+
+
+@keyframes A2 {
+    100% { background-position: -5151px 0; }
+}
+
+.TapAnimationToadA2Old {
+    background: transparent url('shared/assets/anims/30/A2.png') 0 0 no-repeat;
+    animation: A2Old 0.34s steps(9);
+}
+
+
+@keyframes A2Old {
+    100% { background-position: -2727px 0; }
+}
+
+.TapAnimationToadA3,
+.TapAnimationToadA3Old {
+    left: calc(50% - 27px);
+    top: 26px;
+    width: 331px;
+    height: 353px;
+    scale: 1.19;
+
+    @media (max-height: 765px) {
+        scale: 0.76;
+        left: calc(50% - 82px);
+        top: 38px;
+    }
+}
+
+.TapAnimationToadA3 {
+    background: transparent url('shared/assets/anims/60/A3.png') 0 0 no-repeat;
+    animation: A3 0.34s steps(17);
+}
+
+
+@keyframes A3 {
+    100% { background-position: -5627px 0; }
+}
+
+.TapAnimationToadA3Old {
+    background: transparent url('shared/assets/anims/30/A3.png') 0 0 no-repeat;
+    animation: A3Old 0.34s steps(9);
+}
+
+
+@keyframes A3Old {
+    100% { background-position: -2979px 0; }
+}
+
+.TapAnimationToadA4,
+.TapAnimationToadA4Old {
+    left: calc(50% - 48px);
+    top: 48px;
+    width: 372px;
+    height: 353px;
+    scale: 1.07;
+
+    @media (max-height: 765px) {
+        scale: 0.68;
+        left: calc(50% - 103px);
+        top: 52px;
+    }
+}
+
+.TapAnimationToadA4 {
+    background: transparent url('shared/assets/anims/60/A4.png') 0 0 no-repeat;
+    animation: A4 0.34s steps(17);
+}
+
+
+@keyframes A4 {
+    100% { background-position: -6324px 0; }
+}
+
+.TapAnimationToadA4Old {
+    background: transparent url('shared/assets/anims/30/A4.png') 0 0 no-repeat;
+    animation: A4Old 0.34s steps(9);
+}
+
+
+@keyframes A4Old {
+    100% { background-position: -3348px 0; }
+}
+
+.TapAnimationToadA5,
+.TapAnimationToadA5Old {
+    left: calc(50% - 72px);
+    top: 68px;
+    width: 422px;
+    height: 353px;
+    scale: 0.95;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 127px);
+        top: 65px;
+    }
+}
+
+.TapAnimationToadA5 {
+    background: transparent url('shared/assets/anims/60/A5.png') 0 0 no-repeat;
+    animation: A5 0.34s steps(17);
+}
+
+
+@keyframes A5 {
+    100% { background-position: -7174px 0; }
+}
+
+.TapAnimationToadA5Old {
+    background: transparent url('shared/assets/anims/30/A5.png') 0 0 no-repeat;
+    animation: A5Old 0.34s steps(9);
+}
+
+
+@keyframes A5Old {
+    100% { background-position: -3798px 0; }
+}
+
+.TapAnimationToadA6,
+.TapAnimationToadA6Old {
+    left: calc(50% - 72px);
+    top: 68px;
+    width: 422px;
+    height: 353px;
+    scale: 0.95;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 127px);
+        top: 65px;
+    }
+}
+
+.TapAnimationToadA6 {
+    background: transparent url('shared/assets/anims/60/A6.png') 0 0 no-repeat;
+    animation: A6 0.34s steps(17);
+}
+
+
+@keyframes A6 {
+    100% { background-position: -7174px 0; }
+}
+
+.TapAnimationToadA6Old {
+    background: transparent url('shared/assets/anims/30/A6.png') 0 0 no-repeat;
+    animation: A6Old 0.34s steps(9);
+}
+
+
+@keyframes A6Old {
+    100% { background-position: -3798px 0; }
+}
+
+.TapAnimationToadA7,
+.TapAnimationToadA7Old {
+    left: calc(50% - 72px);
+    top: 68px;
+    width: 423px;
+    height: 353px;
+    scale: 0.95;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 127px);
+        top: 65px;
+    }
+}
+
+.TapAnimationToadA7 {
+    background: transparent url('shared/assets/anims/60/A7.png') 0 0 no-repeat;
+    animation: A7 0.34s steps(17);
+}
+
+
+@keyframes A7 {
+    100% { background-position: -7191px 0; }
+}
+
+.TapAnimationToadA7Old {
+    background: transparent url('shared/assets/anims/30/A7.png') 0 0 no-repeat;
+    animation: A7Old 0.34s steps(9);
+}
+
+
+@keyframes A7Old {
+    100% { background-position: -3807px 0; }
+}
+
+.TapAnimationToadA8,
+.TapAnimationToadA8Old {
+    left: calc(50% - 72px);
+    top: 68px;
+    width: 423px;
+    height: 353px;
+    scale: 0.95;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 127px);
+        top: 65px;
+    }
+}
+
+.TapAnimationToadA8 {
+    background: transparent url('shared/assets/anims/60/A8.png') 0 0 no-repeat;
+    animation: A8 0.34s steps(17);
+}
+
+
+@keyframes A8 {
+    100% { background-position: -7191px 0; }
+}
+
+.TapAnimationToadA8Old {
+    background: transparent url('shared/assets/anims/30/A8.png') 0 0 no-repeat;
+    animation: A8Old 0.34s steps(9);
+}
+
+
+@keyframes A8Old {
+    100% { background-position: -3807px 0; }
+}
+
+.TapAnimationToadA9,
+.TapAnimationToadA9Old {
+    left: calc(50% - 72px);
+    top: 68px;
+    width: 423px;
+    height: 353px;
+    scale: 0.95;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 127px);
+        top: 65px;
+    }
+}
+
+.TapAnimationToadA9 {
+    background: transparent url('shared/assets/anims/60/A9.png') 0 0 no-repeat;
+    animation: A9 0.34s steps(17);
+}
+
+
+@keyframes A9 {
+    100% { background-position: -7191px 0; }
+}
+
+.TapAnimationToadA9Old {
+    background: transparent url('shared/assets/anims/30/A9.png') 0 0 no-repeat;
+    animation: A9Old 0.34s steps(9);
+}
+
+
+@keyframes A9Old {
+    100% { background-position: -3807px 0; }
+}
+
+.TapAnimationToadA10,
+.TapAnimationToadA10Old {
+    left: calc(50% - 67px);
+    top: 74px;
+    width: 411px;
+    height: 353px;
+    scale: 0.98;
+
+    @media (max-height: 765px) {
+        scale: 0.62;
+        left: calc(50% - 123px);
+        top: 69px;
+    }
+}
+
+.TapAnimationToadA10 {
+    background: transparent url('shared/assets/anims/60/A10.png') 0 0 no-repeat;
+    animation: A10 0.34s steps(17);
+}
+
+
+@keyframes A10 {
+    100% { background-position: -6987px 0; }
+}
+
+.TapAnimationToadA10Old {
+    background: transparent url('shared/assets/anims/30/A10.png') 0 0 no-repeat;
+    animation: A10Old 0.34s steps(9);
+}
+
+
+@keyframes A10Old {
+    100% { background-position: -3699px 0; }
+}
+
+.TapAnimationToadA11,
+.TapAnimationToadA11Old {
+    left: calc(50% - 53px);
+    top: 86px;
+    width: 382px;
+    height: 353px;
+    scale: 1.05;
+
+    @media (max-height: 765px) {
+        scale: 0.67;
+        left: calc(50% - 108px);
+        top: 77px;
+    }
+}
+
+.TapAnimationToadA11 {
+    background: transparent url('shared/assets/anims/60/A11.png') 0 0 no-repeat;
+    animation: A11 0.34s steps(17);
+}
+
+
+@keyframes A11 {
+    100% { background-position: -6494px 0; }
+}
+
+.TapAnimationToadA11Old {
+    background: transparent url('shared/assets/anims/30/A11.png') 0 0 no-repeat;
+    animation: A11Old 0.34s steps(9);
+}
+
+
+@keyframes A11Old {
+    100% { background-position: -3438px 0; }
+}
+
+.TapAnimationToadB1,
+.TapAnimationToadB1Old {
+    left: calc(50% - -15px);
+    top: -17px;
+    width: 247px;
+    height: 353px;
+    scale: 1.44;
+
+    @media (max-height: 765px) {
+        scale: 0.92;
+        left: calc(50% - 41px);
+        top: 11px;
+    }
+}
+
+.TapAnimationToadB1 {
+    background: transparent url('shared/assets/anims/60/B1.png') 0 0 no-repeat;
+    animation: B1 0.34s steps(17);
+}
+
+
+@keyframes B1 {
+    100% { background-position: -4199px 0; }
+}
+
+.TapAnimationToadB1Old {
+    background: transparent url('shared/assets/anims/30/B1.png') 0 0 no-repeat;
+    animation: B1Old 0.34s steps(9);
+}
+
+
+@keyframes B1Old {
+    100% { background-position: -2223px 0; }
+}
+
+.TapAnimationToadB2,
+.TapAnimationToadB2Old {
+    left: calc(50% + 4px);
+    top: 4px;
+    width: 270px;
+    height: 353px;
+    scale: 1.32;
+
+    @media (max-height: 765px) {
+        scale: 0.85;
+        left: calc(50% - 51px);
+        top: 23px;
+    }
+}
+
+.TapAnimationToadB2 {
+    background: transparent url('shared/assets/anims/60/B2.png') 0 0 no-repeat;
+    animation: B2 0.34s steps(17);
+}
+
+
+@keyframes B2 {
+    100% { background-position: -4590px 0; }
+}
+
+.TapAnimationToadB2Old {
+    background: transparent url('shared/assets/anims/30/B2.png') 0 0 no-repeat;
+    animation: B2Old 0.34s steps(9);
+}
+
+
+@keyframes B2Old {
+    100% { background-position: -2430px 0; }
+}
+
+.TapAnimationToadB3,
+.TapAnimationToadB3Old {
+    left: calc(50% - 13px);
+    top: 28px;
+    width: 300px;
+    height: 353px;
+    scale: 1.18;
+
+    @media (max-height: 765px) {
+        scale: 0.75;
+        left: calc(50% - 68px);
+        top: 40px;
+    }
+}
+
+.TapAnimationToadB3 {
+    background: transparent url('shared/assets/anims/60/B3.png') 0 0 no-repeat;
+    animation: B3 0.34s steps(17);
+}
+
+
+@keyframes B3 {
+    100% { background-position: -5100px 0; }
+}
+
+.TapAnimationToadB3Old {
+    background: transparent url('shared/assets/anims/30/B3.png') 0 0 no-repeat;
+    animation: B3Old 0.34s steps(9);
+}
+
+
+@keyframes B3Old {
+    100% { background-position: -2700px 0; }
+}
+
+.TapAnimationToadB4,
+.TapAnimationToadB4Old {
+    left: calc(50% - 27px);
+    top: 48px;
+    width: 332px;
+    height: 353px;
+    scale: 1.07;
+
+    @media (max-height: 765px) {
+        scale: 0.69;
+        left: calc(50% - 82px);
+        top: 51px;
+    }
+}
+
+.TapAnimationToadB4 {
+    background: transparent url('shared/assets/anims/60/B4.png') 0 0 no-repeat;
+    animation: B4 0.34s steps(17);
+}
+
+
+@keyframes B4 {
+    100% { background-position: -5644px 0; }
+}
+
+.TapAnimationToadB4Old {
+    background: transparent url('shared/assets/anims/30/B4.png') 0 0 no-repeat;
+    animation: B4Old 0.34s steps(9);
+}
+
+
+@keyframes B4Old {
+    100% { background-position: -2988px 0; }
+}
+
+.TapAnimationToadB5,
+.TapAnimationToadB5Old {
+    left: calc(50% - 50px);
+    top: 69px;
+    width: 373px;
+    height: 353px;
+    scale: 0.95;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 103px);
+        top: 66px;
+    }
+}
+
+.TapAnimationToadB5 {
+    background: transparent url('shared/assets/anims/60/B5.png') 0 0 no-repeat;
+    animation: B5 0.34s steps(17);
+}
+
+
+@keyframes B5 {
+    100% { background-position: -6341px 0; }
+}
+
+.TapAnimationToadB5Old {
+    background: transparent url('shared/assets/anims/30/B5.png') 0 0 no-repeat;
+    animation: B5Old 0.34s steps(9);
+}
+
+
+@keyframes B5Old {
+    100% { background-position: -3357px 0; }
+}
+
+.TapAnimationToadB6,
+.TapAnimationToadB6Old {
+    left: calc(50% - 50px);
+    top: 69px;
+    width: 373px;
+    height: 353px;
+    scale: 0.95;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 103px);
+        top: 66px;
+    }
+}
+
+.TapAnimationToadB6 {
+    background: transparent url('shared/assets/anims/60/B6.png') 0 0 no-repeat;
+    animation: B6 0.34s steps(17);
+}
+
+@keyframes B6 {
+    100% { background-position: -6341px 0; }
+}
+
+.TapAnimationToadB6Old {
+    background: transparent url('shared/assets/anims/30/B6.png') 0 0 no-repeat;
+    animation: B6Old 0.34s steps(9);
+}
+
+
+@keyframes B6Old {
+    100% { background-position: -3357px 0; }
+}
+
+.TapAnimationToadB7,
+.TapAnimationToadB7Old {
+    left: calc(50% - 51px);
+    top: 69px;
+    width: 378px;
+    height: 353px;
+    scale: 0.95;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 106px);
+        top: 66px;
+    }
+}
+
+.TapAnimationToadB7 {
+    background: transparent url('shared/assets/anims/60/B7.png') 0 0 no-repeat;
+    animation: B7 0.34s steps(17);
+}
+
+@keyframes B7 {
+    100% { background-position: -6426px 0; }
+}
+
+.TapAnimationToadB7Old {
+    background: transparent url('shared/assets/anims/30/B7.png') 0 0 no-repeat;
+    animation: B7Old 0.34s steps(9);
+}
+
+
+@keyframes B7Old {
+    100% { background-position: -3402px 0; }
+}
+
+.TapAnimationToadB8,
+.TapAnimationToadB8Old {
+    left: calc(50% - 51px);
+    top: 69px;
+    width: 378px;
+    height: 353px;
+    scale: 0.95;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 106px);
+        top: 66px;
+    }
+}
+
+.TapAnimationToadB8 {
+    background: transparent url('shared/assets/anims/60/B8.png') 0 0 no-repeat;
+    animation: B8 0.34s steps(17);
+}
+
+@keyframes B8 {
+    100% { background-position: -6426px 0; }
+}
+
+.TapAnimationToadB8Old {
+    background: transparent url('shared/assets/anims/30/B8.png') 0 0 no-repeat;
+    animation: B8Old 0.34s steps(9);
+}
+
+
+@keyframes B8Old {
+    100% { background-position: -3402px 0; }
+}
+
+.TapAnimationToadB9,
+.TapAnimationToadB9Old {
+    left: calc(50% - 51px);
+    top: 69px;
+    width: 378px;
+    height: 353px;
+    scale: 0.95;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 106px);
+        top: 66px;
+    }
+}
+
+.TapAnimationToadB9 {
+    background: transparent url('shared/assets/anims/60/B9.png') 0 0 no-repeat;
+    animation: B9 0.34s steps(17);
+}
+
+@keyframes B9 {
+    100% { background-position: -6426px 0; }
+}
+
+.TapAnimationToadB9Old {
+    background: transparent url('shared/assets/anims/30/B9.png') 0 0 no-repeat;
+    animation: B9Old 0.34s steps(9);
+}
+
+
+@keyframes B9Old {
+    100% { background-position: -3402px 0; }
+}
+
+.TapAnimationToadB10,
+.TapAnimationToadB10Old {
+    left: calc(50% - 47px);
+    top: 72px;
+    width: 372px;
+    height: 353px;
+    scale: 0.97;
+
+    @media (max-height: 765px) {
+        scale: 0.62;
+        left: calc(50% - 103px);
+        top: 68px;
+    }
+}
+
+.TapAnimationToadB10 {
+    background: transparent url('shared/assets/anims/60/B10.png') 0 0 no-repeat;
+    animation: B10 0.34s steps(17);
+}
+
+@keyframes B10 {
+    100% { background-position: -6324px 0; }
+}
+
+.TapAnimationToadB10Old {
+    background: transparent url('shared/assets/anims/30/B10.png') 0 0 no-repeat;
+    animation: B10Old 0.34s steps(9);
+}
+
+
+@keyframes B10Old {
+    100% { background-position: -3348px 0; }
+}
+
+.TapAnimationToadB11,
+.TapAnimationToadB11Old {
+    left: calc(50% - 33px);
+    top: 88px;
+    width: 341px;
+    height: 353px;
+    scale: 1.05;
+
+    @media (max-height: 765px) {
+        scale: 0.67;
+        left: calc(50% - 88px);
+        top: 78px;
+    }
+}
+
+.TapAnimationToadB11 {
+    background: transparent url('shared/assets/anims/60/B11.png') 0 0 no-repeat;
+    animation: B11 0.34s steps(17);
+}
+
+@keyframes B11 {
+    100% { background-position: -5797px 0; }
+}
+
+.TapAnimationToadB11Old {
+    background: transparent url('shared/assets/anims/30/B11.png') 0 0 no-repeat;
+    animation: B11Old 0.34s steps(9);
+}
+
+
+@keyframes B11Old {
+    100% { background-position: -3069px 0; }
+}
+
+.TapAnimationToadC1,
+.TapAnimationToadC1Old {
+    left: calc(50% + 27px);
+    top: -18px;
+    width: 222px;
+    height: 353px;
+    scale: 1.44;
+
+    @media (max-height: 765px) {
+        scale: 0.93;
+        left: calc(50% - 28px);
+        top: 9px;
+    }
+}
+
+.TapAnimationToadC1 {
+    background: transparent url('shared/assets/anims/60/C1.png') 0 0 no-repeat;
+    animation: C1 0.34s steps(17);
+}
+
+@keyframes C1 {
+    100% { background-position: -3774px 0; }
+}
+
+.TapAnimationToadC1Old {
+    background: transparent url('shared/assets/anims/30/C1.png') 0 0 no-repeat;
+    animation: C1Old 0.34s steps(9);
+}
+
+
+@keyframes C1Old {
+    100% { background-position: -1998px 0; }
+}
+
+.TapAnimationToadC2,
+.TapAnimationToadC2Old {
+    left: calc(50% + 18px);
+    top: 4px;
+    width: 245px;
+    height: 353px;
+    scale: 1.32;
+
+    @media (max-height: 765px) {
+        scale: 0.84;
+        left: calc(50% - 39px);
+        top: 24px;
+    }
+}
+
+.TapAnimationToadC2 {
+    background: transparent url('shared/assets/anims/60/C2.png') 0 0 no-repeat;
+    animation: C2 0.34s steps(17);
+}
+
+@keyframes C2 {
+    100% { background-position: -4165px 0; }
+}
+
+.TapAnimationToadC2Old {
+    background: transparent url('shared/assets/anims/30/C2.png') 0 0 no-repeat;
+    animation: C2Old 0.34s steps(9);
+}
+
+
+@keyframes C2Old {
+    100% { background-position: -2205px 0; }
+}
+
+.TapAnimationToadC3,
+.TapAnimationToadC3Old {
+    left: calc(50% + 5px);
+    top: 27px;
+    width: 271px;
+    height: 353px;
+    scale: 1.19;
+
+    @media (max-height: 765px) {
+        scale: 0.76;
+        left: calc(50% - 51px);
+        top: 39px;
+    }
+}
+
+.TapAnimationToadC3 {
+    background: transparent url('shared/assets/anims/60/C3.png') 0 0 no-repeat;
+    animation: C3 0.34s steps(17);
+}
+
+@keyframes C3 {
+    100% { background-position: -4607px 0; }
+}
+
+.TapAnimationToadC3Old {
+    background: transparent url('shared/assets/anims/30/C3.png') 0 0 no-repeat;
+    animation: C3Old 0.34s steps(9);
+}
+
+
+@keyframes C3Old {
+    100% { background-position: -2439px 0; }
+}
+
+.TapAnimationToadC4,
+.TapAnimationToadC4Old {
+    left: calc(50% - 11px);
+    top: 46px;
+    width: 302px;
+    height: 353px;
+    scale: 1.08;
+
+    @media (max-height: 765px) {
+        scale: 0.69;
+        left: calc(50% - 67px);
+        top: 51px;
+    }
+}
+
+.TapAnimationToadC4 {
+    background: transparent url('shared/assets/anims/60/C4.png') 0 0 no-repeat;
+    animation: C4 0.34s steps(17);
+}
+
+@keyframes C4 {
+    100% { background-position: -5134px 0; }
+}
+
+.TapAnimationToadC4Old {
+    background: transparent url('shared/assets/anims/30/C4.png') 0 0 no-repeat;
+    animation: C4Old 0.34s steps(9);
+}
+
+
+@keyframes C4Old {
+    100% { background-position: -2718px 0; }
+}
+
+.TapAnimationToadC5,
+.TapAnimationToadC5Old {
+    left: calc(50% - 31px);
+    top: 69px;
+    width: 339px;
+    height: 353px;
+    scale: 0.95;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 87px);
+        top: 65px;
+    }
+}
+
+.TapAnimationToadC5 {
+    background: transparent url('shared/assets/anims/60/C5.png') 0 0 no-repeat;
+    animation: C5 0.34s steps(17);
+}
+
+@keyframes C5 {
+    100% { background-position: -5763px 0; }
+}
+
+.TapAnimationToadC5Old {
+    background: transparent url('shared/assets/anims/30/C5.png') 0 0 no-repeat;
+    animation: C5Old 0.34s steps(9);
+}
+
+
+@keyframes C5Old {
+    100% { background-position: -3051px 0; }
+}
+
+.TapAnimationToadC6,
+.TapAnimationToadC6Old {
+    left: calc(50% - 31px);
+    top: 69px;
+    width: 339px;
+    height: 353px;
+    scale: 0.95;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 87px);
+        top: 65px;
+    }
+}
+
+.TapAnimationToadC6 {
+    background: transparent url('shared/assets/anims/60/C6.png') 0 0 no-repeat;
+    animation: C6 0.34s steps(17);
+}
+
+@keyframes C6 {
+    100% { background-position: -5763px 0; }
+}
+
+.TapAnimationToadC6Old {
+    background: transparent url('shared/assets/anims/30/C6.png') 0 0 no-repeat;
+    animation: C6Old 0.34s steps(9);
+}
+
+
+@keyframes C6Old {
+    100% { background-position: -3051px 0; }
+}
+
+.TapAnimationToadC7,
+.TapAnimationToadC7Old {
+    left: calc(50% - 39px);
+    top: 69px;
+    width: 355px;
+    height: 353px;
+    scale: 0.95;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 94px);
+        top: 65px;
+    }
+}
+
+.TapAnimationToadC7 {
+    background: transparent url('shared/assets/anims/60/C7.png') 0 0 no-repeat;
+    animation: C7 0.34s steps(17);
+}
+
+@keyframes C7 {
+    100% { background-position: -6035px 0; }
+}
+
+.TapAnimationToadC7Old {
+    background: transparent url('shared/assets/anims/30/C7.png') 0 0 no-repeat;
+    animation: C7Old 0.34s steps(9);
+}
+
+
+@keyframes C7Old {
+    100% { background-position: -3195px 0; }
+}
+
+.TapAnimationToadC8,
+.TapAnimationToadC8Old {
+    left: calc(50% - 31px);
+    top: 68px;
+    width: 341px;
+    height: 353px;
+    scale: 0.96;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 87px);
+        top: 65px;
+    }
+}
+
+.TapAnimationToadC8 {
+    background: transparent url('shared/assets/anims/60/C8.png') 0 0 no-repeat;
+    animation: C8 0.34s steps(17);
+}
+
+@keyframes C8 {
+    100% { background-position: -5797px 0; }
+}
+
+.TapAnimationToadC8Old {
+    background: transparent url('shared/assets/anims/30/C8.png') 0 0 no-repeat;
+    animation: C8Old 0.34s steps(9);
+}
+
+
+@keyframes C8Old {
+    100% { background-position: -3069px 0; }
+}
+
+.TapAnimationToadC9,
+.TapAnimationToadC9Old {
+    left: calc(50% - 31px);
+    top: 68px;
+    width: 341px;
+    height: 353px;
+    scale: 0.96;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 87px);
+        top: 65px;
+    }
+}
+
+.TapAnimationToadC9 {
+    background: transparent url('shared/assets/anims/60/C9.png') 0 0 no-repeat;
+    animation: C9 0.34s steps(17);
+}
+
+@keyframes C9 {
+    100% { background-position: -5797px 0; }
+}
+
+.TapAnimationToadC9Old {
+    background: transparent url('shared/assets/anims/30/C9.png') 0 0 no-repeat;
+    animation: C9Old 0.34s steps(9);
+}
+
+
+@keyframes C9Old {
+    100% { background-position: -3069px 0; }
+}
+
+.TapAnimationToadC10,
+.TapAnimationToadC10Old {
+    left: calc(50% - 31px);
+    top: 68px;
+    width: 341px;
+    height: 353px;
+    scale: 0.96;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 87px);
+        top: 65px;
+    }
+}
+
+.TapAnimationToadC10 {
+    background: transparent url('shared/assets/anims/60/C10.png') 0 0 no-repeat;
+    animation: C10 0.34s steps(17);
+}
+
+@keyframes C10 {
+    100% { background-position: -5797px 0; }
+}
+
+.TapAnimationToadC10Old {
+    background: transparent url('shared/assets/anims/30/C10.png') 0 0 no-repeat;
+    animation: C10Old 0.34s steps(9);
+}
+
+@keyframes C10Old {
+    100% { background-position: -3069px 0; }
+}
+
+.TapAnimationToadC11,
+.TapAnimationToadC11Old {
+    left: calc(50% - 15px);
+    top: 86px;
+    width: 308px;
+    height: 353px;
+    scale: 1.06;
+
+    @media (max-height: 765px) {
+        scale: 0.675;
+        left: calc(50% - 71px);
+        top: 76px;
+    }
+}
+
+.TapAnimationToadC11 {
+    background: transparent url('shared/assets/anims/60/C11.png') 0 0 no-repeat;
+    animation: C11 0.34s steps(17);
+}
+
+@keyframes C11 {
+    100% { background-position: -5236px 0; }
+}
+
+.TapAnimationToadC11Old {
+    background: transparent url('shared/assets/anims/30/C11.png') 0 0 no-repeat;
+    animation: C11Old 0.34s steps(9);
+}
+
+@keyframes C11Old {
+    100% { background-position: -2772px 0; }
+}
+
+.TapAnimationToadD1,
+.TapAnimationToadD1Old {
+    left: calc(50% + 36px);
+    top: -19px;
+    width: 207px;
+    height: 353px;
+    scale: 1.45;
+
+    @media (max-height: 765px) {
+        scale: 0.92;
+        left: calc(50% - 21px);
+        top: 11px;
+    }
+}
+
+.TapAnimationToadD1 {
+    background: transparent url('shared/assets/anims/60/D1.png') 0 0 no-repeat;
+    animation: D1 0.34s steps(17);
+}
+
+@keyframes D1 {
+    100% { background-position: -3519px 0; }
+}
+
+.TapAnimationToadD1Old {
+    background: transparent url('shared/assets/anims/30/D1.png') 0 0 no-repeat;
+    animation: D1Old 0.34s steps(9);
+}
+
+@keyframes D1Old {
+    100% { background-position: -1863px 0; }
+}
+
+.TapAnimationToadD2,
+.TapAnimationToadD2Old {
+    left: calc(50% + 26px);
+    top: 2px;
+    width: 226px;
+    height: 353px;
+    scale: 1.33;
+
+    @media (max-height: 765px) {
+        scale: 0.85;
+        left: calc(50% - 30px);
+        top: 22px;
+    }
+}
+
+.TapAnimationToadD2 {
+    background: transparent url('shared/assets/anims/60/D2.png') 0 0 no-repeat;
+    animation: D2 0.34s steps(17);
+}
+
+@keyframes D2 {
+    100% { background-position: -3842px 0; }
+}
+
+.TapAnimationToadD2Old {
+    background: transparent url('shared/assets/anims/30/D2.png') 0 0 no-repeat;
+    animation: D2Old 0.34s steps(9);
+}
+
+@keyframes D2Old {
+    100% { background-position: -2034px 0; }
+}
+
+.TapAnimationToadD3,
+.TapAnimationToadD3Old {
+    left: calc(50% + 14px);
+    top: 27px;
+    width: 253px;
+    height: 353px;
+    scale: 1.19;
+
+    @media (max-height: 765px) {
+        scale: 0.75;
+        left: calc(50% - 44px);
+        top: 40px;
+    }
+}
+
+.TapAnimationToadD3 {
+    background: transparent url('shared/assets/anims/60/D3.png') 0 0 no-repeat;
+    animation: D3 0.34s steps(17);
+}
+
+@keyframes D3 {
+    100% { background-position: -4301px 0; }
+}
+
+.TapAnimationToadD3Old {
+    background: transparent url('shared/assets/anims/30/D3.png') 0 0 no-repeat;
+    animation: D3Old 0.34s steps(9);
+}
+
+@keyframes D3Old {
+    100% { background-position: -2277px 0; }
+}
+
+.TapAnimationToadD4,
+.TapAnimationToadD4Old {
+    left: calc(50% - 1px);
+    top: 48px;
+    width: 279px;
+    height: 353px;
+    scale: 1.07;
+
+    @media (max-height: 765px) {
+        scale: 0.68;
+        left: calc(50% - 57px);
+        top: 52px;
+    }
+}
+
+.TapAnimationToadD4 {
+    background: transparent url('shared/assets/anims/60/D4.png') 0 0 no-repeat;
+    animation: D4 0.34s steps(17);
+}
+
+@keyframes D4 {
+    100% { background-position: -4743px 0; }
+}
+
+.TapAnimationToadD4Old {
+    background: transparent url('shared/assets/anims/30/D4.png') 0 0 no-repeat;
+    animation: D4Old 0.34s steps(9);
+}
+
+@keyframes D4Old {
+    100% { background-position: -2511px 0; }
+}
+
+.TapAnimationToadD5,
+.TapAnimationToadD5Old {
+    left: calc(50% - 9px);
+    top: 59px;
+    width: 296px;
+    height: 353px;
+    scale: 1.01;
+
+    @media (max-height: 765px) {
+        scale: 0.64;
+        left: calc(50% - 66px);
+        top: 59px;
+    }
+}
+
+.TapAnimationToadD5 {
+    background: transparent url('shared/assets/anims/60/D5.png') 0 0 no-repeat;
+    animation: D5 0.34s steps(17);
+}
+
+@keyframes D5 {
+    100% { background-position: -5032px 0; }
+}
+
+.TapAnimationToadD5Old {
+    background: transparent url('shared/assets/anims/30/D5.png') 0 0 no-repeat;
+    animation: D5Old 0.34s steps(9);
+}
+
+@keyframes D5Old {
+    100% { background-position: -2664px 0; }
+}
+
+.TapAnimationToadD6,
+.TapAnimationToadD6Old {
+    left: calc(50% - 9px);
+    top: 59px;
+    width: 296px;
+    height: 353px;
+    scale: 1.01;
+
+    @media (max-height: 765px) {
+        scale: 0.64;
+        left: calc(50% - 66px);
+        top: 59px;
+    }
+}
+
+.TapAnimationToadD6 {
+    background: transparent url('shared/assets/anims/60/D6.png') 0 0 no-repeat;
+    animation: D6 0.34s steps(17);
+}
+
+@keyframes D6 {
+    100% { background-position: -5032px 0; }
+}
+
+.TapAnimationToadD6Old {
+    background: transparent url('shared/assets/anims/30/D6.png') 0 0 no-repeat;
+    animation: D6Old 0.34s steps(9);
+}
+
+@keyframes D6Old {
+    100% { background-position: -2664px 0; }
+}
+
+.TapAnimationToadD7,
+.TapAnimationToadD7Old {
+    left: calc(50% - 17px);
+    top: 68px;
+    width: 314px;
+    height: 353px;
+    scale: 0.96;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 74px);
+        top: 65px;
+    }
+}
+
+.TapAnimationToadD7 {
+    background: transparent url('shared/assets/anims/60/D7.png') 0 0 no-repeat;
+    animation: D7 0.34s steps(17);
+}
+
+@keyframes D7 {
+    100% { background-position: -5338px 0; }
+}
+
+.TapAnimationToadD7Old {
+    background: transparent url('shared/assets/anims/30/D7.png') 0 0 no-repeat;
+    animation: D7Old 0.34s steps(9);
+}
+
+@keyframes D7Old {
+    100% { background-position: -2826px 0; }
+}
+
+.TapAnimationToadD8,
+.TapAnimationToadD8Old {
+    left: calc(50% - 17px);
+    top: 68px;
+    width: 314px;
+    height: 353px;
+    scale: 0.96;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 74px);
+        top: 65px;
+    }
+}
+
+.TapAnimationToadD8 {
+    background: transparent url('shared/assets/anims/60/D8.png') 0 0 no-repeat;
+    animation: D8 0.34s steps(17);
+}
+
+@keyframes D8 {
+    100% { background-position: -5338px 0; }
+}
+
+.TapAnimationToadD8Old {
+    background: transparent url('shared/assets/anims/30/D8.png') 0 0 no-repeat;
+    animation: D8Old 0.34s steps(9);
+}
+
+@keyframes D8Old {
+    100% { background-position: -2826px 0; }
+}
+
+.TapAnimationToadD9,
+.TapAnimationToadD9Old {
+    left: calc(50% - 17px);
+    top: 68px;
+    width: 314px;
+    height: 353px;
+    scale: 0.96;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 74px);
+        top: 65px;
+    }
+}
+
+.TapAnimationToadD9 {
+    background: transparent url('shared/assets/anims/60/D9.png') 0 0 no-repeat;
+    animation: D9 0.34s steps(17);
+}
+
+@keyframes D9 {
+    100% { background-position: -5338px 0; }
+}
+
+.TapAnimationToadD9Old {
+    background: transparent url('shared/assets/anims/30/D9.png') 0 0 no-repeat;
+    animation: D9Old 0.34s steps(9);
+}
+
+@keyframes D9Old {
+    100% { background-position: -2826px 0; }
+}
+
+.TapAnimationToadD10,
+.TapAnimationToadD10Old {
+    left: calc(50% - 17px);
+    top: 68px;
+    width: 314px;
+    height: 353px;
+    scale: 0.96;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 74px);
+        top: 65px;
+    }
+}
+
+.TapAnimationToadD10 {
+    background: transparent url('shared/assets/anims/60/D10.png') 0 0 no-repeat;
+    animation: D10 0.34s steps(17);
+}
+
+@keyframes D10 {
+    100% { background-position: -5338px 0; }
+}
+
+.TapAnimationToadD10Old {
+    background: transparent url('shared/assets/anims/30/D10.png') 0 0 no-repeat;
+    animation: D10Old 0.34s steps(9);
+}
+
+@keyframes D10Old {
+    100% { background-position: -2826px 0; }
+}
+
+.TapAnimationToadD11,
+.TapAnimationToadD11Old {
+    left: calc(50% - 2px);
+    top: 87px;
+    width: 284px;
+    height: 353px;
+    scale: 1.06;
+
+    @media (max-height: 765px) {
+        scale: 0.67;
+        left: calc(50% - 59px);
+        top: 77px;
+    }
+}
+
+.TapAnimationToadD11 {
+    background: transparent url('shared/assets/anims/60/D11.png') 0 0 no-repeat;
+    animation: D11 0.34s steps(17);
+}
+
+@keyframes D11 {
+    100% { background-position: -4828px 0; }
+}
+
+.TapAnimationToadD11Old {
+    background: transparent url('shared/assets/anims/30/D11.png') 0 0 no-repeat;
+    animation: D11Old 0.34s steps(9);
+}
+
+@keyframes D11Old {
+    100% { background-position: -2556px 0; }
+}
+
+.TapAnimationToadE1,
+.TapAnimationToadE1Old {
+    left: calc(50% + 37px);
+    top: -19px;
+    width: 208px;
+    height: 353px;
+    scale: 1.45;
+
+    @media (max-height: 765px) {
+        scale: 0.92;
+        left: calc(50% - 20px);
+        top: 10px;
+    }
+}
+
+.TapAnimationToadE1 {
+    background: transparent url('shared/assets/anims/60/E1.png') 0 0 no-repeat;
+    animation: E1 0.34s steps(17);
+}
+
+@keyframes E1 {
+    100% { background-position: -3536px 0; }
+}
+
+.TapAnimationToadE1Old {
+    background: transparent url('shared/assets/anims/30/E1.png') 0 0 no-repeat;
+    animation: E1Old 0.34s steps(9);
+}
+
+@keyframes E1Old {
+    100% { background-position: -1872px 0; }
+}
+
+.TapAnimationToadE2,
+.TapAnimationToadE2Old {
+    left: calc(50% + 27px);
+    top: 2px;
+    width: 227px;
+    height: 353px;
+    scale: 1.33;
+
+    @media (max-height: 765px) {
+        scale: 0.85;
+        left: calc(50% - 29px);
+        top: 23px;
+    }
+}
+
+.TapAnimationToadE2 {
+    background: transparent url('shared/assets/anims/60/E2.png') 0 0 no-repeat;
+    animation: E2 0.34s steps(17);
+}
+
+@keyframes E2 {
+    100% { background-position: -3859px 0; }
+}
+
+.TapAnimationToadE2Old {
+    background: transparent url('shared/assets/anims/30/E2.png') 0 0 no-repeat;
+    animation: E2Old 0.34s steps(9);
+}
+
+@keyframes E2Old {
+    100% { background-position: -2043px 0; }
+}
+
+.TapAnimationToadE3,
+.TapAnimationToadE3Old {
+    left: calc(50% + 0px);
+    top: 8px;
+    width: 277px;
+    height: 353px;
+    scale: 1.3;
+
+    @media (max-height: 765px) {
+        scale: 0.83;
+        left: calc(50% - 55px);
+        top: 27px;
+    }
+}
+
+.TapAnimationToadE3 {
+    background: transparent url('shared/assets/anims/60/E3.png') 0 0 no-repeat;
+    animation: E3 0.34s steps(19);
+}
+
+@keyframes E3 {
+    100% { background-position: -5263px 0; }
+}
+
+.TapAnimationToadE3Old {
+    background: transparent url('shared/assets/anims/30/E3.png') 0 0 no-repeat;
+    animation: E3Old 0.34s steps(10);
+}
+
+@keyframes E3Old {
+    100% { background-position: -2770px 0; }
+}
+
+.TapAnimationToadE4,
+.TapAnimationToadE4Old {
+    left: calc(50% + -17px);
+    top: 29px;
+    width: 309px;
+    height: 353px;
+    scale: 1.18;
+
+    @media (max-height: 765px) {
+        scale: 0.76;
+        left: calc(50% - 71px);
+        top: 39px;
+    }
+}
+
+.TapAnimationToadE4 {
+    background: transparent url('shared/assets/anims/60/E4.png') 0 0 no-repeat;
+    animation: E4 0.34s steps(19);
+}
+
+@keyframes E4 {
+    100% { background-position: -5871px 0; }
+}
+
+.TapAnimationToadE4Old {
+    background: transparent url('shared/assets/anims/30/E4.png') 0 0 no-repeat;
+    animation: E4Old 0.34s steps(10);
+}
+
+@keyframes E4Old {
+    100% { background-position: -3090px 0; }
+}
+
+.TapAnimationToadE5,
+.TapAnimationToadE5Old {
+    left: calc(50% - 34px);
+    top: 50px;
+    width: 346px;
+    height: 353px;
+    scale: 1.06;
+
+    @media (max-height: 765px) {
+        scale: 0.67;
+        left: calc(50% - 91px);
+        top: 55px;
+    }
+}
+
+.TapAnimationToadE5 {
+    background: transparent url('shared/assets/anims/60/E5.png') 0 0 no-repeat;
+    animation: E5 0.34s steps(19);
+}
+
+@keyframes E5 {
+    100% { background-position: -6574px 0; }
+}
+
+.TapAnimationToadE5Old {
+    background: transparent url('shared/assets/anims/30/E5.png') 0 0 no-repeat;
+    animation: E5Old 0.34s steps(10);
+}
+
+@keyframes E5Old {
+    100% { background-position: -3460px 0; }
+}
+
+.TapAnimationToadE6,
+.TapAnimationToadE6Old {
+    left: calc(50% - 54px);
+    top: 69px;
+    width: 387px;
+    height: 353px;
+    scale: 0.95;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 110px);
+        top: 65px;
+    }
+}
+
+.TapAnimationToadE6 {
+    background: transparent url('shared/assets/anims/60/E6.png') 0 0 no-repeat;
+    animation: E6 0.34s steps(19);
+}
+
+@keyframes E6 {
+    100% { background-position: -7353px 0; }
+}
+
+.TapAnimationToadE6Old {
+    background: transparent url('shared/assets/anims/30/E6.png') 0 0 no-repeat;
+    animation: E6Old 0.34s steps(10);
+}
+
+@keyframes E6Old {
+    100% { background-position: -3870px 0; }
+}
+
+.TapAnimationToadE7,
+.TapAnimationToadE7Old {
+    left: calc(50% - 54px);
+    top: 69px;
+    width: 387px;
+    height: 353px;
+    scale: 0.95;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 110px);
+        top: 65px;
+    }
+}
+
+.TapAnimationToadE7 {
+    background: transparent url('shared/assets/anims/60/E7.png') 0 0 no-repeat;
+    animation: E7 0.34s steps(19);
+}
+
+@keyframes E7 {
+    100% { background-position: -7353px 0; }
+}
+
+.TapAnimationToadE7Old {
+    background: transparent url('shared/assets/anims/30/E7.png') 0 0 no-repeat;
+    animation: E7Old 0.34s steps(10);
+}
+
+@keyframes E7Old {
+    100% { background-position: -3870px 0; }
+}
+
+.TapAnimationToadE8,
+.TapAnimationToadE8Old {
+    left: calc(50% - 54px);
+    top: 69px;
+    width: 387px;
+    height: 353px;
+    scale: 0.95;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 110px);
+        top: 65px;
+    }
+}
+
+.TapAnimationToadE8 {
+    background: transparent url('shared/assets/anims/60/E8.png') 0 0 no-repeat;
+    animation: E8 0.34s steps(19);
+}
+
+@keyframes E8 {
+    100% { background-position: -7353px 0; }
+}
+
+.TapAnimationToadE8Old {
+    background: transparent url('shared/assets/anims/30/E8.png') 0 0 no-repeat;
+    animation: E8Old 0.34s steps(10);
+}
+
+@keyframes E8Old {
+    100% { background-position: -3870px 0; }
+}
+
+.TapAnimationToadE9,
+.TapAnimationToadE9Old {
+    left: calc(50% - 52px);
+    top: 73px;
+    width: 379px;
+    height: 353px;
+    scale: 0.965;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 108px);
+        top: 69px;
+    }
+}
+
+.TapAnimationToadE9 {
+    background: transparent url('shared/assets/anims/60/E9.png') 0 0 no-repeat;
+    animation: E9 0.34s steps(19);
+}
+
+@keyframes E9 {
+    100% { background-position: -7201px 0; }
+}
+
+.TapAnimationToadE9Old {
+    background: transparent url('shared/assets/anims/30/E9.png') 0 0 no-repeat;
+    animation: E9Old 0.34s steps(10);
+}
+
+@keyframes E9Old {
+    100% { background-position: -3790px 0; }
+}
+
+.TapAnimationToadE10,
+.TapAnimationToadE10Old {
+    left: calc(50% - 16px);
+    top: 70px;
+    width: 311px;
+    height: 353px;
+    scale: 0.965;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 73px);
+        top: 67px;
+    }
+}
+
+.TapAnimationToadE10 {
+    background: transparent url('shared/assets/anims/60/E10.png') 0 0 no-repeat;
+    animation: E10 0.34s steps(17);
+}
+
+@keyframes E10 {
+    100% { background-position: -5287px 0; }
+}
+
+.TapAnimationToadE10Old {
+    background: transparent url('shared/assets/anims/30/E10.png') 0 0 no-repeat;
+    animation: E10Old 0.34s steps(9);
+}
+
+@keyframes E10Old {
+    100% { background-position: -2799px 0; }
+}
+
+.TapAnimationToadE11,
+.TapAnimationToadE11Old {
+    left: calc(50% - 2px);
+    top: 87px;
+    width: 284px;
+    height: 353px;
+    scale: 1.06;
+
+    @media (max-height: 765px) {
+        scale: 0.68;
+        left: calc(50% - 58px);
+        top: 77px;
+    }
+}
+
+.TapAnimationToadE11 {
+    background: transparent url('shared/assets/anims/60/E11.png') 0 0 no-repeat;
+    animation: E11 0.34s steps(17);
+}
+
+@keyframes E11 {
+    100% { background-position: -4828px 0; }
+}
+
+.TapAnimationToadE11Old {
+    background: transparent url('shared/assets/anims/30/E11.png') 0 0 no-repeat;
+    animation: E11Old 0.34s steps(9);
+}
+
+@keyframes E11Old {
+    100% { background-position: -2556px 0; }
+}
+
+.TapAnimationToadF1,
+.TapAnimationToadF1Old {
+    left: calc(50% + 66px);
+    top: -19px;
+    width: 219px;
+    height: 353px;
+    scale: 1.45;
+
+    @media (max-height: 765px) {
+        scale: 0.92;
+        left: calc(50% - 3px);
+        top: 11px;
+    }
+}
+
+.TapAnimationToadF1 {
+    background: transparent url('shared/assets/anims/60/F1.png') 0 0 no-repeat;
+    animation: F1 0.34s steps(17);
+}
+
+@keyframes F1 {
+    100% { background-position: -3723px 0; }
+}
+
+.TapAnimationToadF1Old {
+    background: transparent url('shared/assets/anims/30/F1.png') 0 0 no-repeat;
+    animation: F1Old 0.34s steps(9);
+}
+
+@keyframes F1Old {
+    100% { background-position: -1971px 0; }
+}
+
+.TapAnimationToadF2,
+.TapAnimationToadF2Old {
+    left: calc(50% + 57px);
+    top: 2px;
+    width: 240px;
+    height: 353px;
+    scale: 1.33;
+
+    @media (max-height: 765px) {
+        scale: 0.84;
+        left: calc(50% - 14px);
+        top: 24px;
+    }
+}
+
+.TapAnimationToadF2 {
+    background: transparent url('shared/assets/anims/60/F2.png') 0 0 no-repeat;
+    animation: F2 0.34s steps(17);
+}
+
+@keyframes F2 {
+    100% { background-position: -4080px 0; }
+}
+
+.TapAnimationToadF2Old {
+    background: transparent url('shared/assets/anims/30/F2.png') 0 0 no-repeat;
+    animation: F2Old 0.34s steps(9);
+}
+
+@keyframes F2Old {
+    100% { background-position: -2160px 0; }
+}
+
+.TapAnimationToadF3,
+.TapAnimationToadF3Old {
+    left: calc(50% + 26px);
+    top: 8px;
+    width: 264px;
+    height: 353px;
+    scale: 1.3;
+
+    @media (max-height: 765px) {
+        scale: 0.83;
+        left: calc(50% - 36px);
+        top: 26px;
+    }
+}
+
+.TapAnimationToadF3 {
+    background: transparent url('shared/assets/anims/60/F3.png') 0 0 no-repeat;
+    animation: F3 0.34s steps(19);
+}
+
+@keyframes F3 {
+    100% { background-position: -5016px 0; }
+}
+
+.TapAnimationToadF3Old {
+    background: transparent url('shared/assets/anims/30/F3.png') 0 0 no-repeat;
+    animation: F3Old 0.34s steps(10);
+}
+
+@keyframes F3Old {
+    100% { background-position: -2640px 0; }
+}
+
+.TapAnimationToadF4,
+.TapAnimationToadF4Old {
+    left: calc(50% + 14px);
+    top: 27px;
+    width: 290px;
+    height: 353px;
+    scale: 1.19;
+
+    @media (max-height: 765px) {
+        scale: 0.76;
+        left: calc(50% - 49px);
+        top: 39px;
+    }
+}
+
+.TapAnimationToadF4 {
+    background: transparent url('shared/assets/anims/60/F4.png') 0 0 no-repeat;
+    animation: F4 0.34s steps(19);
+}
+
+@keyframes F4 {
+    100% { background-position: -5510px 0; }
+}
+
+.TapAnimationToadF4Old {
+    background: transparent url('shared/assets/anims/30/F4.png') 0 0 no-repeat;
+    animation: F4Old 0.34s steps(10);
+}
+
+@keyframes F4Old {
+    100% { background-position: -2900px 0; }
+}
+
+.TapAnimationToadF5,
+.TapAnimationToadF5Old {
+    left: calc(50% + -3px);
+    top: 49px;
+    width: 322px;
+    height: 353px;
+    scale: 1.065;
+
+    @media (max-height: 765px) {
+        scale: 0.68;
+        left: calc(50% - 65px);
+        top: 53px;
+    }
+}
+
+.TapAnimationToadF5 {
+    background: transparent url('shared/assets/anims/60/F5.png') 0 0 no-repeat;
+    animation: F5 0.34s steps(19);
+}
+
+@keyframes F5 {
+    100% { background-position: -6118px 0; }
+}
+
+.TapAnimationToadF5Old {
+    background: transparent url('shared/assets/anims/30/F5.png') 0 0 no-repeat;
+    animation: F5Old 0.34s steps(10);
+}
+
+@keyframes F5Old {
+    100% { background-position: -3220px 0; }
+}
+
+.TapAnimationToadF6,
+.TapAnimationToadF6Old {
+    left: calc(50% - 22px);
+    top: 70px;
+    width: 362px;
+    height: 353px;
+    scale: 0.95;
+
+    @media (max-height: 765px) {
+        scale: 0.605;
+        left: calc(50% - 85px);
+        top: 66px;
+    }
+}
+
+.TapAnimationToadF6 {
+    background: transparent url('shared/assets/anims/60/F6.png') 0 0 no-repeat;
+    animation: F6 0.34s steps(19);
+}
+
+@keyframes F6 {
+    100% { background-position: -6878px 0; }
+}
+
+.TapAnimationToadF6Old {
+    background: transparent url('shared/assets/anims/30/F6.png') 0 0 no-repeat;
+    animation: F6Old 0.34s steps(10);
+}
+
+@keyframes F6Old {
+    100% { background-position: -3620px 0; }
+}
+
+.TapAnimationToadF7,
+.TapAnimationToadF7Old {
+    left: calc(50% - 22px);
+    top: 70px;
+    width: 362px;
+    height: 353px;
+    scale: 0.95;
+
+    @media (max-height: 765px) {
+        scale: 0.605;
+        left: calc(50% - 85px);
+        top: 66px;
+    }
+}
+
+.TapAnimationToadF7 {
+    background: transparent url('shared/assets/anims/60/F7.png') 0 0 no-repeat;
+    animation: F7 0.34s steps(19);
+}
+
+@keyframes F7 {
+    100% { background-position: -6878px 0; }
+}
+
+.TapAnimationToadF7Old {
+    background: transparent url('shared/assets/anims/30/F7.png') 0 0 no-repeat;
+    animation: F7Old 0.34s steps(10);
+}
+
+@keyframes F7Old {
+    100% { background-position: -3620px 0; }
+}
+
+.TapAnimationToadF8,
+.TapAnimationToadF8Old {
+    left: calc(50% - 22px);
+    top: 70px;
+    width: 362px;
+    height: 353px;
+    scale: 0.95;
+
+    @media (max-height: 765px) {
+        scale: 0.605;
+        left: calc(50% - 85px);
+        top: 66px;
+    }
+}
+
+.TapAnimationToadF8 {
+    background: transparent url('shared/assets/anims/60/F8.png') 0 0 no-repeat;
+    animation: F8 0.34s steps(19);
+}
+
+@keyframes F8 {
+    100% { background-position: -6878px 0; }
+}
+
+.TapAnimationToadF8Old {
+    background: transparent url('shared/assets/anims/30/F8.png') 0 0 no-repeat;
+    animation: F8Old 0.34s steps(10);
+}
+
+@keyframes F8Old {
+    100% { background-position: -3620px 0; }
+}
+
+.TapAnimationToadF9,
+.TapAnimationToadF9Old {
+    left: calc(50% - 20px);
+    top: 72px;
+    width: 358px;
+    height: 353px;
+    scale: 0.96;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 84px);
+        top: 67px;
+    }
+}
+
+.TapAnimationToadF9 {
+    background: transparent url('shared/assets/anims/60/F9.png') 0 0 no-repeat;
+    animation: F9 0.34s steps(19);
+}
+
+@keyframes F9 {
+    100% { background-position: -6802px 0; }
+}
+
+.TapAnimationToadF9Old {
+    background: transparent url('shared/assets/anims/30/F9.png') 0 0 no-repeat;
+    animation: F9Old 0.34s steps(10);
+}
+
+@keyframes F9Old {
+    100% { background-position: -3580px 0; }
+}
+
+.TapAnimationToadF10,
+.TapAnimationToadF10Old {
+    left: calc(50% - 17px);
+    top: 70px;
+    width: 311px;
+    height: 353px;
+    scale: 0.96;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 73px);
+        top: 67px;
+    }
+}
+
+.TapAnimationToadF10 {
+    background: transparent url('shared/assets/anims/60/F10.png') 0 0 no-repeat;
+    animation: F10 0.34s steps(17);
+}
+
+@keyframes F10 {
+    100% { background-position: -5287px 0; }
+}
+
+.TapAnimationToadF10Old {
+    background: transparent url('shared/assets/anims/30/F10.png') 0 0 no-repeat;
+    animation: F10Old 0.34s steps(9);
+}
+
+@keyframes F10Old {
+    100% { background-position: -2799px 0; }
+}
+
+.TapAnimationToadF11,
+.TapAnimationToadF11Old {
+    left: calc(50% - 2px);
+    top: 87px;
+    width: 284px;
+    height: 353px;
+    scale: 1.06;
+
+    @media (max-height: 765px) {
+        scale: 0.68;
+        left: calc(50% - 58px);
+        top: 77px;
+    }
+}
+
+.TapAnimationToadF11 {
+    background: transparent url('shared/assets/anims/60/F11.png') 0 0 no-repeat;
+    animation: F11 0.34s steps(17);
+}
+
+@keyframes F11 {
+    100% { background-position: -4828px 0; }
+}
+
+.TapAnimationToadF11Old {
+    background: transparent url('shared/assets/anims/30/F11.png') 0 0 no-repeat;
+    animation: F11Old 0.34s steps(9);
+}
+
+@keyframes F11Old {
+    100% { background-position: -2556px 0; }
+}
+
+.TapAnimationToadG1,
+.TapAnimationToadG1Old {
+    left: calc(50% + 67px);
+    top: -17px;
+    width: 220px;
+    height: 353px;
+    scale: 1.44;
+
+    @media (max-height: 765px) {
+        scale: 0.92;
+        left: calc(50% - 2px);
+        top: 11px;
+    }
+}
+
+.TapAnimationToadG1 {
+    background: transparent url('shared/assets/anims/60/G1.png') 0 0 no-repeat;
+    animation: G1 0.34s steps(17);
+}
+
+@keyframes G1 {
+    100% { background-position: -3740px 0; }
+}
+
+.TapAnimationToadG1Old {
+    background: transparent url('shared/assets/anims/30/G1.png') 0 0 no-repeat;
+    animation: G1Old 0.34s steps(9);
+}
+
+@keyframes G1Old {
+    100% { background-position: -1980px 0; }
+}
+
+.TapAnimationToadG2,
+.TapAnimationToadG2Old {
+    left: calc(50% + 56px);
+    top: 4px;
+    width: 240px;
+    height: 353px;
+    scale: 1.32;
+
+    @media (max-height: 765px) {
+        scale: 0.84;
+        left: calc(50% - 13px);
+        top: 24px;
+    }
+}
+
+.TapAnimationToadG2 {
+    background: transparent url('shared/assets/anims/60/G2.png') 0 0 no-repeat;
+    animation: G2 0.34s steps(17);
+}
+
+@keyframes G2 {
+    100% { background-position: -4080px 0; }
+}
+
+.TapAnimationToadG2Old {
+    background: transparent url('shared/assets/anims/30/G2.png') 0 0 no-repeat;
+    animation: G2Old 0.34s steps(9);
+}
+
+@keyframes G2Old {
+    100% { background-position: -2160px 0; }
+}
+
+.TapAnimationToadG3,
+.TapAnimationToadG3Old {
+    left: calc(50% + 59px);
+    top: 9px;
+    width: 266px;
+    height: 353px;
+    scale: 1.29;
+
+    @media (max-height: 765px) {
+        scale: 0.82;
+        left: calc(50% - 16px);
+        top: 28px;
+    }
+}
+
+.TapAnimationToadG3 {
+    background: transparent url('shared/assets/anims/60/G3.png') 0 0 no-repeat;
+    animation: G3 0.34s steps(19);
+}
+
+@keyframes G3 {
+    100% { background-position: -5054px 0; }
+}
+
+.TapAnimationToadG3Old {
+    background: transparent url('shared/assets/anims/30/G3.png') 0 0 no-repeat;
+    animation: G3Old 0.34s steps(10);
+}
+
+@keyframes G3Old {
+    100% { background-position: -2660px 0; }
+}
+
+.TapAnimationToadG4,
+.TapAnimationToadG4Old {
+    left: calc(50% + 48px);
+    top: 27px;
+    width: 290px;
+    height: 353px;
+    scale: 1.19;
+
+    @media (max-height: 765px) {
+        scale: 0.76;
+        left: calc(50% - 27px);
+        top: 39px;
+    }
+}
+
+.TapAnimationToadG4 {
+    background: transparent url('shared/assets/anims/60/G4.png') 0 0 no-repeat;
+    animation: G4 0.34s steps(19);
+}
+
+@keyframes G4 {
+    100% { background-position: -5510px 0; }
+}
+
+.TapAnimationToadG4Old {
+    background: transparent url('shared/assets/anims/30/G4.png') 0 0 no-repeat;
+    animation: G4Old 0.34s steps(10);
+}
+
+@keyframes G4Old {
+    100% { background-position: -2900px 0; }
+}
+
+.TapAnimationToadG5,
+.TapAnimationToadG5Old {
+    left: calc(50% + 30px);
+    top: 52px;
+    width: 328px;
+    height: 353px;
+    scale: 1.05;
+
+    @media (max-height: 765px) {
+        scale: 0.67;
+        left: calc(50% - 46px);
+        top: 55px;
+    }
+}
+
+.TapAnimationToadG5 {
+    background: transparent url('shared/assets/anims/60/G5.png') 0 0 no-repeat;
+    animation: G5 0.34s steps(19);
+}
+
+@keyframes G5 {
+    100% { background-position: -6232px 0; }
+}
+
+.TapAnimationToadG5Old {
+    background: transparent url('shared/assets/anims/30/G5.png') 0 0 no-repeat;
+    animation: G5Old 0.34s steps(10);
+}
+
+@keyframes G5Old {
+    100% { background-position: -3280px 0; }
+}
+
+.TapAnimationToadG6,
+.TapAnimationToadG6Old {
+    left: calc(50% + 13px);
+    top: 70px;
+    width: 362px;
+    height: 353px;
+    scale: 0.95;
+
+    @media (max-height: 765px) {
+        scale: 0.605;
+        left: calc(50% - 64px);
+        top: 66px;
+    }
+}
+
+.TapAnimationToadG6 {
+    background: transparent url('shared/assets/anims/60/G6.png') 0 0 no-repeat;
+    animation: G6 0.34s steps(19);
+}
+
+@keyframes G6 {
+    100% { background-position: -6878px 0; }
+}
+
+.TapAnimationToadG6Old {
+    background: transparent url('shared/assets/anims/30/G6.png') 0 0 no-repeat;
+    animation: G6Old 0.34s steps(10);
+}
+
+@keyframes G6Old {
+    100% { background-position: -3620px 0; }
+}
+
+.TapAnimationToadG7,
+.TapAnimationToadG7Old {
+    left: calc(50% + 13px);
+    top: 70px;
+    width: 362px;
+    height: 353px;
+    scale: 0.95;
+
+    @media (max-height: 765px) {
+        scale: 0.605;
+        left: calc(50% - 64px);
+        top: 66px;
+    }
+}
+
+.TapAnimationToadG7 {
+    background: transparent url('shared/assets/anims/60/G7.png') 0 0 no-repeat;
+    animation: G7 0.34s steps(19);
+}
+
+@keyframes G7 {
+    100% { background-position: -6878px 0; }
+}
+
+.TapAnimationToadG7Old {
+    background: transparent url('shared/assets/anims/30/G7.png') 0 0 no-repeat;
+    animation: G7Old 0.34s steps(10);
+}
+
+@keyframes G7Old {
+    100% { background-position: -3620px 0; }
+}
+
+.TapAnimationToadG8,
+.TapAnimationToadG8Old {
+    left: calc(50% + 13px);
+    top: 70px;
+    width: 362px;
+    height: 353px;
+    scale: 0.95;
+
+    @media (max-height: 765px) {
+        scale: 0.605;
+        left: calc(50% - 64px);
+        top: 66px;
+    }
+}
+
+.TapAnimationToadG8 {
+    background: transparent url('shared/assets/anims/60/G8.png') 0 0 no-repeat;
+    animation: G8 0.34s steps(19);
+}
+
+@keyframes G8 {
+    100% { background-position: -6878px 0; }
+}
+
+.TapAnimationToadG8Old {
+    background: transparent url('shared/assets/anims/30/G8.png') 0 0 no-repeat;
+    animation: G8Old 0.34s steps(10);
+}
+
+@keyframes G8Old {
+    100% { background-position: -3620px 0; }
+}
+
+.TapAnimationToadG9,
+.TapAnimationToadG9Old {
+    left: calc(50% + 18px);
+    top: 75px;
+    width: 351px;
+    height: 353px;
+    scale: 0.98;
+
+    @media (max-height: 765px) {
+        scale: 0.62;
+        left: calc(50% - 59px);
+        top: 70px;
+    }
+}
+
+.TapAnimationToadG9 {
+    background: transparent url('shared/assets/anims/60/G9.png') 0 0 no-repeat;
+    animation: G9 0.34s steps(19);
+}
+
+@keyframes G9 {
+    100% { background-position: -6669px 0; }
+}
+
+.TapAnimationToadG9Old {
+    background: transparent url('shared/assets/anims/30/G9.png') 0 0 no-repeat;
+    animation: G9Old 0.34s steps(10);
+}
+
+@keyframes G9Old {
+    100% { background-position: -3510px 0; }
+}
+
+.TapAnimationToadG10,
+.TapAnimationToadG10Old {
+    left: calc(50% - 1px);
+    top: 69px;
+    width: 308px;
+    height: 353px;
+    scale: 0.955;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 61px);
+        top: 65px;
+    }
+}
+
+.TapAnimationToadG10 {
+    background: transparent url('shared/assets/anims/60/G10.png') 0 0 no-repeat;
+    animation: G10 0.34s steps(17);
+}
+
+@keyframes G10 {
+    100% { background-position: -5236px 0; }
+}
+
+.TapAnimationToadG10Old {
+    background: transparent url('shared/assets/anims/30/G10.png') 0 0 no-repeat;
+    animation: G10Old 0.34s steps(9);
+}
+
+@keyframes G10Old {
+    100% { background-position: -2772px 0; }
+}
+
+.TapAnimationToadG11,
+.TapAnimationToadG11Old {
+    left: calc(50% + 14px);
+    top: 87px;
+    width: 278px;
+    height: 353px;
+    scale: 1.06;
+
+    @media (max-height: 765px) {
+        scale: 0.67;
+        left: calc(50% - 48px);
+        top: 78px;
+    }
+}
+
+.TapAnimationToadG11 {
+    background: transparent url('shared/assets/anims/60/G11.png') 0 0 no-repeat;
+    animation: G11 0.34s steps(17);
+}
+
+@keyframes G11 {
+    100% { background-position: -4726px 0; }
+}
+
+.TapAnimationToadG11Old {
+    background: transparent url('shared/assets/anims/30/G11.png') 0 0 no-repeat;
+    animation: G11Old 0.34s steps(9);
+}
+
+@keyframes G11Old {
+    100% { background-position: -2502px 0; }
+}
+
+.TapAnimationToadH1,
+.TapAnimationToadH1Old {
+    left: calc(50% + 66px);
+    top: -17px;
+    width: 221px;
+    height: 353px;
+    scale: 1.44;
+
+    @media (max-height: 765px) {
+        scale: 0.91;
+        left: calc(50% - 4px);
+        top: 12px;
+    }
+}
+
+.TapAnimationToadH1 {
+    background: transparent url('shared/assets/anims/60/H1.png') 0 0 no-repeat;
+    animation: H1 0.34s steps(17);
+}
+
+@keyframes H1 {
+    100% { background-position: -3757px 0; }
+}
+
+.TapAnimationToadH1Old {
+    background: transparent url('shared/assets/anims/30/H1.png') 0 0 no-repeat;
+    animation: H1Old 0.34s steps(9);
+}
+
+@keyframes H1Old {
+    100% { background-position: -1989px 0; }
+}
+
+.TapAnimationToadH2,
+.TapAnimationToadH2Old {
+    left: calc(50% + 56px);
+    top: 4px;
+    width: 240px;
+    height: 353px;
+    scale: 1.32;
+
+    @media (max-height: 765px) {
+        scale: 0.85;
+        left: calc(50% - 12px);
+        top: 23px;
+    }
+}
+
+.TapAnimationToadH2 {
+    background: transparent url('shared/assets/anims/60/H2.png') 0 0 no-repeat;
+    animation: H2 0.34s steps(17);
+}
+
+@keyframes H2 {
+    100% { background-position: -4080px 0; }
+}
+
+.TapAnimationToadH2Old {
+    background: transparent url('shared/assets/anims/30/H2.png') 0 0 no-repeat;
+    animation: H2Old 0.34s steps(9);
+}
+
+@keyframes H2Old {
+    100% { background-position: -2160px 0; }
+}
+
+.TapAnimationToadH3,
+.TapAnimationToadH3Old {
+    left: calc(50% + 40px);
+    top: 30px;
+    width: 271px;
+    height: 353px;
+    scale: 1.17;
+
+    @media (max-height: 765px) {
+        scale: 0.75;
+        left: calc(50% - 28px);
+        top: 40px;
+    }
+}
+
+.TapAnimationToadH3 {
+    background: transparent url('shared/assets/anims/60/H3.png') 0 0 no-repeat;
+    animation: H3 0.34s steps(17);
+}
+
+@keyframes H3 {
+    100% { background-position: -4607px 0; }
+}
+
+.TapAnimationToadH3Old {
+    background: transparent url('shared/assets/anims/30/H3.png') 0 0 no-repeat;
+    animation: H3Old 0.34s steps(9);
+}
+
+@keyframes H3Old {
+    100% { background-position: -2439px 0; }
+}
+
+.TapAnimationToadH4,
+.TapAnimationToadH4Old {
+    left: calc(50% + 28px);
+    top: 48px;
+    width: 297px;
+    height: 353px;
+    scale: 1.07;
+
+    @media (max-height: 765px) {
+        scale: 0.685;
+        left: calc(50% - 41px);
+        top: 52px;
+    }
+}
+
+.TapAnimationToadH4 {
+    background: transparent url('shared/assets/anims/60/H4.png') 0 0 no-repeat;
+    animation: H4 0.34s steps(17);
+}
+
+@keyframes H4 {
+    100% { background-position: -5049px 0; }
+}
+
+.TapAnimationToadH4Old {
+    background: transparent url('shared/assets/anims/30/H4.png') 0 0 no-repeat;
+    animation: H4Old 0.34s steps(9);
+}
+
+@keyframes H4Old {
+    100% { background-position: -2673px 0; }
+}
+
+.TapAnimationToadH5,
+.TapAnimationToadH5Old {
+    left: calc(50% + 5px);
+    top: 62px;
+    width: 297px;
+    height: 353px;
+    scale: 0.99;
+
+    @media (max-height: 765px) {
+        scale: 0.64;
+        left: calc(50% - 55px);
+        top: 60px;
+    }
+}
+
+.TapAnimationToadH5 {
+    background: transparent url('shared/assets/anims/60/H5.png') 0 0 no-repeat;
+    animation: H5 0.34s steps(17);
+}
+
+@keyframes H5 {
+    100% { background-position: -5440px 0; }
+}
+
+.TapAnimationToadH5Old {
+    background: transparent url('shared/assets/anims/30/H5.png') 0 0 no-repeat;
+    animation: H5Old 0.34s steps(9);
+}
+
+@keyframes H5Old {
+    100% { background-position: -2880px 0; }
+}
+
+.TapAnimationToadH6,
+.TapAnimationToadH6Old {
+    left: calc(50% + 5px);
+    top: 62px;
+    width: 297px;
+    height: 353px;
+    scale: 0.99;
+
+    @media (max-height: 765px) {
+        scale: 0.64;
+        left: calc(50% - 55px);
+        top: 60px;
+    }
+}
+
+.TapAnimationToadH6 {
+    background: transparent url('shared/assets/anims/60/H6.png') 0 0 no-repeat;
+    animation: H6 0.34s steps(17);
+}
+
+@keyframes H6 {
+    100% { background-position: -5440px 0; }
+}
+
+.TapAnimationToadH6Old {
+    background: transparent url('shared/assets/anims/30/H6.png') 0 0 no-repeat;
+    animation: H6Old 0.34s steps(9);
+}
+
+@keyframes H6Old {
+    100% { background-position: -2880px 0; }
+}
+
+.TapAnimationToadH7,
+.TapAnimationToadH7Old {
+    left: calc(50% - 1px);
+    top: 69px;
+    width: 308px;
+    height: 353px;
+    scale: 0.955;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 61px);
+        top: 65px;
+    }
+}
+
+.TapAnimationToadH7 {
+    background: transparent url('shared/assets/anims/60/H7.png') 0 0 no-repeat;
+    animation: H7 0.34s steps(17);
+}
+
+@keyframes H7 {
+    100% { background-position: -5236px 0; }
+}
+
+.TapAnimationToadH7Old {
+    background: transparent url('shared/assets/anims/30/H7.png') 0 0 no-repeat;
+    animation: H7Old 0.34s steps(9);
+}
+
+@keyframes H7Old {
+    100% { background-position: -2772px 0; }
+}
+
+.TapAnimationToadH8,
+.TapAnimationToadH8Old {
+    left: calc(50% - 1px);
+    top: 69px;
+    width: 308px;
+    height: 353px;
+    scale: 0.955;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 61px);
+        top: 65px;
+    }
+}
+
+.TapAnimationToadH8 {
+    background: transparent url('shared/assets/anims/60/H8.png') 0 0 no-repeat;
+    animation: H8 0.34s steps(17);
+}
+
+@keyframes H8 {
+    100% { background-position: -5236px 0; }
+}
+
+.TapAnimationToadH8Old {
+    background: transparent url('shared/assets/anims/30/H8.png') 0 0 no-repeat;
+    animation: H8Old 0.34s steps(9);
+}
+
+@keyframes H8Old {
+    100% { background-position: -2772px 0; }
+}
+
+.TapAnimationToadH9,
+.TapAnimationToadH9Old {
+    left: calc(50% - 1px);
+    top: 69px;
+    width: 308px;
+    height: 353px;
+    scale: 0.955;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 61px);
+        top: 65px;
+    }
+}
+
+.TapAnimationToadH9 {
+    background: transparent url('shared/assets/anims/60/H9.png') 0 0 no-repeat;
+    animation: H9 0.34s steps(17);
+}
+
+@keyframes H9 {
+    100% { background-position: -5236px 0; }
+}
+
+.TapAnimationToadH9Old {
+    background: transparent url('shared/assets/anims/30/H9.png') 0 0 no-repeat;
+    animation: H9Old 0.34s steps(9);
+}
+
+@keyframes H9Old {
+    100% { background-position: -2772px 0; }
+}
+
+.TapAnimationToadH10,
+.TapAnimationToadH10Old {
+    left: calc(50% - 1px);
+    top: 69px;
+    width: 308px;
+    height: 353px;
+    scale: 0.955;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 61px);
+        top: 65px;
+    }
+}
+
+.TapAnimationToadH10 {
+    background: transparent url('shared/assets/anims/60/H10.png') 0 0 no-repeat;
+    animation: H10 0.34s steps(17);
+}
+
+@keyframes H10 {
+    100% { background-position: -5236px 0; }
+}
+
+.TapAnimationToadH10Old {
+    background: transparent url('shared/assets/anims/30/H10.png') 0 0 no-repeat;
+    animation: H10Old 0.34s steps(9);
+}
+
+@keyframes H10Old {
+    100% { background-position: -2772px 0; }
+}
+
+.TapAnimationToadH11,
+.TapAnimationToadH11Old {
+    left: calc(50% + 19px);
+    top: 94px;
+    width: 268px;
+    height: 353px;
+    scale: 1.1;
+
+    @media (max-height: 765px) {
+        scale: 0.7;
+        left: calc(50% - 42px);
+        top: 82px;
+    }
+}
+
+.TapAnimationToadH11 {
+    background: transparent url('shared/assets/anims/60/H11.png') 0 0 no-repeat;
+    animation: H11 0.34s steps(17);
+}
+
+@keyframes H11 {
+    100% { background-position: -4556px 0; }
+}
+
+.TapAnimationToadH11Old {
+    background: transparent url('shared/assets/anims/30/H11.png') 0 0 no-repeat;
+    animation: H11Old 0.34s steps(9);
+}
+
+@keyframes H11Old {
+    100% { background-position: -2412px 0; }
+}
+
+.TapAnimationToadI1,
+.TapAnimationToadI1Old {
+    left: calc(50% + 66px);
+    top: -17px;
+    width: 221px;
+    height: 353px;
+    scale: 1.44;
+
+    @media (max-height: 765px) {
+        scale: 0.91;
+        left: calc(50% - 4px);
+        top: 12px;
+    }
+}
+
+.TapAnimationToadI1 {
+    background: transparent url('shared/assets/anims/60/I1.png') 0 0 no-repeat;
+    animation: I1 0.34s steps(17);
+}
+
+@keyframes I1 {
+    100% { background-position: -3757px 0; }
+}
+
+.TapAnimationToadI1Old {
+    background: transparent url('shared/assets/anims/30/I1.png') 0 0 no-repeat;
+    animation: I1Old 0.34s steps(9);
+}
+
+@keyframes I1Old {
+    100% { background-position: -1989px 0; }
+}
+
+.TapAnimationToadI2,
+.TapAnimationToadI2Old {
+    left: calc(50% + 55px);
+    top: 6px;
+    width: 242px;
+    height: 353px;
+    scale: 1.31;
+
+    @media (max-height: 765px) {
+        scale: 0.84;
+        left: calc(50% - 13px);
+        top: 25px;
+    }
+}
+
+.TapAnimationToadI2 {
+    background: transparent url('shared/assets/anims/60/I2.png') 0 0 no-repeat;
+    animation: I2 0.34s steps(17);
+}
+
+@keyframes I2 {
+    100% { background-position: -4114px 0; }
+}
+
+.TapAnimationToadI2Old {
+    background: transparent url('shared/assets/anims/30/I2.png') 0 0 no-repeat;
+    animation: I2Old 0.34s steps(9);
+}
+
+@keyframes I2Old {
+    100% { background-position: -2178px 0; }
+}
+
+.TapAnimationToadI3,
+.TapAnimationToadI3Old {
+    left: calc(50% + 43px);
+    top: 27px;
+    width: 267px;
+    height: 353px;
+    scale: 1.19;
+
+    @media (max-height: 765px) {
+        scale: 0.76;
+        left: calc(50% - 26px);
+        top: 39px;
+    }
+}
+
+.TapAnimationToadI3 {
+    background: transparent url('shared/assets/anims/60/I3.png') 0 0 no-repeat;
+    animation: I3 0.34s steps(17);
+}
+
+@keyframes I3 {
+    100% { background-position: -4539px 0; }
+}
+
+.TapAnimationToadI3Old {
+    background: transparent url('shared/assets/anims/30/I3.png') 0 0 no-repeat;
+    animation: I3Old 0.34s steps(9);
+}
+
+@keyframes I3Old {
+    100% { background-position: -2403px 0; }
+}
+
+.TapAnimationToadI4,
+.TapAnimationToadI4Old {
+    left: calc(50% + 28px);
+    top: 48px;
+    width: 297px;
+    height: 353px;
+    scale: 1.07;
+
+    @media (max-height: 765px) {
+        scale: 0.685;
+        left: calc(50% - 41px);
+        top: 52px;
+    }
+}
+
+.TapAnimationToadI4 {
+    background: transparent url('shared/assets/anims/60/I4.png') 0 0 no-repeat;
+    animation: I4 0.34s steps(17);
+}
+
+@keyframes I4 {
+    100% { background-position: -5049px 0; }
+}
+
+.TapAnimationToadI4Old {
+    background: transparent url('shared/assets/anims/30/I4.png') 0 0 no-repeat;
+    animation: I4Old 0.34s steps(9);
+}
+
+@keyframes I4Old {
+    100% { background-position: -2673px 0; }
+}
+
+.TapAnimationToadI5,
+.TapAnimationToadI5Old {
+    left: calc(50% + 16px);
+    top: 61px;
+    width: 319px;
+    height: 353px;
+    scale: 0.99;
+
+    @media (max-height: 765px) {
+        scale: 0.63;
+        left: calc(50% - 53px);
+        top: 61px;
+    }
+}
+
+.TapAnimationToadI5 {
+    background: transparent url('shared/assets/anims/60/I5.png') 0 0 no-repeat;
+    animation: I5 0.34s steps(17);
+}
+
+@keyframes I5 {
+    100% { background-position: -5423px 0; }
+}
+
+.TapAnimationToadI5Old {
+    background: transparent url('shared/assets/anims/30/I5.png') 0 0 no-repeat;
+    animation: I5Old 0.34s steps(9);
+}
+
+@keyframes I5Old {
+    100% { background-position: -2871px 0; }
+}
+
+.TapAnimationToadI6,
+.TapAnimationToadI6Old {
+    left: calc(50% + 16px);
+    top: 61px;
+    width: 319px;
+    height: 353px;
+    scale: 0.99;
+
+    @media (max-height: 765px) {
+        scale: 0.63;
+        left: calc(50% - 53px);
+        top: 61px;
+    }
+}
+
+.TapAnimationToadI6 {
+    background: transparent url('shared/assets/anims/60/I6.png') 0 0 no-repeat;
+    animation: I6 0.34s steps(17);
+}
+
+@keyframes I6 {
+    100% { background-position: -5423px 0; }
+}
+
+.TapAnimationToadI6Old {
+    background: transparent url('shared/assets/anims/30/I6.png') 0 0 no-repeat;
+    animation: I6Old 0.34s steps(9);
+}
+
+@keyframes I6Old {
+    100% { background-position: -2871px 0; }
+}
+
+.TapAnimationToadI7,
+.TapAnimationToadI7Old {
+    left: calc(50% + 10px);
+    top: 68px;
+    width: 333px;
+    height: 353px;
+    scale: 0.955;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 59px);
+        top: 65px;
+    }
+}
+
+.TapAnimationToadI7 {
+    background: transparent url('shared/assets/anims/60/I7.png') 0 0 no-repeat;
+    animation: I7 0.34s steps(17);
+}
+
+@keyframes I7 {
+    100% { background-position: -5661px 0; }
+}
+
+.TapAnimationToadI7Old {
+    background: transparent url('shared/assets/anims/30/I7.png') 0 0 no-repeat;
+    animation: I7Old 0.34s steps(9);
+}
+
+@keyframes I7Old {
+    100% { background-position: -2997px 0; }
+}
+
+.TapAnimationToadI8,
+.TapAnimationToadI8Old {
+    left: calc(50% + 10px);
+    top: 68px;
+    width: 333px;
+    height: 353px;
+    scale: 0.955;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 59px);
+        top: 65px;
+    }
+}
+
+.TapAnimationToadI8 {
+    background: transparent url('shared/assets/anims/60/I8.png') 0 0 no-repeat;
+    animation: I8 0.34s steps(17);
+}
+
+@keyframes I8 {
+    100% { background-position: -5661px 0; }
+}
+
+.TapAnimationToadI8Old {
+    background: transparent url('shared/assets/anims/30/I8.png') 0 0 no-repeat;
+    animation: I8Old 0.34s steps(9);
+}
+
+@keyframes I8Old {
+    100% { background-position: -2997px 0; }
+}
+
+.TapAnimationToadI9,
+.TapAnimationToadI9Old {
+    left: calc(50% + 10px);
+    top: 68px;
+    width: 333px;
+    height: 353px;
+    scale: 0.955;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 59px);
+        top: 65px;
+    }
+}
+
+.TapAnimationToadI9 {
+    background: transparent url('shared/assets/anims/60/I9.png') 0 0 no-repeat;
+    animation: I9 0.34s steps(17);
+}
+
+@keyframes I9 {
+    100% { background-position: -5661px 0; }
+}
+
+.TapAnimationToadI9Old {
+    background: transparent url('shared/assets/anims/30/I9.png') 0 0 no-repeat;
+    animation: I9Old 0.34s steps(9);
+}
+
+@keyframes I9Old {
+    100% { background-position: -2997px 0; }
+}
+
+.TapAnimationToadI10,
+.TapAnimationToadI10Old {
+    left: calc(50% + 11px);
+    top: 71px;
+    width: 328px;
+    height: 353px;
+    scale: 0.965;
+
+    @media (max-height: 765px) {
+        scale: 0.62;
+        left: calc(50% - 56px);
+        top: 66px;
+    }
+}
+
+.TapAnimationToadI10 {
+    background: transparent url('shared/assets/anims/60/I10.png') 0 0 no-repeat;
+    animation: I10 0.34s steps(17);
+}
+
+@keyframes I10 {
+    100% { background-position: -5576px 0; }
+}
+
+.TapAnimationToadI10Old {
+    background: transparent url('shared/assets/anims/30/I10.png') 0 0 no-repeat;
+    animation: I10Old 0.34s steps(9);
+}
+
+@keyframes I10Old {
+    100% { background-position: -2952px 0; }
+}
+
+.TapAnimationToadI11,
+.TapAnimationToadI11Old {
+    left: calc(50% + 30px);
+    top: 92px;
+    width: 291px;
+    height: 353px;
+    scale: 1.09;
+
+    @media (max-height: 765px) {
+        scale: 0.7;
+        left: calc(50% - 38px);
+        top: 80px;
+    }
+}
+
+.TapAnimationToadI11 {
+    background: transparent url('shared/assets/anims/60/I11.png') 0 0 no-repeat;
+    animation: I11 0.34s steps(17);
+}
+
+@keyframes I11 {
+    100% { background-position: -4947px 0; }
+}
+
+.TapAnimationToadI11Old {
+    background: transparent url('shared/assets/anims/30/I11.png') 0 0 no-repeat;
+    animation: I11Old 0.34s steps(9);
+}
+
+@keyframes I11Old {
+    100% { background-position: -2619px 0; }
+}
+
+.TapAnimationToadJ1,
+.TapAnimationToadJ1Old {
+    left: calc(50% + 89px);
+    top: -19px;
+    width: 244px;
+    height: 353px;
+    scale: 1.445;
+
+    @media (max-height: 765px) {
+        scale: 0.92;
+        left: calc(50% + 7px);
+        top: 10px;
+    }
+}
+
+.TapAnimationToadJ1 {
+    background: transparent url('shared/assets/anims/60/J1.png') 0 0 no-repeat;
+    animation: J1 0.34s steps(17);
+}
+
+@keyframes J1 {
+    100% { background-position: -4148px 0; }
+}
+
+.TapAnimationToadJ1Old {
+    background: transparent url('shared/assets/anims/30/J1.png') 0 0 no-repeat;
+    animation: J1Old 0.34s steps(9);
+}
+
+@keyframes J1Old {
+    100% { background-position: -2196px 0; }
+}
+
+.TapAnimationToadJ2,
+.TapAnimationToadJ2Old {
+    left: calc(50% + 79px);
+    top: 4px;
+    width: 269px;
+    height: 353px;
+    scale: 1.32;
+
+    @media (max-height: 765px) {
+        scale: 0.845;
+        left: calc(50% + -3px);
+        top: 24px;
+    }
+}
+
+.TapAnimationToadJ2 {
+    background: transparent url('shared/assets/anims/60/J2.png') 0 0 no-repeat;
+    animation: J2 0.34s steps(17);
+}
+
+@keyframes J2 {
+    100% { background-position: -4573px 0; }
+}
+
+.TapAnimationToadJ2Old {
+    background: transparent url('shared/assets/anims/30/J2.png') 0 0 no-repeat;
+    animation: J2Old 0.34s steps(9);
+}
+
+@keyframes J2Old {
+    100% { background-position: -2421px 0; }
+}
+
+.TapAnimationToadJ3,
+.TapAnimationToadJ3Old {
+    left: calc(50% + 61px);
+    top: 28px;
+    width: 298px;
+    height: 353px;
+    scale: 1.18;
+
+    @media (max-height: 765px) {
+        scale: 0.76;
+        left: calc(50% - 19px);
+        top: 39px;
+    }
+}
+
+.TapAnimationToadJ3 {
+    background: transparent url('shared/assets/anims/60/J3.png') 0 0 no-repeat;
+    animation: J3 0.34s steps(17);
+}
+
+@keyframes J3 {
+    100% { background-position: -5066px 0; }
+}
+
+.TapAnimationToadJ3Old {
+    background: transparent url('shared/assets/anims/30/J3.png') 0 0 no-repeat;
+    animation: J3Old 0.34s steps(9);
+}
+
+@keyframes J3Old {
+    100% { background-position: -2682px 0; }
+}
+
+.TapAnimationToadJ4,
+.TapAnimationToadJ4Old {
+    left: calc(50% + 39px);
+    top: 50px;
+    width: 322px;
+    height: 353px;
+    scale: 1.06;
+
+    @media (max-height: 765px) {
+        scale: 0.68;
+        left: calc(50% - 38px);
+        top: 53px;
+    }
+}
+
+.TapAnimationToadJ4 {
+    background: transparent url('shared/assets/anims/60/J4.png') 0 0 no-repeat;
+    animation: J4 0.34s steps(17);
+}
+
+@keyframes J4 {
+    100% { background-position: -5474px 0; }
+}
+
+.TapAnimationToadJ4Old {
+    background: transparent url('shared/assets/anims/30/J4.png') 0 0 no-repeat;
+    animation: J4Old 0.34s steps(9);
+}
+
+@keyframes J4Old {
+    100% { background-position: -2898px 0; }
+}
+
+.TapAnimationToadJ5,
+.TapAnimationToadJ5Old {
+    left: calc(50% + 25px);
+    top: 69px;
+    width: 368px;
+    height: 353px;
+    scale: 0.95;
+
+    @media (max-height: 765px) {
+        scale: 0.615;
+        left: calc(50% - 54px);
+        top: 65px;
+    }
+}
+
+.TapAnimationToadJ5 {
+    background: transparent url('shared/assets/anims/60/J5.png') 0 0 no-repeat;
+    animation: J5 0.34s steps(17);
+}
+
+@keyframes J5 {
+    100% { background-position: -6256px 0; }
+}
+
+.TapAnimationToadJ5Old {
+    background: transparent url('shared/assets/anims/30/J5.png') 0 0 no-repeat;
+    animation: J5Old 0.34s steps(9);
+}
+
+@keyframes J5Old {
+    100% { background-position: -3312px 0; }
+}
+
+.TapAnimationToadJ6,
+.TapAnimationToadJ6Old {
+    left: calc(50% + 25px);
+    top: 69px;
+    width: 368px;
+    height: 353px;
+    scale: 0.95;
+
+    @media (max-height: 765px) {
+        scale: 0.615;
+        left: calc(50% - 54px);
+        top: 65px;
+    }
+}
+
+.TapAnimationToadJ6 {
+    background: transparent url('shared/assets/anims/60/J6.png') 0 0 no-repeat;
+    animation: J6 0.34s steps(17);
+}
+
+@keyframes J6 {
+    100% { background-position: -6256px 0; }
+}
+
+.TapAnimationToadJ6Old {
+    background: transparent url('shared/assets/anims/30/J6.png') 0 0 no-repeat;
+    animation: J6Old 0.34s steps(9);
+}
+
+@keyframes J6Old {
+    100% { background-position: -3312px 0; }
+}
+
+.TapAnimationToadJ7,
+.TapAnimationToadJ7Old {
+    left: calc(50% + 25px);
+    top: 68px;
+    width: 367px;
+    height: 353px;
+    scale: 0.955;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 55px);
+        top: 65px;
+    }
+}
+
+.TapAnimationToadJ7 {
+    background: transparent url('shared/assets/anims/60/J7.png') 0 0 no-repeat;
+    animation: J7 0.34s steps(17);
+}
+
+@keyframes J7 {
+    100% { background-position: -6239px 0; }
+}
+
+.TapAnimationToadJ7Old {
+    background: transparent url('shared/assets/anims/30/J7.png') 0 0 no-repeat;
+    animation: J7Old 0.34s steps(9);
+}
+
+@keyframes J7Old {
+    100% { background-position: -3303px 0; }
+}
+
+.TapAnimationToadJ8,
+.TapAnimationToadJ8Old {
+    left: calc(50% + 25px);
+    top: 68px;
+    width: 367px;
+    height: 353px;
+    scale: 0.955;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 55px);
+        top: 65px;
+    }
+}
+
+.TapAnimationToadJ8 {
+    background: transparent url('shared/assets/anims/60/J8.png') 0 0 no-repeat;
+    animation: J8 0.34s steps(17);
+}
+
+@keyframes J8 {
+    100% { background-position: -6239px 0; }
+}
+
+.TapAnimationToadJ8Old {
+    background: transparent url('shared/assets/anims/30/J8.png') 0 0 no-repeat;
+    animation: J8Old 0.34s steps(9);
+}
+
+@keyframes J8Old {
+    100% { background-position: -3303px 0; }
+}
+
+.TapAnimationToadJ9,
+.TapAnimationToadJ9Old {
+    left: calc(50% + 25px);
+    top: 68px;
+    width: 367px;
+    height: 353px;
+    scale: 0.955;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 55px);
+        top: 65px;
+    }
+}
+
+.TapAnimationToadJ9 {
+    background: transparent url('shared/assets/anims/60/J9.png') 0 0 no-repeat;
+    animation: J9 0.34s steps(17);
+}
+
+@keyframes J9 {
+    100% { background-position: -6239px 0; }
+}
+
+.TapAnimationToadJ9Old {
+    background: transparent url('shared/assets/anims/30/J9.png') 0 0 no-repeat;
+    animation: J9Old 0.34s steps(9);
+}
+
+@keyframes J9Old {
+    100% { background-position: -3303px 0; }
+}
+
+.TapAnimationToadJ10,
+.TapAnimationToadJ10Old {
+    left: calc(50% + 25px);
+    top: 68px;
+    width: 367px;
+    height: 353px;
+    scale: 0.955;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 55px);
+        top: 65px;
+    }
+}
+
+.TapAnimationToadJ10 {
+    background: transparent url('shared/assets/anims/60/J10.png') 0 0 no-repeat;
+    animation: J10 0.34s steps(17);
+}
+
+@keyframes J10 {
+    100% { background-position: -6239px 0; }
+}
+
+.TapAnimationToadJ10Old {
+    background: transparent url('shared/assets/anims/30/J10.png') 0 0 no-repeat;
+    animation: J10Old 0.34s steps(9);
+}
+
+@keyframes J10Old {
+    100% { background-position: -3303px 0; }
+}
+
+.TapAnimationToadJ11,
+.TapAnimationToadJ11Old {
+    left: calc(50% + 47px);
+    top: 90px;
+    width: 325px;
+    height: 353px;
+    scale: 1.08;
+
+    @media (max-height: 765px) {
+        scale: 0.69;
+        left: calc(50% - 34px);
+        top: 79px;
+    }
+}
+
+.TapAnimationToadJ11 {
+    background: transparent url('shared/assets/anims/60/J11.png') 0 0 no-repeat;
+    animation: J11 0.34s steps(17);
+}
+
+@keyframes J11 {
+    100% { background-position: -5525px 0; }
+}
+
+.TapAnimationToadJ11Old {
+    background: transparent url('shared/assets/anims/30/J11.png') 0 0 no-repeat;
+    animation: J11Old 0.34s steps(9);
+}
+
+@keyframes J11Old {
+    100% { background-position: -2925px 0; }
+}
+
+.TapAnimationToadK1,
+.TapAnimationToadK1Old {
+    left: calc(50% + 112px);
+    top: -19px;
+    width: 266px;
+    height: 353px;
+    scale: 1.45;
+
+    @media (max-height: 765px) {
+        scale: 0.92;
+        left: calc(50% + 17px);
+        top: 10px;
+    }
+}
+
+.TapAnimationToadK1 {
+    background: transparent url('shared/assets/anims/60/K1.png') 0 0 no-repeat;
+    animation: K1 0.34s steps(17);
+}
+
+@keyframes K1 {
+    100% { background-position: -4522px 0; }
+}
+
+.TapAnimationToadK1Old {
+    background: transparent url('shared/assets/anims/30/K1.png') 0 0 no-repeat;
+    animation: K1Old 0.34s steps(9);
+}
+
+@keyframes K1Old {
+    100% { background-position: -2394px 0; }
+}
+
+.TapAnimationToadK2,
+.TapAnimationToadK2Old {
+    left: calc(50% + 97px);
+    top: 4px;
+    width: 292px;
+    height: 353px;
+    scale: 1.315;
+
+    @media (max-height: 765px) {
+        scale: 0.84;
+        left: calc(50% + 4px);
+        top: 25px;
+    }
+}
+
+.TapAnimationToadK2 {
+    background: transparent url('shared/assets/anims/60/K2.png') 0 0 no-repeat;
+    animation: K2 0.34s steps(17);
+}
+
+@keyframes K2 {
+    100% { background-position: -4964px 0; }
+}
+
+.TapAnimationToadK2Old {
+    background: transparent url('shared/assets/anims/30/K2.png') 0 0 no-repeat;
+    animation: K2Old 0.34s steps(9);
+}
+
+@keyframes K2Old {
+    100% { background-position: -2628px 0; }
+}
+
+.TapAnimationToadK3,
+.TapAnimationToadK3Old {
+    left: calc(50% + 82px);
+    top: 27px;
+    width: 326px;
+    height: 353px;
+    scale: 1.185;
+
+    @media (max-height: 765px) {
+        scale: 0.75;
+        left: calc(50% - 13px);
+        top: 40px;
+    }
+}
+
+.TapAnimationToadK3 {
+    background: transparent url('shared/assets/anims/60/K3.png') 0 0 no-repeat;
+    animation: K3 0.34s steps(17);
+}
+
+@keyframes K3 {
+    100% { background-position: -5542px 0; }
+}
+
+.TapAnimationToadK3Old {
+    background: transparent url('shared/assets/anims/30/K3.png') 0 0 no-repeat;
+    animation: K3Old 0.34s steps(9);
+}
+
+@keyframes K3Old {
+    100% { background-position: -2934px 0; }
+}
+
+.TapAnimationToadK4,
+.TapAnimationToadK4Old {
+    left: calc(50% + 66px);
+    top: 44px;
+    width: 351px;
+    height: 353px;
+    scale: 1.09;
+
+    @media (max-height: 765px) {
+        scale: 0.7;
+        left: calc(50% - 26px);
+        top: 49px;
+    }
+}
+
+.TapAnimationToadK4 {
+    background: transparent url('shared/assets/anims/60/K4.png') 0 0 no-repeat;
+    animation: K4 0.34s steps(17);
+}
+
+@keyframes K4 {
+    100% { background-position: -5967px 0; }
+}
+
+.TapAnimationToadK4Old {
+    background: transparent url('shared/assets/anims/30/K4.png') 0 0 no-repeat;
+    animation: K4Old 0.34s steps(9);
+}
+
+@keyframes K4Old {
+    100% { background-position: -3159px 0; }
+}
+
+.TapAnimationToadK5,
+.TapAnimationToadK5Old {
+    left: calc(50% + 41px);
+    top: 69px;
+    width: 401px;
+    height: 353px;
+    scale: 0.955;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 51px);
+        top: 65px;
+    }
+}
+
+.TapAnimationToadK5 {
+    background: transparent url('shared/assets/anims/60/K5.png') 0 0 no-repeat;
+    animation: K5 0.34s steps(17);
+}
+
+@keyframes K5 {
+    100% { background-position: -6817px 0; }
+}
+
+.TapAnimationToadK5Old {
+    background: transparent url('shared/assets/anims/30/K5.png') 0 0 no-repeat;
+    animation: K5Old 0.34s steps(9);
+}
+
+@keyframes K5Old {
+    100% { background-position: -3609px 0; }
+}
+
+.TapAnimationToadK6,
+.TapAnimationToadK6Old {
+    left: calc(50% + 41px);
+    top: 69px;
+    width: 401px;
+    height: 353px;
+    scale: 0.955;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 51px);
+        top: 65px;
+    }
+}
+
+.TapAnimationToadK6 {
+    background: transparent url('shared/assets/anims/60/K6.png') 0 0 no-repeat;
+    animation: K6 0.34s steps(17);
+}
+
+@keyframes K6 {
+    100% { background-position: -6817px 0; }
+}
+
+.TapAnimationToadK6Old {
+    background: transparent url('shared/assets/anims/30/K6.png') 0 0 no-repeat;
+    animation: K6Old 0.34s steps(9);
+}
+
+@keyframes K6Old {
+    100% { background-position: -3609px 0; }
+}
+
+.TapAnimationToadK7,
+.TapAnimationToadK7Old {
+    left: calc(50% + 44px);
+    top: 68px;
+    width: 406px;
+    height: 353px;
+    scale: 0.955;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 51px);
+        top: 65px;
+    }
+}
+
+.TapAnimationToadK7 {
+    background: transparent url('shared/assets/anims/60/K7.png') 0 0 no-repeat;
+    animation: K7 0.34s steps(17);
+}
+
+@keyframes K7 {
+    100% { background-position: -6902px 0; }
+}
+
+.TapAnimationToadK7Old {
+    background: transparent url('shared/assets/anims/30/K7.png') 0 0 no-repeat;
+    animation: K7Old 0.34s steps(9);
+}
+
+@keyframes K7Old {
+    100% { background-position: -3654px 0; }
+}
+
+.TapAnimationToadK8,
+.TapAnimationToadK8Old {
+    left: calc(50% + 44px);
+    top: 68px;
+    width: 406px;
+    height: 353px;
+    scale: 0.955;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 51px);
+        top: 65px;
+    }
+}
+
+.TapAnimationToadK8 {
+    background: transparent url('shared/assets/anims/60/K8.png') 0 0 no-repeat;
+    animation: K8 0.34s steps(17);
+}
+
+@keyframes K8 {
+    100% { background-position: -6902px 0; }
+}
+
+.TapAnimationToadK8Old {
+    background: transparent url('shared/assets/anims/30/K8.png') 0 0 no-repeat;
+    animation: K8Old 0.34s steps(9);
+}
+
+@keyframes K8Old {
+    100% { background-position: -3654px 0; }
+}
+
+.TapAnimationToadK9,
+.TapAnimationToadK9Old {
+    left: calc(50% + 44px);
+    top: 68px;
+    width: 406px;
+    height: 353px;
+    scale: 0.955;
+
+    @media (max-height: 765px) {
+        scale: 0.61;
+        left: calc(50% - 51px);
+        top: 65px;
+    }
+}
+
+.TapAnimationToadK9 {
+    background: transparent url('shared/assets/anims/60/K9.png') 0 0 no-repeat;
+    animation: K9 0.34s steps(17);
+}
+
+@keyframes K9 {
+    100% { background-position: -6902px 0; }
+}
+
+.TapAnimationToadK9Old {
+    background: transparent url('shared/assets/anims/30/K9.png') 0 0 no-repeat;
+    animation: K9Old 0.34s steps(9);
+}
+
+@keyframes K9Old {
+    100% { background-position: -3654px 0; }
+}
+
+.TapAnimationToadK10,
+.TapAnimationToadK10Old {
+    left: calc(50% + 45px);
+    top: 70px;
+    width: 401px;
+    height: 353px;
+    scale: 0.965;
+
+    @media (max-height: 765px) {
+        scale: 0.62;
+        left: calc(50% - 48px);
+        top: 66px;
+    }
+}
+
+.TapAnimationToadK10 {
+    background: transparent url('shared/assets/anims/60/K10.png') 0 0 no-repeat;
+    animation: K10 0.34s steps(17);
+}
+
+@keyframes K10 {
+    100% { background-position: -6834px 0; }
+}
+
+.TapAnimationToadK10Old {
+    background: transparent url('shared/assets/anims/30/K10.png') 0 0 no-repeat;
+    animation: K10Old 0.34s steps(9);
+}
+
+@keyframes K10Old {
+    100% { background-position: -3618px 0; }
+}
+
+.TapAnimationToadK11,
+.TapAnimationToadK11Old {
+    left: calc(50% + 71px);
+    top: 93px;
+    width: 354px;
+    height: 353px;
+    scale: 1.1;
+
+    @media (max-height: 765px) {
+        scale: 0.7;
+        left: calc(50% - 25px);
+        top: 81px;
+    }
+}
+
+.TapAnimationToadK11 {
+    background: transparent url('shared/assets/anims/60/K11.png') 0 0 no-repeat;
+    animation: K11 0.34s steps(17);
+}
+
+@keyframes K11 {
+    100% { background-position: -6018px 0; }
+}
+
+.TapAnimationToadK11Old {
+    background: transparent url('shared/assets/anims/30/K11.png') 0 0 no-repeat;
+    animation: K11Old 0.34s steps(9);
+}
+
+@keyframes K11Old {
+    100% { background-position: -3186px 0; }
 }

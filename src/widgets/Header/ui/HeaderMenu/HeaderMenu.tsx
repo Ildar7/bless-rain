@@ -32,7 +32,7 @@ export const HeaderMenu = memo((props: HeaderMenuProps) => {
             className={classNames(
                 'flex justify-between items-stretch sm:items-start w-full mt-[42px]',
                 {},
-                [className],
+                [cls.HeaderMenu, className],
             )}
         >
             <div className={classNames(cls.headerMenuItem, {}, ['relative z-80 w-full'])}>

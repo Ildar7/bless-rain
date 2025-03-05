@@ -188,7 +188,7 @@ export const RainySpeen = memo((props: RainySpeenProps) => {
                 style={{
                     width: `${(width >= 768 ? 0.59 : 0.6625) * gameScreenWidth}px`,
                     height: `${(width >= 768 ? 0.34 : 0.33041) * gameScreenHeight}px`,
-                    top: `calc(50% + ${(width >= 768 ? 0.075 : 0.0299) * gameScreenHeight}px + ${width >= 768 ? '48px' : '0px'})`,
+                    top: `calc(50% + ${(width >= 768 ? 0.075 : 0.0299) * gameScreenHeight}px)`,
                 }}
             >
                 {gameFinished && (

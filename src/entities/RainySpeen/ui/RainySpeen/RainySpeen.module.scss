@@ -5,10 +5,6 @@
     width: 100vw;
     left: -20px;
     z-index: 2;
-
-    @media (min-width: 1024px) {
-        left: -64px;
-    }
 }
 
 .game {
@@ -20,7 +16,6 @@
     justify-content: center;
 
     @media (min-width: 768px) {
-        top: 48px;
         background-image: url('shared/assets/icons/png/speen-pc-bg.png');
         background-position: center center;
         background-size: cover;

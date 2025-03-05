@@ -24,13 +24,7 @@ export function buildPlugins({ paths, isDev }: BuildOptions): webpack.WebpackPlu
         new CopyWebpackPlugin({
             patterns: [
                 { from: 'src/shared/assets/anims/grass.gif', to: 'assets/anims/grass.gif' },
-                { from: 'src/shared/assets/anims/idle.gif', to: 'assets/anims/idle.gif' },
                 { from: 'src/shared/assets/anims/rain.gif', to: 'assets/anims/rain.gif' },
-                { from: 'src/shared/assets/anims/toad_anim_center.gif', to: 'assets/anims/toad_anim_center.gif' },
-                { from: 'src/shared/assets/anims/toad_anim_left_bottom.gif', to: 'assets/anims/toad_anim_left_bottom.gif' },
-                { from: 'src/shared/assets/anims/toad_anim_left_top.gif', to: 'assets/anims/toad_anim_left_top.gif' },
-                { from: 'src/shared/assets/anims/toad_anim_right_bottom.gif', to: 'assets/anims/toad_anim_right_bottom.gif' },
-                { from: 'src/shared/assets/anims/toad_anim_right_top.gif', to: 'assets/anims/toad_anim_right_top.gif' },
             ],
         }),
     ];
