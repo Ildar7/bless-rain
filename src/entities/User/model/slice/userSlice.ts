@@ -4,7 +4,7 @@ import { fetchUserInfo } from '../services/fetchUserInfo/fetchUserInfo';
 
 const initialState: UserSchema = {
     data: undefined,
-    isLoading: true,
+    isLoading: false,
     error: undefined,
     balance: 10000,
 };

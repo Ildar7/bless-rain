@@ -1,4 +1,4 @@
-import React, {
+import {
     memo, useCallback, useEffect, useMemo, useState,
 } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
@@ -12,8 +12,7 @@ import { Helmet } from 'react-helmet';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { Icon } from 'shared/ui/Icon/Icon';
 import { Button } from 'shared/ui/Button/Button';
-import { PowerTweets, powerTweetsReducer } from 'entities/PowerTweets';
-import { Carousel } from 'shared/ui/Carousel/Carousel';
+import { powerTweetsReducer } from 'entities/PowerTweets';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useWeb3Modal } from '@web3modal/wagmi/react';
 import { useAccount, useDisconnect, useSignMessage } from 'wagmi';
@@ -25,8 +24,6 @@ import {
     getWalletVerifyError,
     getWalletVerifyIsLoading,
 } from 'entities/Wallet';
-import { Input } from 'shared/ui/Input/Input';
-import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import { verifyWallet } from 'entities/Wallet/model/services/verifyWallet/verifyWallet';
 import { WalletData } from 'entities/Wallet/model/types/wallet';
 import { formatNumberWithSeparators } from 'shared/lib/helpers/formatNumberWithSeparators/formatNumberWithSeparators';
@@ -226,11 +223,6 @@ export const Account = memo(() => {
                     <div
                         className="w-[70px] h-[70px] bg-center
                                                             bg-cover bg-content-secondary rounded-2xl"
-                        style={{
-                            backgroundImage:
-                                `url('${JSON.parse(userData?.twitter_data || '').avatar}')`
-                            ,
-                        }}
                     />
                     {isShowLogout
                         ? (
@@ -256,7 +248,7 @@ export const Account = memo(() => {
                 <div className={classNames(cls.helloTitle, {}, [])}>
                     Hello,
                     <br />
-                    {userData?.name}
+                    Username
                     !
                 </div>
 
